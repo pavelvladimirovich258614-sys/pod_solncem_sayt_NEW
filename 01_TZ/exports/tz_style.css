@@ -1,0 +1,182 @@
+/* TZ стиль для печати в PDF */
+@page {
+  size: A4;
+  margin: 20mm 18mm 22mm 18mm;
+  @top-right {
+    content: "ТЗ «Под Солнцем» v1.0";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 9pt;
+    color: #5B6470;
+  }
+  @bottom-center {
+    content: "стр. " counter(page) " из " counter(pages);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 9pt;
+    color: #5B6470;
+  }
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #0F172A;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  color: #0F172A;
+  page-break-after: avoid;
+  page-break-before: auto;
+}
+
+h1 {
+  font-size: 22pt;
+  border-bottom: 2px solid #C8420F;
+  padding-bottom: 6px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 16pt;
+  margin-top: 22pt;
+  border-bottom: 1px solid #E5DED3;
+  padding-bottom: 4px;
+}
+
+h3 {
+  font-size: 13pt;
+  margin-top: 18pt;
+  color: #C8420F;
+}
+
+h4 {
+  font-size: 12pt;
+  margin-top: 14pt;
+}
+
+p {
+  margin: 8pt 0;
+  text-align: justify;
+}
+
+code, pre {
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 9.5pt;
+  background: #F8F4F0;
+  border-radius: 3px;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  border-left: 3px solid #C8420F;
+  white-space: pre-wrap;
+  page-break-inside: avoid;
+}
+
+pre code {
+  padding: 0;
+  background: transparent;
+}
+
+blockquote {
+  border-left: 3px solid #C8420F;
+  margin: 10pt 0;
+  padding: 6pt 14pt;
+  color: #475569;
+  background: #FFE9D9;
+  font-style: italic;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12pt 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+
+th, td {
+  border: 1px solid #D1C7B8;
+  padding: 5pt 8pt;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #F8F4F0;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+tr:nth-child(even) td {
+  background: #FBF9F6;
+}
+
+ul, ol {
+  margin: 6pt 0;
+  padding-left: 22pt;
+}
+
+li {
+  margin: 3pt 0;
+}
+
+a {
+  color: #C8420F;
+  text-decoration: none;
+  border-bottom: 1px dotted #C8420F;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #D1C7B8;
+  margin: 18pt 0;
+}
+
+strong {
+  color: #0F172A;
+}
+
+#TOC {
+  background: #F8F4F0;
+  border: 1px solid #D1C7B8;
+  border-radius: 4px;
+  padding: 12pt 18pt;
+  margin-bottom: 24pt;
+  page-break-after: always;
+}
+
+#TOC ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#TOC > ul {
+  padding-left: 0;
+}
+
+#TOC ul ul {
+  padding-left: 14pt;
+}
+
+#TOC a {
+  border-bottom: none;
+  color: #0F172A;
+}
+
+#TOC li {
+  margin: 2pt 0;
+}
+
+.title {
+  text-align: center;
+  margin-top: 30pt;
+  margin-bottom: 30pt;
+  page-break-before: always;
+}

@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Техническое задание: сайт Под Солнцем v1.0</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="D:\ТУРИЗМ СЕРГЕЙ\09_TESTING_AND_RELEASE\tz_style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Техническое задание: сайт Под Солнцем v1.0</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#техническое-задание-сайт-под-солнцем"
+id="toc-техническое-задание-сайт-под-солнцем">Техническое задание: сайт
+«Под Солнцем»</a>
+<ul>
+<li><a href="#общие-сведения" id="toc-общие-сведения">1. Общие
+сведения</a>
+<ul>
+<li><a href="#назначение-документа" id="toc-назначение-документа">1.1.
+Назначение документа</a></li>
+<li><a href="#цели-сайта" id="toc-цели-сайта">1.2. Цели Сайта</a></li>
+<li><a href="#границы-объёма-что-не-входит"
+id="toc-границы-объёма-что-не-входит">1.3. Границы объёма (что НЕ
+входит)</a></li>
+<li><a href="#используемые-сокращения"
+id="toc-используемые-сокращения">1.4. Используемые сокращения</a></li>
+</ul></li>
+<li><a href="#структура-сайта" id="toc-структура-сайта">2. Структура
+Сайта</a></li>
+<li><a href="#дизайн-система" id="toc-дизайн-система">3.
+Дизайн-система</a>
+<ul>
+<li><a href="#палитра" id="toc-палитра">3.1. Палитра</a></li>
+<li><a href="#типографика" id="toc-типографика">3.2.
+Типографика</a></li>
+<li><a href="#скругления" id="toc-скругления">3.3. Скругления</a></li>
+<li><a href="#spacing-отступы" id="toc-spacing-отступы">3.4. Spacing
+(отступы)</a></li>
+<li><a href="#breakpoints-контрольные-точки-mobile-first"
+id="toc-breakpoints-контрольные-точки-mobile-first">3.5. Breakpoints
+(контрольные точки, mobile-first)</a></li>
+<li><a href="#motion-анимация" id="toc-motion-анимация">3.6. Motion
+(анимация)</a></li>
+<li><a href="#логотип" id="toc-логотип">3.7. Логотип</a></li>
+</ul></li>
+<li><a href="#технологический-стек" id="toc-технологический-стек">4.
+Технологический стек</a>
+<ul>
+<li><a href="#frontend" id="toc-frontend">4.1. Frontend</a></li>
+<li><a href="#backend" id="toc-backend">4.2. Backend</a></li>
+<li><a href="#хостинг" id="toc-хостинг">4.3. Хостинг</a></li>
+<li><a href="#репозиторий" id="toc-репозиторий">4.4.
+Репозиторий</a></li>
+</ul></li>
+<li><a href="#главная-страница" id="toc-главная-страница">5. Главная
+страница (<code>/</code>)</a>
+<ul>
+<li><a href="#header-на-всех-страницах-sticky"
+id="toc-header-на-всех-страницах-sticky">5.1. Header (на всех страницах,
+sticky)</a></li>
+<li><a href="#hero" id="toc-hero">5.2. Hero</a></li>
+<li><a href="#блок-из-3-бейджей-доверия"
+id="toc-блок-из-3-бейджей-доверия">5.3. Блок из 3 бейджей
+доверия</a></li>
+<li><a href="#блок-подберём-отдых-под-вас-5-направлений"
+id="toc-блок-подберём-отдых-под-вас-5-направлений">5.4. Блок «Подберём
+отдых под вас» (5 направлений)</a></li>
+<li><a href="#блок-туры-которые-стоит-посмотреть-4-тура"
+id="toc-блок-туры-которые-стоит-посмотреть-4-тура">5.5. Блок «Туры,
+которые стоит посмотреть» (4 тура)</a></li>
+<li><a href="#блок-ваш-менеджер-по-путешествиям"
+id="toc-блок-ваш-менеджер-по-путешествиям">5.6. Блок «Ваш менеджер по
+путешествиям»</a></li>
+<li><a href="#блок-отзывы-наших-путешественников-6-отзывов"
+id="toc-блок-отзывы-наших-путешественников-6-отзывов">5.7. Блок «Отзывы
+наших путешественников» (6 отзывов)</a></li>
+<li><a href="#блок-почему-нам-доверяют-4-пункта"
+id="toc-блок-почему-нам-доверяют-4-пункта">5.8. Блок «Почему нам
+доверяют» (4 пункта)</a></li>
+<li><a href="#блок-часто-задаваемые-вопросы-7-вопросов"
+id="toc-блок-часто-задаваемые-вопросы-7-вопросов">5.9. Блок «Часто
+задаваемые вопросы» (7 вопросов)</a></li>
+<li><a href="#footer-на-всех-страницах-тёмный-фон-surfacedark"
+id="toc-footer-на-всех-страницах-тёмный-фон-surfacedark">5.10. Footer
+(на всех страницах, тёмный фон <code>surfaceDark</code>)</a></li>
+</ul></li>
+<li><a href="#страницы-направлений-5-шт."
+id="toc-страницы-направлений-5-шт.">6. Страницы направлений (5
+шт.)</a></li>
+<li><a href="#страницы-туров-4-шт." id="toc-страницы-туров-4-шт.">7.
+Страницы туров (4 шт.)</a></li>
+<li><a href="#страницы-политики-3-шт."
+id="toc-страницы-политики-3-шт.">8. Страницы-политики (3 шт.)</a>
+<ul>
+<li><a href="#privacy-политика-обработки-персональных-данных"
+id="toc-privacy-политика-обработки-персональных-данных">8.1.
+<code>/privacy</code> — Политика обработки персональных данных</a></li>
+<li><a href="#cookies-cookie-уведомление"
+id="toc-cookies-cookie-уведомление">8.2. <code>/cookies</code> —
+Cookie-уведомление</a></li>
+<li><a href="#agreement-пользовательское-соглашение"
+id="toc-agreement-пользовательское-соглашение">8.3.
+<code>/agreement</code> — Пользовательское соглашение</a></li>
+</ul></li>
+<li><a href="#telegram-deep-links" id="toc-telegram-deep-links">9.
+Telegram Deep-Links</a>
+<ul>
+<li><a href="#сводная-карта-меток" id="toc-сводная-карта-меток">9.1.
+Сводная карта меток</a></li>
+<li><a href="#требования-к-telegram-боту"
+id="toc-требования-к-telegram-боту">9.2. Требования к
+Telegram-боту</a></li>
+</ul></li>
+<li><a href="#seo-метатеги" id="toc-seo-метатеги">10. SEO-метатеги</a>
+<ul>
+<li><a href="#метатеги-по-страницам"
+id="toc-метатеги-по-страницам">10.1. Метатеги по страницам</a></li>
+<li><a href="#canonical" id="toc-canonical">10.2. Canonical</a></li>
+<li><a href="#open-graph" id="toc-open-graph">10.3. Open Graph</a></li>
+<li><a href="#sitemap.xml" id="toc-sitemap.xml">10.4.
+Sitemap.xml</a></li>
+<li><a href="#robots.txt" id="toc-robots.txt">10.5. Robots.txt</a></li>
+</ul></li>
+<li><a href="#адаптивность-и-доступность"
+id="toc-адаптивность-и-доступность">11. Адаптивность и доступность</a>
+<ul>
+<li><a href="#mobile-first" id="toc-mobile-first">11.1.
+Mobile-first</a></li>
+<li><a href="#адаптивные-правила" id="toc-адаптивные-правила">11.2.
+Адаптивные правила</a></li>
+<li><a href="#доступность-wcag-aa-минимум"
+id="toc-доступность-wcag-aa-минимум">11.3. Доступность (WCAG AA,
+минимум)</a></li>
+</ul></li>
+<li><a href="#cookie-баннер" id="toc-cookie-баннер">12.
+Cookie-баннер</a></li>
+<li><a href="#требования-к-производительности"
+id="toc-требования-к-производительности">13. Требования к
+производительности</a></li>
+<li><a href="#требования-к-безопасности"
+id="toc-требования-к-безопасности">14. Требования к
+безопасности</a></li>
+<li><a href="#гипотезы-требующие-подтверждения-заказчика"
+id="toc-гипотезы-требующие-подтверждения-заказчика">15. Гипотезы,
+требующие подтверждения Заказчика</a>
+<ul>
+<li><a href="#контакты-и-адреса" id="toc-контакты-и-адреса">15.1.
+Контакты и адреса</a></li>
+<li><a href="#менеджер" id="toc-менеджер">15.2. Менеджер</a></li>
+<li><a href="#туры" id="toc-туры">15.3. Туры</a></li>
+<li><a href="#отзывы" id="toc-отзывы">15.4. Отзывы</a></li>
+<li><a href="#faq" id="toc-faq">15.5. FAQ</a></li>
+<li><a href="#юридические-данные" id="toc-юридические-данные">15.6.
+Юридические данные</a></li>
+<li><a href="#партнёры" id="toc-партнёры">15.7. Партнёры</a></li>
+<li><a href="#партнёрский-бренд-coral-travel"
+id="toc-партнёрский-бренд-coral-travel">15.8. Партнёрский бренд Coral
+Travel</a></li>
+</ul></li>
+<li><a href="#ограничения-и-запреты" id="toc-ограничения-и-запреты">16.
+Ограничения и запреты</a>
+<ul>
+<li><a href="#что-нельзя-включать-в-публичные-тексты"
+id="toc-что-нельзя-включать-в-публичные-тексты">16.1. Что нельзя
+включать в публичные тексты</a></li>
+<li><a href="#технические-ограничения"
+id="toc-технические-ограничения">16.2. Технические ограничения</a></li>
+<li><a href="#язык-и-стилистика" id="toc-язык-и-стилистика">16.3. Язык и
+стилистика</a></li>
+</ul></li>
+<li><a href="#приёмка" id="toc-приёмка">17. Приёмка</a></li>
+<li><a href="#приложения" id="toc-приложения">18. Приложения</a>
+<ul>
+<li><a href="#приложение-а.-структура-репозитория"
+id="toc-приложение-а.-структура-репозитория">Приложение А. Структура
+репозитория</a></li>
+<li><a href="#приложение-б.-список-задач-kanban"
+id="toc-приложение-б.-список-задач-kanban">Приложение Б. Список задач
+(Kanban)</a></li>
+<li><a href="#приложение-в.-источники"
+id="toc-приложение-в.-источники">Приложение В. Источники</a></li>
+</ul></li>
+<li><a href="#контроль-версий" id="toc-контроль-версий">19. Контроль
+версий</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="техническое-задание-сайт-под-солнцем">Техническое задание: сайт
+«Под Солнцем»</h1>
+<p><strong>Версия:</strong> 1.0 <strong>Дата:</strong> 18.09.2026
+<strong>Заказчик:</strong> Сергей (турагентство «Под Солнцем», г.
+Москва) <strong>Исполнитель:</strong> Павел Новопольцев (ИП Новопольцев
+П. В.) <strong>Ранг источника:</strong> USER_DIRECTED (прямое указание
+Павла от 18.09.2026)</p>
+<hr />
+<h2 id="общие-сведения">1. Общие сведения</h2>
+<h3 id="назначение-документа">1.1. Назначение документа</h3>
+<p>Настоящее Техническое задание (далее — ТЗ) описывает требования к
+разработке сайта турагентства «Под Солнцем» (далее — Сайт). Сайт
+заменяет устаревший kupit-tyr.ru и служит точкой входа для потенциальных
+клиентов: визитка + ловец заявок. Все заявки передаются в Telegram-бот
+<code>@pod_solncem_travel_bot</code>. Сайт не осуществляет бронирование,
+приём оплаты и подбор туров — этим занимается Mini App в Telegram.</p>
+<h3 id="цели-сайта">1.2. Цели Сайта</h3>
+<ul>
+<li>Представить турагентство «Под Солнцем» как надёжного поставщика
+туристических услуг.</li>
+<li>Снизить барьер обращения: посетитель оставляет заявку в один клик
+через Telegram.</li>
+<li>Привлечь целевую аудиторию (семьи, пары, премиум-сегмент) через
+структурированные направления и конкретные туры.</li>
+<li>Обеспечить соответствие 152-ФЗ (политика обработки персональных
+данных).</li>
+</ul>
+<h3 id="границы-объёма-что-не-входит">1.3. Границы объёма (что НЕ
+входит)</h3>
+<ul>
+<li>Telegram Mini App (не затрагивается).</li>
+<li>Telegram-бот <code>@pod_solncem_travel_bot</code> (не затрагивается,
+только как точка приёма заявок).</li>
+<li>Приём оплаты на Сайте — не делается.</li>
+<li>Каталог всех туров / поиск туров / виджет Турвизора — не
+делается.</li>
+<li>Корпоративный Sport Travel Service — не входит.</li>
+<li>Круизный каталог — не входит.</li>
+<li>Мобильное приложение — не входит.</li>
+<li>Чат с клиентом на Сайте — не входит.</li>
+<li>Тёмная тема оформления — не требуется в v1.</li>
+</ul>
+<h3 id="используемые-сокращения">1.4. Используемые сокращения</h3>
+<ul>
+<li><strong>CTA</strong> (Call To Action) — призыв к действию
+(кнопка).</li>
+<li><strong>H1/H2/H3</strong> — заголовки первого, второго, третьего
+уровня.</li>
+<li><strong>PNG/SVG/WEBP</strong> — графические форматы.</li>
+<li><strong>WCAG AA</strong> — стандарт доступности веб-контента,
+уровень AA.</li>
+<li><strong>152-ФЗ</strong> — Федеральный закон от 27.07.2006 № 152-ФЗ
+«О персональных данных».</li>
+<li><strong>132-ФЗ</strong> — Федеральный закон от 24.11.1996 № 132-ФЗ
+«Об основах туристской деятельности в РФ».</li>
+<li><strong>CMS</strong> — система управления контентом (не используется
+в проекте).</li>
+<li><strong>SEO</strong> — поисковая оптимизация (Search Engine
+Optimization).</li>
+</ul>
+<hr />
+<h2 id="структура-сайта">2. Структура Сайта</h2>
+<p>Сайт состоит из 16 страниц: главная + 5 страниц направлений + 4
+страницы туров + 3 страницы-политики + 2 служебные + страница 404.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>№</th>
+<th>URL</th>
+<th>Назначение</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/</code></td>
+<td>Главная (8 блоков)</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/destinations/beach</code></td>
+<td>Пляжный отдых</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/destinations/family</code></td>
+<td>Семейный отдых</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/destinations/couple</code></td>
+<td>Для двоих</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/destinations/sightseeing</code></td>
+<td>Экскурсионный</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>/destinations/premium</code></td>
+<td>Премиум</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>/tours/turkey</code></td>
+<td>Турция</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>/tours/uae</code></td>
+<td>ОАЭ</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>/tours/thailand</code></td>
+<td>Таиланд</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>/tours/georgia</code></td>
+<td>Грузия</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>/privacy</code></td>
+<td>Политика обработки ПД (152-ФЗ)</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>/cookies</code></td>
+<td>Cookie-уведомление</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>/agreement</code></td>
+<td>Пользовательское соглашение</td>
+<td>Обязательно</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>/sitemap-index.xml</code></td>
+<td>Карта сайта</td>
+<td>Авто-генерация</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>/robots.txt</code></td>
+<td>Инструкции для поисковых роботов</td>
+<td>Авто-генерация</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>/404</code></td>
+<td>Страница не найдена</td>
+<td>Обязательно</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="дизайн-система">3. Дизайн-система</h2>
+<h3 id="палитра">3.1. Палитра</h3>
+<p>Палитра зафиксирована на основе референс-картинки с поправкой на WCAG
+AA (контрастность).</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Роль</th>
+<th>HEX</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primary</code></td>
+<td><code>#0F172A</code></td>
+<td>Тёмный цвет заголовков (PT Serif) и основного текста</td>
+</tr>
+<tr>
+<td><code>secondary</code></td>
+<td><code>#475569</code></td>
+<td>Второстепенный текст</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td><code>#5B6470</code></td>
+<td>Приглушённый текст, подписи</td>
+</tr>
+<tr>
+<td><code>accent</code></td>
+<td><code>#C8420F</code></td>
+<td>Основной CTA (затемнён для соответствия WCAG AA)</td>
+</tr>
+<tr>
+<td><code>accentHover</code></td>
+<td><code>#A8360A</code></td>
+<td>Hover/active состояние CTA</td>
+</tr>
+<tr>
+<td><code>accentBright</code></td>
+<td><code>#F2601B</code></td>
+<td>Референсный оранжевый для декора (не для текста)</td>
+</tr>
+<tr>
+<td><code>accentSoft</code></td>
+<td><code>#FFE9D9</code></td>
+<td>Мягкий фон под CTA</td>
+</tr>
+<tr>
+<td><code>surface</code></td>
+<td><code>#F8F4F0</code></td>
+<td>Основной фон страницы (тёплый кремовый)</td>
+</tr>
+<tr>
+<td><code>surfaceCard</code></td>
+<td><code>#FFFFFF</code></td>
+<td>Фон карточек</td>
+</tr>
+<tr>
+<td><code>surfaceDark</code></td>
+<td><code>#062537</code></td>
+<td>Тёмный фон (футер)</td>
+</tr>
+<tr>
+<td><code>textOnAccent</code></td>
+<td><code>#FFFFFF</code></td>
+<td>Текст на оранжевой кнопке</td>
+</tr>
+<tr>
+<td><code>textOnDark</code></td>
+<td><code>#F1F5F9</code></td>
+<td>Текст на тёмном фоне</td>
+</tr>
+<tr>
+<td><code>border</code></td>
+<td><code>#E5DED3</code></td>
+<td>Границы, разделители</td>
+</tr>
+<tr>
+<td><code>borderStrong</code></td>
+<td><code>#D1C7B8</code></td>
+<td>Акцентированные границы</td>
+</tr>
+<tr>
+<td><code>logoSun</code></td>
+<td><code>#F89028</code></td>
+<td>Цвет солнца в логотипе</td>
+</tr>
+<tr>
+<td><code>star</code></td>
+<td><code>#F2B544</code></td>
+<td>Цвет звёзд рейтинга</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>#1F7A3A</code></td>
+<td>Бейдж «Выбор туристов»</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><code>#1F6FB5</code></td>
+<td>Информационные бейджи</td>
+</tr>
+<tr>
+<td><code>premium</code></td>
+<td><code>#7A4FC9</code></td>
+<td>Бейдж «Премиум»</td>
+</tr>
+</tbody>
+</table>
+<h3 id="типографика">3.2. Типографика</h3>
+<p>Используются три шрифтовых семейства:</p>
+<ul>
+<li><strong>PT Serif</strong> — для заголовков. Жирный, читабельный,
+контрастный к фону.</li>
+<li><strong>Onest</strong> — для основного текста и кнопок. Современный
+гротеск.</li>
+<li><strong>Caveat</strong> — для декоративных рукописных подписей
+клиента.</li>
+</ul>
+<p>Шкалы:</p>
+<table>
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Семейство</th>
+<th>Размер</th>
+<th>Вес</th>
+<th>Межстрочное</th>
+<th>Трекинг</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>PT Serif</td>
+<td>44px</td>
+<td>700</td>
+<td>1.1</td>
+<td>-0.01em</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>PT Serif</td>
+<td>32px</td>
+<td>700</td>
+<td>1.15</td>
+<td>-0.005em</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>PT Serif</td>
+<td>22px</td>
+<td>700</td>
+<td>1.25</td>
+<td>—</td>
+</tr>
+<tr>
+<td>body-lg</td>
+<td>Onest</td>
+<td>17px</td>
+<td>400</td>
+<td>1.55</td>
+<td>—</td>
+</tr>
+<tr>
+<td>body-md</td>
+<td>Onest</td>
+<td>15px</td>
+<td>400</td>
+<td>1.55</td>
+<td>—</td>
+</tr>
+<tr>
+<td>body-sm</td>
+<td>Onest</td>
+<td>13px</td>
+<td>400</td>
+<td>1.5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>caption</td>
+<td>Onest</td>
+<td>12px</td>
+<td>500</td>
+<td>1.4</td>
+<td>0.02em</td>
+</tr>
+<tr>
+<td>button</td>
+<td>Onest</td>
+<td>15px</td>
+<td>600</td>
+<td>1.2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>badge</td>
+<td>Onest</td>
+<td>11px</td>
+<td>700</td>
+<td>1</td>
+<td>0.04em uppercase</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>Caveat</td>
+<td>26px</td>
+<td>400</td>
+<td>1.1</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="скругления">3.3. Скругления</h3>
+<table>
+<thead>
+<tr>
+<th>Токен</th>
+<th>Значение</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xs</td>
+<td>4px</td>
+<td>мелкие элементы</td>
+</tr>
+<tr>
+<td>sm</td>
+<td>8px</td>
+<td>бейджи, поля ввода</td>
+</tr>
+<tr>
+<td>md</td>
+<td>12px</td>
+<td>кнопки, иконки в круге</td>
+</tr>
+<tr>
+<td>lg</td>
+<td>20px</td>
+<td>карточки</td>
+</tr>
+<tr>
+<td>xl</td>
+<td>28px</td>
+<td>крупные модалки</td>
+</tr>
+<tr>
+<td>pill</td>
+<td>999px</td>
+<td>все CTA-кнопки и бейджи</td>
+</tr>
+</tbody>
+</table>
+<h3 id="spacing-отступы">3.4. Spacing (отступы)</h3>
+<table>
+<thead>
+<tr>
+<th>Токен</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xxs</td>
+<td>4px</td>
+</tr>
+<tr>
+<td>xs</td>
+<td>8px</td>
+</tr>
+<tr>
+<td>sm</td>
+<td>12px</td>
+</tr>
+<tr>
+<td>md</td>
+<td>16px</td>
+</tr>
+<tr>
+<td>lg</td>
+<td>24px</td>
+</tr>
+<tr>
+<td>xl</td>
+<td>32px</td>
+</tr>
+<tr>
+<td>xxl</td>
+<td>48px</td>
+</tr>
+<tr>
+<td>section</td>
+<td>80px (расстояние между крупными блоками)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breakpoints-контрольные-точки-mobile-first">3.5. Breakpoints
+(контрольные точки, mobile-first)</h3>
+<table>
+<thead>
+<tr>
+<th>Имя</th>
+<th>Ширина</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xs</td>
+<td>320px</td>
+<td>Минимальная ширина (iPhone SE 1)</td>
+</tr>
+<tr>
+<td>sm</td>
+<td>390px</td>
+<td>Стандартный мобильный (iPhone 13/14)</td>
+</tr>
+<tr>
+<td>md</td>
+<td>430px</td>
+<td>Крупный мобильный (iPhone Pro Max)</td>
+</tr>
+<tr>
+<td>lg</td>
+<td>768px</td>
+<td>Планшет</td>
+</tr>
+<tr>
+<td>xl</td>
+<td>1024px</td>
+<td>Малый десктоп</td>
+</tr>
+<tr>
+<td>xxl</td>
+<td>1280px</td>
+<td>Стандартный десктоп</td>
+</tr>
+<tr>
+<td>xxxl</td>
+<td>1440px</td>
+<td>Широкий десктоп (референс)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motion-анимация">3.6. Motion (анимация)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Длительность</th>
+<th>Кривая</th>
+<th>Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fast</code></td>
+<td>150ms cubic-bezier(0.4,0,0.2,1)</td>
+<td>Hover, focus</td>
+</tr>
+<tr>
+<td><code>base</code></td>
+<td>240ms cubic-bezier(0.4,0,0.2,1)</td>
+<td>Раскрытие аккордеона, появление модалок</td>
+</tr>
+<tr>
+<td><code>slow</code></td>
+<td>400ms cubic-bezier(0.4,0,0.2,1)</td>
+<td>Переход между страницами</td>
+</tr>
+</tbody>
+</table>
+<h3 id="логотип">3.7. Логотип</h3>
+<p>SVG-формат: стилизованное солнце + волны + лок-ап «ПОД СОЛНЦЕМ /
+туристическое агентство». Цвет солнца — <code>logoSun</code>
+(<code>#F89028</code>). Цвет тёмной части — <code>primary</code>
+(<code>#0F172A</code>).</p>
+<p>Файлы: -
+<code>04_RESEARCH_AND_DESIGN/01_SITE_DESIGN/logo-sun.svg</code> (полный
+логотип с текстом) -
+<code>04_RESEARCH_AND_DESIGN/01_SITE_DESIGN/logo-mark.svg</code> (только
+знак солнца, для фавикона)</p>
+<hr />
+<h2 id="технологический-стек">4. Технологический стек</h2>
+<h3 id="frontend">4.1. Frontend</h3>
+<ul>
+<li><strong>Astro 5</strong> — генератор статических сайтов. Static
+output (HTML + CSS + минимальный JS).</li>
+<li><strong>Tailwind CSS v4</strong> — utility-first CSS-фреймворк,
+конфигурация через <code>@theme</code> блок.</li>
+<li><strong><span class="citation"
+data-cites="astrojs/mdx">@astrojs/mdx</span></strong> — поддержка
+MDX-контента (для возможного блога/новостей в v2).</li>
+<li><strong><span class="citation"
+data-cites="astrojs/sitemap">@astrojs/sitemap</span></strong> —
+авто-генерация sitemap.xml.</li>
+</ul>
+<h3 id="backend">4.2. Backend</h3>
+<p>Не используется. Все формы Сайта открывают Telegram-бот через
+deep-link. Собственный сервер не задействован.</p>
+<h3 id="хостинг">4.3. Хостинг</h3>
+<p>Домен и хостинг — по решению Заказчика. Варианты: - <strong>Netlify
+free tier</strong> — рекомендован. Авто-деплой из Git, бесплатный SSL. -
+<strong>Vercel</strong> — аналогично, бесплатный tier. -
+<strong>Cloudflare Pages</strong> — бесплатный tier. -
+<strong>Self-hosted VPS</strong> — требует certbot + nginx/caddy для
+SSL.</p>
+<h3 id="репозиторий">4.4. Репозиторий</h3>
+<p>Отдельный Git-репозиторий:
+<code>D:\ТУРИЗМ СЕРГЕЙ\07_CODE\site-pod-solncem\</code>.</p>
+<p>Не допускается объединение с: -
+<code>D:\ТУРИЗМ СЕРГЕЙ\07_CODE\frontend-miniapp\</code> (Telegram Mini
+App) - <code>D:\ТУРИЗМ СЕРГЕЙ\07_CODE\telegram-bot\</code>
+(Telegram-бот)</p>
+<hr />
+<h2 id="главная-страница">5. Главная страница (<code>/</code>)</h2>
+<p>Главная страница состоит из 8 блоков в порядке референс-картинки.</p>
+<h3 id="header-на-всех-страницах-sticky">5.1. Header (на всех страницах,
+sticky)</h3>
+<p><strong>Левая часть:</strong> - Логотип (<code>logo-sun.svg</code>) с
+подписью «ПОД СОЛНЦЕМ» (PT Serif bold, primary) и подзаголовком
+«туристическое агентство» (Onest 12px, muted).</p>
+<p><strong>Центральная часть (меню):</strong> - «Туры» → якорь
+<code>#tours</code> на главной; на других страницах → <code>/</code> +
+якорь. - «Направления» → якорь <code>#destinations</code> на главной; на
+других страницах → <code>/</code> + якорь. - «Отели» →
+<code>/destinations/premium</code>. - «О нас» → якорь
+<code>#manager</code> на главной; на других страницах → <code>/</code> +
+якорь. - «Контакты» → якорь к футеру на любой странице.</p>
+<p><strong>Правая часть:</strong> - Телефон:
+<code>+7 (495) 123-45-67</code> (заглушка, требует подтверждения
+Заказчика). - Под телефоном мелким шрифтом: «Пн–Вс 9:00–21:00». -
+CTA-кнопка «Подобрать путешествие» (primary, accent pill) →
+<code>https://t.me/pod_solncem_travel_bot?start=header</code>.</p>
+<p><strong>Mobile (320–430 px):</strong> - Логотип слева, иконка
+бургер-меню справа. - Меню выезжает сбоку в полноэкранной модалке. - CTA
+— полноширинная кнопка в нижней части модалки.</p>
+<h3 id="hero">5.2. Hero</h3>
+<p><strong>Бейдж над H1</strong> (caption uppercase, фон
+<code>accentSoft</code>, цвет <code>accent</code>): &gt; БОЛЬШЕ, ЧЕМ
+ПРОСТО ОТДЫХ</p>
+<p><strong>H1</strong> (PT Serif 44px, <code>primary</code>): &gt;
+Путешествие, которое подходит именно вам</p>
+<p><strong>Подзаголовок</strong> (Onest 17px, <code>secondary</code>,
+max-width 540px): &gt; Расскажите, каким вы хотите видеть свой отдых —
+мы подберём несколько действительно подходящих вариантов. Не шаблонную
+«пятёрку по акции», а отель под ваш бюджет, даты и состав семьи. Подбор
+занимает 60 секунд.</p>
+<p><strong>Основной CTA</strong> (primary button, accent pill): - Текст:
+«Подобрать отдых за 60 секунд» - URL:
+<code>https://t.me/pod_solncem_travel_bot?start=hero</code></p>
+<p><strong>Вторичный CTA</strong> (ghost/outline): - Текст: «Посмотреть
+туры» - Действие: якорь <code>#tours</code> на той же странице</p>
+<p><strong>Фото на фоне:</strong> - Фото моря справа от текста, тёплое,
+без людей. - Исходник не приложен — placeholder U-GOD.</p>
+<p><strong>Декоративная подпись клиента</strong> (Caveat 26px,
+<code>accentBright</code>, правый нижний угол фото): &gt; Мир ближе, чем
+кажется</p>
+<p><strong>Mobile:</strong> - H1 уменьшается до 32px, подзаголовок до
+15px. - CTA располагаются стопкой во всю ширину. - Фото моря — на полную
+ширину под текстом.</p>
+<h3 id="блок-из-3-бейджей-доверия">5.3. Блок из 3 бейджей доверия</h3>
+<p>Горизонтальная полоса сразу под Hero (на мобильном — стопкой). Каждый
+бейдж содержит иконку слева и текст справа.</p>
+<ol type="1">
+<li><p><strong>Иконка</strong>: галочка в кружке, цвет
+<code>success</code>. Текст: «Реальные специалисты — с опытом и любовью
+к путешествиям».</p></li>
+<li><p><strong>Иконка</strong>: часы «24/7», цвет <code>info</code>.
+Текст: «Поддержка 24/7 — на всех этапах поездки».</p></li>
+<li><p><strong>Иконка</strong>: щит с символом рубля, цвет
+<code>accent</code>. Текст: «Цены в ₽ — без скрытых комиссий».</p></li>
+</ol>
+<h3 id="блок-подберём-отдых-под-вас-5-направлений">5.4. Блок «Подберём
+отдых под вас» (5 направлений)</h3>
+<p><strong>H2</strong> (PT Serif 32px, <code>primary</code>): &gt;
+Подберём отдых под вас</p>
+<p><strong>Подзаголовок</strong> (Onest 17px, <code>secondary</code>):
+&gt; Пять направлений, которые мы организуем чаще всего. Нажмите на своё
+— увидите подборку отелей и туров.</p>
+<p><strong>Сетка из 5 карточек</strong> (мобильный — 1 колонка, планшет
+— 2, десктоп — 5 в ряд).</p>
+<p>Каждая карточка содержит: - Иконку (inline SVG, цвет
+<code>accent</code> или <code>premium</code> для последней). - Заголовок
+направления (PT Serif 22px). - Описание в 1 строку (Onest 15px,
+<code>secondary</code>). - Ссылку на страницу направления.</p>
+<p>Карточки:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>№</th>
+<th>Иконка</th>
+<th>Заголовок</th>
+<th>Описание</th>
+<th>Ссылка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>зонт/море</td>
+<td>Пляжный</td>
+<td>Спокойный берег без волн, тёплое море, всё включено — без долгого
+перелёта.</td>
+<td><code>/destinations/beach</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>семья</td>
+<td>Семейный</td>
+<td>Детское меню, анимация, аквапарк при отеле и спокойный вход в море
+для малышей.</td>
+<td><code>/destinations/family</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>два бокала</td>
+<td>Для двоих</td>
+<td>Тихий отель 18+, приватная вилла с бассейном или номер с видом
+только для вас двоих.</td>
+<td><code>/destinations/couple</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>город/камера</td>
+<td>Экскурсионный</td>
+<td>Стамбул, Каппадокия, Петра, Тбилиси — исторические маршруты с гидом
+и без спешки.</td>
+<td><code>/destinations/sightseeing</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>корона</td>
+<td>Премиум</td>
+<td>Burj Al Arab, Soneva, Aman — отели, где имя говорит само за себя, а
+сервис не повторяется.</td>
+<td><code>/destinations/premium</code></td>
+</tr>
+</tbody>
+</table>
+<p>Под сеткой ссылка: «Все направления →» (ведёт к этому же блоку).</p>
+<h3 id="блок-туры-которые-стоит-посмотреть-4-тура">5.5. Блок «Туры,
+которые стоит посмотреть» (4 тура)</h3>
+<p><strong>H2</strong> (PT Serif 32px, <code>primary</code>): &gt; Туры,
+которые стоит посмотреть</p>
+<p><strong>Подзаголовок</strong>: &gt; Четыре направления, на которые у
+нас самые частые заявки. Если не угадали — напишите, подберём
+другой.</p>
+<p><strong>Сетка из 4 карточек</strong> (мобильный — 1 колонка, планшет
+— 2, десктоп — 4 в ряд).</p>
+<p>Структура каждой карточки: - Фото 16:9 сверху (placeholder). - Бейдж
+сверху-слева на фото. - Тело карточки с белым фоном. - Рейтинг (5 звёзд,
+цвет <code>star</code>). - Параметры тура: длительность, вылет, питание.
+- Цена «от XXX ₽ на двоих» (PT Serif 22px). - Фишка в 1 строку. - CTA
+«Посмотреть тур» внизу карточки.</p>
+<p>Туры:</p>
+<p><strong>Тур 1. ТУРЦИЯ</strong> - Бейдж: «Хит продаж» (accent) -
+Название: «Турция, Анталья, всё включено» - Рейтинг: ★ 4.8 -
+Длительность: 7 ночей - Вылет: из Москвы - Питание: AI (всё включено) -
+Цена: от 89 000 ₽ на двоих (гипотеза) - Фишка: «Прямой рейс 3,5 часа,
+без визы, лучшее соотношение цены и качества для семейного отдыха.» -
+CTA: <code>https://t.me/pod_solncem_travel_bot?start=tour_tr</code></p>
+<p><strong>Тур 2. ОАЭ</strong> - Бейдж: «Популярно» (accent) - Название:
+«ОАЭ, Дубай или Рас-эль-Хайма» - Рейтинг: ★ 4.7 - Длительность: 5 ночей
+- Вылет: из Москвы - Питание: завтрак + AI опционально - Цена: от 145
+000 ₽ на двоих (гипотеза) - Фишка: «Hampton by Hilton на Марджане —
+Hilton-уровень по цене 4★, тёплое море в любой сезон.» - CTA:
+<code>?start=tour_uae</code></p>
+<p><strong>Тур 3. ТАИЛАНД</strong> - Бейдж: «Выбор туристов» (success) -
+Название: «Таиланд, Пхукет или Паттайя» - Рейтинг: ★ 4.9 - Длительность:
+10 ночей - Вылет: из Москвы - Питание: завтрак - Цена: от 198 000 ₽ на
+двоих (гипотеза) - Фишка: «Прямой рейс 9 часов, без визы до 90 дней,
+лучшие пляжи острова для долгого отпуска.» - CTA:
+<code>?start=tour_th</code></p>
+<p><strong>Тур 4. ГРУЗИЯ</strong> - Бейдж: «Низкая цена» (success) -
+Название: «Грузия, Тбилиси + Казбеги» - Рейтинг: ★ 4.7 - Длительность: 6
+ночей - Вылет: из Москвы - Питание: завтрак - Цена: от 58 000 ₽ на двоих
+(гипотеза) - Фишка: «Без визы, прямой рейс 2,5 часа, горы и вино за
+стоимость одного дня в Москве.» - CTA: <code>?start=tour_ge</code></p>
+<p>Под сеткой ссылка: «Все туры →» (открывает Telegram-бот).</p>
+<h3 id="блок-ваш-менеджер-по-путешествиям">5.6. Блок «Ваш менеджер по
+путешествиям»</h3>
+<p><strong>H2</strong> (PT Serif 32px, <code>primary</code>): &gt; Ваш
+менеджер по путешествиям</p>
+<p><strong>Левая часть (40% на десктопе, на всю ширину на
+мобильном):</strong> - Карточка с фото менеджера (placeholder U-GOD). -
+В правом нижнем углу фото — Caveat-подпись <code>accentBright</code>:
+&gt; Буду рада помочь!</p>
+<p><strong>Правая часть (60% на десктопе):</strong></p>
+<p>Имя (PT Serif 28px, <code>primary</code>): «Алина» (гипотеза, требует
+подтверждения Заказчика).</p>
+<p>Должность (Onest 15px, <code>secondary</code>): «Специалист по Турции
+и ОАЭ».</p>
+<p>Цитата (PT Serif 22px italic, <code>primary</code>): &gt; «Подберу
+отель под ваш бюджет и расскажу, где действительно хороший пляж»</p>
+<p>Три буллита с иконками: 1. <strong>Личный подход</strong> —
+«общаетесь с одним человеком от заявки до возвращения, не с „менеджером
+№ 5 в очереди“.» 2. <strong>Опыт 20+ стран</strong> (гипотеза) —
+«Россия, СНГ, Юго-Восточная Азия, Ближний Восток, Европа. Знаю, где
+сезон, а где муссон.» 3. <strong>Знает отели и скрытые локации</strong>
+— «какой отель выбирать в Мармарисе, а какой нет; где на Пхукете не
+шумно; на каком пляже в ОАЭ нет водорослей.»</p>
+<p>CTA: «Написать Алине» (primary button, accent pill) →
+<code>https://t.me/pod_solncem_travel_bot?start=manager</code>.</p>
+<h3 id="блок-отзывы-наших-путешественников-6-отзывов">5.7. Блок «Отзывы
+наших путешественников» (6 отзывов)</h3>
+<p><strong>H2</strong>: «Отзывы наших путешественников»</p>
+<p>Сетка из 6 карточек (мобильный — 1 кол., планшет — 2, десктоп — 4 в
+ряд, остальные 2 во второй строке).</p>
+<p>Структура карточки: - Заголовок: Имя + Город. - Пометка «(образец)»
+под именем мелким шрифтом (<code>muted</code>). - 2–3 строки текста. - 5
+звёзд (цвет <code>star</code>) внизу.</p>
+<p>Тексты отзывов (все шаблонные, помечены как «образец»):</p>
+<ol type="1">
+<li><p><strong>Марина</strong> (образец), Москва. «Летали в Турцию,
+Анталья, отель Delphin Imperial в июне. Бронировали через сайт, в
+Telegram отвечали за 10 минут. Менеджер подобрала отель под наш бюджет и
+возраст ребёнка (4 года) — отдельный детский бассейн и анимация. Ребёнок
+не вылезал из аквапарка.»</p></li>
+<li><p><strong>Дмитрий</strong> (образец), Казань. «ОАЭ, Рас-эль-Хайма,
+Hampton на Марджане. Брали на 5 ночей, всё включено. Hilton-уровень по
+цене обычной четвёрки. Менеджер предупредила про район — действительно
+тихо, для семейного отдыха подходит. Перелет ночной, что для ребёнка
+плюс.»</p></li>
+<li><p><strong>Елена</strong> (образец), Санкт-Петербург. «Таиланд,
+Пхукет, Trisara. Свадебное путешествие. Помогли с визой (хотя Таиланд
+безвизовый, но на обратном рейсе был вопрос по штампу — менеджер
+отвечала в Telegram в 2 часа ночи). Спасибо за человеческое отношение,
+не за „процесс продажи“.»</p></li>
+<li><p><strong>Игорь</strong> (образец), Екатеринбург. «Египет,
+Шарм-эль-Шейх, Aurora Oriental. Бюджетный вариант на 7 ночей. Всё
+включено, риф прямо у понтона — рыба гарантирована в первые 5 минут, как
+и обещали. За эту цену — лучшее соотношение.»</p></li>
+<li><p><strong>Ольга</strong> (образец), Новосибирск. «Грузия, Тбилиси +
+Казбеги, групповой экскурсионный тур. Горы, вино, хинкали. За 6 дней
+объехали всё, что хотели. Гид знал места, куда сами бы не доехали.
+Прямой рейс из Москвы — без пересадок.»</p></li>
+<li><p><strong>Сергей</strong> (образец), Самара. «Мальдивы, Soneva
+Jani. Специально просили менеджера, которая понимает, за что мы платим
+такие деньги. Получили рекомендацию по вилле на воде с горкой в лагуну —
+дети были в восторге, мы тоже. Документы, страховка, трансфер — всё было
+решено до нашего вылета.»</p></li>
+</ol>
+<p>Под сеткой ссылка: «Все отзывы →».</p>
+<h3 id="блок-почему-нам-доверяют-4-пункта">5.8. Блок «Почему нам
+доверяют» (4 пункта)</h3>
+<p><strong>H2</strong>: «Почему нам доверяют».</p>
+<p>Четыре пункта в ряд (на мобильном — стопкой):</p>
+<ol type="1">
+<li><p><strong>Проверенные туроператоры</strong> (иконка: щит с
+галочкой). «Работаем только с аккредитованными туроператорами, чьи
+договоры зарегистрированы в реестре Ростуризма. Это значит: ваши деньги
+застрахованы, а при банкротстве оператора вам вернут стоимость
+тура.»</p></li>
+<li><p><strong>Реальные отзывы</strong> (иконка: цитата). «Все отзывы на
+сайте — от туристов, которые пришли через наш канал или обратились к
+менеджеру напрямую. Согласие на публикацию получаем у каждого автора
+текстом в мессенджере.»</p></li>
+<li><p><strong>Гарантия безопасности</strong> (иконка: замок). «Ваши
+данные из формы не уходят на сторонние сервисы — заявка приходит
+напрямую менеджеру в Telegram. Договор реализации туристского продукта
+подписывается до оплаты. Чек и закрывающие документы — после
+возвращения.»</p></li>
+<li><p><strong>Индивидуальный подбор</strong> (иконка: рука с лупой).
+«Менеджер не предлагает „туры недели“ или „акции оператора“. Подбор
+начинается с вашего запроса (страна, даты, бюджет, состав) и
+заканчивается 2–3 конкретными отелями под него. Если ничего не подошло —
+продолжит искать без доплаты.»</p></li>
+</ol>
+<h3 id="блок-часто-задаваемые-вопросы-7-вопросов">5.9. Блок «Часто
+задаваемые вопросы» (7 вопросов)</h3>
+<p><strong>H2</strong>: «Часто задаваемые вопросы».</p>
+<p>Аккордеон: один вопрос открыт по умолчанию, остальные свёрнуты. Клик
+по заголовку раскрывает/сворачивает ответ.</p>
+<p><strong>Q1. Как забронировать тур?</strong> Нажмите любую оранжевую
+кнопку «Подобрать» или «Посмотреть тур» — она откроет чат с менеджером в
+Telegram. Расскажете, какой отдых хотите (страна, даты, состав, бюджет).
+Менеджер подберёт 2–3 варианта за 60 секунд. Если что-то подходит —
+пришлёт ссылку на оплату. Если ничего не подошло — продолжит искать.
+Бронирование без обязательств: деньги списываются только после вашего
+согласия на конкретный отель.</p>
+<p><strong>Q2. Какие документы нужны для поездки?</strong> Зависит от
+страны. Для безвизовых направлений (Турция, ОАЭ, Таиланд до 90 дней,
+Грузия) — загранпаспорт, действительный ещё 6 месяцев на дату въезда, и
+обратный билет. Для визовых (Китай, некоторые случаи Шри-Ланки) менеджер
+оформит электронную визу за 3–5 дней, нужно фото и скан паспорта. Для
+детей до 14 лет — отдельная отметка в паспорте родителя или собственный
+загранпаспорт. Точный список по вашему направлению пришлёт менеджер
+после заявки.</p>
+<p><strong>Q3. Можно ли поменять даты после бронирования?</strong> Да, в
+большинстве случаев. Условия зависят от тарифа конкретного отеля и
+авиакомпании. Обычно за 14+ дней до вылета даты меняются бесплатно или с
+небольшой доплатой (зависит от правил тарифа). За 7–14 дней — доплата
+30–50% от стоимости. Меньше 7 дней — только в исключительных случаях
+(болезнь, форс-мажор). Менеджер проверяет правила вашего конкретного
+бронирования до оплаты и сообщает условия.</p>
+<p><strong>Q4. Что если в поездке возникнут проблемы?</strong> Связь с
+менеджером 24/7 в Telegram — даже ночью. Если в отеле что-то не так
+(переселили, не работает кондиционер, не соответствует номер) — пишете,
+менеджер связывается с принимающей стороной в течение часа. Если
+проблема не решается на месте — организуем компенсацию или возврат через
+туроператора. За 5 лет работы возвратов по «не заехали в отель» не было
+ни разу.</p>
+<p><strong>Q5. Как происходит оплата?</strong> В два этапа. Первый —
+предоплата 10–30% от стоимости тура (фиксирует цену и места). Второй —
+полная оплата за 7–14 дней до вылета. Оплата — переводом на карту или по
+счёту (для юрлиц). Все платежи оформляются договором реализации
+туристского продукта с указанием туроператора, отеля, дат и условий. Чек
+и закрывающие документы — после возвращения.</p>
+<p><strong>Q6. Включена ли страховка?</strong> Базовая медицинская
+страховка включена в стоимость любого тура (покрытие от 50 000 $,
+зависит от направления). Можно расширить до 100 000 $ или добавить
+страховку от невыезда (отмена по болезни, отказ в визе). Расширенная
+страховка стоит 1 500–4 000 ₽ с человека, зависит от страны и
+длительности. Менеджер подберёт оптимальный вариант при
+бронировании.</p>
+<p><strong>Q7. Что если откажут в визе?</strong> Если визу не дали по
+нашей вине (ошибка в документах, неправильно оформленная анкета) — мы
+возвращаем 100% стоимости визового сбора и консульского взноса. Если
+отказ по причине, не зависящей от нас (нарушение миграционного
+законодательства в прошлом, неполный пакет документов по вине туриста) —
+удерживается только консульский сбор (его не возвращают в любом случае),
+остальное возвращается. Перед подачей документов менеджер проверяет вашу
+историю и говорит о рисках заранее.</p>
+<p>Под блоком ссылка: «Все вопросы →» → Telegram-бот.</p>
+<h3 id="footer-на-всех-страницах-тёмный-фон-surfacedark">5.10. Footer
+(на всех страницах, тёмный фон <code>surfaceDark</code>)</h3>
+<p>Сетка в 4 колонки на десктопе, стопка на мобильном.</p>
+<p><strong>Колонка 1 — Бренд:</strong> - Логотип (солнце белого цвета).
+- «ПОД СОЛНЦЕМ». - Подзаголовок «туристическое агентство». - 1 строка:
+«Работаем для вашего лучшего отпуска с [год].» (год — гипотеза, требует
+подтверждения).</p>
+<p><strong>Колонка 2 — Контакты:</strong> - Адрес: г. Москва, ул.
+[уточняется] (заглушка). - Телефон: +7 (495) 123-45-67 (заглушка). -
+Email: info@pod-solncem.ru. - Часы работы: Пн–Вс 9:00–21:00.</p>
+<p><strong>Колонка 3 — Меню:</strong> - Туры → якорь или <code>/</code>.
+- Направления → якорь или <code>/</code>. - Отели →
+<code>/destinations/premium</code>. - О нас → <code>#manager</code>. -
+Контакты → этот блок. - Все туры → <code>?start=footer-tours</code>
+(Telegram).</p>
+<p><strong>Колонка 4 — Соцсети и подписка:</strong> - Telegram:
+<code>@pod_solncem_travel_bot</code> и <code>@coral_taganskaya</code>. -
+VK: [ссылка уточняется]. - Instagram: [ссылка уточняется]. - Подписка на
+влог: форма с placeholder «ваш email» + кнопка «Подписаться» →
+<code>https://t.me/pod_solncem_travel_bot?start=newsletter</code>. -
+Подпись под формой: «Раз в неделю, без спама».</p>
+<p><strong>Нижняя строка</strong> (мелко, <code>muted</code> на тёмном
+фоне): - © 2026 Турагентство «Под Солнцем». - Ссылки: «Политика
+конфиденциальности» → <code>/privacy</code>, «Cookie» →
+<code>/cookies</code>, «Соглашение» → <code>/agreement</code>.</p>
+<hr />
+<h2 id="страницы-направлений-5-шт.">6. Страницы направлений (5 шт.)</h2>
+<p>Каждая страница направления содержит: 1. Hero с H1 (название
+направления), краткое описание и CTA «Подобрать [название]» → Telegram с
+меткой <code>direction_&lt;slug&gt;</code>. 2. Блок «Что вы получите» —
+4–5 буллетов конкретных выгод. 3. Блок «Рекомендуемые страны» — список
+стран с короткими описаниями. 4. Блок «Как мы подбираем» — 3 шага с
+иконками. 5. CTA-блок «Готовы подобрать?» → Telegram. 6. Footer.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>№</th>
+<th>URL</th>
+<th>H1</th>
+<th>Метка CTA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/destinations/beach</code></td>
+<td>Пляжный отдых без волн и суеты</td>
+<td><code>direction_beach</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/destinations/family</code></td>
+<td>Отдых с детьми — без стресса для родителей</td>
+<td><code>direction_family</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/destinations/couple</code></td>
+<td>Отдых для двоих — без соседей с детьми</td>
+<td><code>direction_couple</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/destinations/sightseeing</code></td>
+<td>Экскурсионные маршруты — с гидом, который знает места</td>
+<td><code>direction_sightseeing</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/destinations/premium</code></td>
+<td>Премиум-отдых — отели, которые не пускают всех</td>
+<td><code>direction_premium</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="страницы-туров-4-шт.">7. Страницы туров (4 шт.)</h2>
+<p>Каждая страница тура содержит: 1. Hero с фото страны, H1,
+длительность, вылет, питание, цена «от XXX ₽ на двоих», CTA
+«Забронировать» → <code>?start=tour_&lt;slug&gt;</code>. 2. Блок «Что
+включено» — перевозка, проживание, питание, трансфер, страховка, виза.
+3. Блок «Рекомендованные отели» — 3–4 карточки отелей. 4. Блок «Когда
+лучше ехать» — месяцы с пометкой «отличный / хороший / не рекомендуем».
+5. FAQ из 3–4 вопросов по конкретной стране. 6. CTA «Подобрать другой
+вариант» → Telegram. 7. Footer.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>№</th>
+<th>URL</th>
+<th>H1</th>
+<th>Цена «от»</th>
+<th>Метка CTA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/tours/turkey</code></td>
+<td>Турция — что включено и как не переплатить</td>
+<td>89 000 ₽</td>
+<td><code>tour_tr</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/tours/uae</code></td>
+<td>ОАЭ — где тёплое море в любой месяц</td>
+<td>145 000 ₽</td>
+<td><code>tour_uae</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/tours/thailand</code></td>
+<td>Таиланд — какой остров выбрать под ваш отпуск</td>
+<td>198 000 ₽</td>
+<td><code>tour_th</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/tours/georgia</code></td>
+<td>Грузия — горы и вино за стоимость одного дня в Москве</td>
+<td>58 000 ₽</td>
+<td><code>tour_ge</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="страницы-политики-3-шт.">8. Страницы-политики (3 шт.)</h2>
+<h3 id="privacy-политика-обработки-персональных-данных">8.1.
+<code>/privacy</code> — Политика обработки персональных данных</h3>
+<p>Полный текст политики — в файле
+<code>D:\ТУРИЗМ СЕРГЕЙ\01_CLIENT_AND_SCOPE\SITE_LEGAL\01_privacy_policy.md</code>
+(196 строк, 14 разделов).</p>
+<p>Структура страницы: - H1: «Политика обработки персональных данных». -
+Под H1 мелким шрифтом: «Дата публикации: 18.09.2026 / Редакция: 1.0 /
+Вступает в силу: 18.09.2026». - Содержание с якорями на 14 разделов
+(H2). - Полный текст политики.</p>
+<p>Ключевые положения: - 152-ФЗ как правовое основание. - Состав
+обрабатываемых данных: имя, телефон, опционально параметры поездки. -
+Email на Сайте не запрашивается. - Паспортные данные и банковские
+реквизиты не запрашиваются и не обрабатываются. - Данные формы не
+хранятся в localStorage/SessionStorage/cookies. - Данные формы попадают
+в Telegram-бот через deep-link, не через собственный сервер и не через
+email. - Срок хранения без заключения договора: 90 календарных дней с
+даты последнего обращения. - Контакты Оператора: email
+<code>info@pod-solncem.ru</code>, телефон <code>+7 495 ***5127</code>
+(заглушка).</p>
+<h3 id="cookies-cookie-уведомление">8.2. <code>/cookies</code> —
+Cookie-уведомление</h3>
+<p>Полный текст — в файле
+<code>D:\ТУРИЗМ СЕРГЕЙ\01_CLIENT_AND_SCOPE\SITE_LEGAL\02_cookie_consent.md</code>
+(79 строк, 6 разделов).</p>
+<p>Ключевые положения: - Cookie двух категорий: технические
+(обязательные) и аналитические (Яндекс.Метрика). - Cookie-баннер
+показывается при первом посещении. - Кнопки: «Принять» (включает
+Метрику), «Только необходимые» (без аналитики). - Выбор сохраняется на
+устройстве на срок до 12 месяцев. - Изменить выбор можно очисткой cookie
+в браузере, режимом инкогнито, или отключением на странице Яндекса.</p>
+<h3 id="agreement-пользовательское-соглашение">8.3.
+<code>/agreement</code> — Пользовательское соглашение</h3>
+<p>Полный текст — в файле
+<code>D:\ТУРИЗМ СЕРГЕЙ\01_CLIENT_AND_SCOPE\SITE_LEGAL\03_user_agreement.md</code>
+(123 строки, 10 разделов).</p>
+<p>Ключевые положения: - Соглашение регулирует использование Сайта, не
+является договором о реализации туристского продукта и не является
+публичной офертой. - Маршрут заявки: форма → Telegram-бот (deep-link),
+без собственного сервера и без email. - Заявка не влечёт бронирования и
+не порождает обязательств Оператора. - Все существенные условия поездки
+фиксируются в отдельном договоре.</p>
+<hr />
+<h2 id="telegram-deep-links">9. Telegram Deep-Links</h2>
+<p>Все CTA-кнопки на Сайте открывают Telegram-бот
+<code>@pod_solncem_travel_bot</code> через deep-link вида:</p>
+<pre><code>https://t.me/pod_solncem_travel_bot?start=&lt;source&gt;</code></pre>
+<p>где <code>&lt;source&gt;</code> — метка блока Сайта, из которого
+отправлена заявка.</p>
+<h3 id="сводная-карта-меток">9.1. Сводная карта меток</h3>
+<table>
+<thead>
+<tr>
+<th>Где на Сайте</th>
+<th>Метка <code>&lt;source&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header CTA «Подобрать путешествие»</td>
+<td><code>header</code></td>
+</tr>
+<tr>
+<td>Hero «Подобрать отдых за 60 секунд»</td>
+<td><code>hero</code></td>
+</tr>
+<tr>
+<td>Карточка направления «Пляжный»</td>
+<td><code>direction_beach</code></td>
+</tr>
+<tr>
+<td>Карточка направления «Семейный»</td>
+<td><code>direction_family</code></td>
+</tr>
+<tr>
+<td>Карточка направления «Для двоих»</td>
+<td><code>direction_couple</code></td>
+</tr>
+<tr>
+<td>Карточка направления «Экскурсионный»</td>
+<td><code>direction_sightseeing</code></td>
+</tr>
+<tr>
+<td>Карточка направления «Премиум»</td>
+<td><code>direction_premium</code></td>
+</tr>
+<tr>
+<td>Карточка тура «Турция»</td>
+<td><code>tour_tr</code></td>
+</tr>
+<tr>
+<td>Карточка тура «ОАЭ»</td>
+<td><code>tour_uae</code></td>
+</tr>
+<tr>
+<td>Карточка тура «Таиланд»</td>
+<td><code>tour_th</code></td>
+</tr>
+<tr>
+<td>Карточка тура «Грузия»</td>
+<td><code>tour_ge</code></td>
+</tr>
+<tr>
+<td>CTA «Написать Алине»</td>
+<td><code>manager</code></td>
+</tr>
+<tr>
+<td>FAQ ссылка «Все вопросы»</td>
+<td><code>faq</code></td>
+</tr>
+<tr>
+<td>Footer «Все туры»</td>
+<td><code>footer-tours</code></td>
+</tr>
+<tr>
+<td>Footer «Подписаться на влог»</td>
+<td><code>newsletter</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="требования-к-telegram-боту">9.2. Требования к Telegram-боту</h3>
+<p>Бот должен: - Принимать параметр <code>start=&lt;source&gt;</code>
+через Telegram Bot API. - Передавать метку <code>&lt;source&gt;</code> в
+обрабатываемую заявку. - Отправлять заявку в служебный чат «☀️ ЧАТ
+Заявок Под солнцем». - Соблюдать 152-ФЗ (см. политику обработки ПД).</p>
+<p>Требования к боту находятся вне настоящего ТЗ и описаны в отдельной
+документации на Telegram-бот.</p>
+<hr />
+<h2 id="seo-метатеги">10. SEO-метатеги</h2>
+<p>Каждая публичная страница должна содержать мета-теги:
+<code>title</code>, <code>description</code>, <code>canonical</code>,
+<code>og:title</code>, <code>og:description</code>,
+<code>og:image</code>, <code>og:url</code>.</p>
+<p>Лимиты: - Title: ≤ 60 символов. - Description: ≤ 160 символов.</p>
+<h3 id="метатеги-по-страницам">10.1. Метатеги по страницам</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>URL</th>
+<th>Title (длина)</th>
+<th>Description (длина)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Под Солнцем — турагентство. Туры, отели, визы (60/60)</td>
+<td>Подбор тура под ваш бюджет и даты за 60 секунд. Турция, ОАЭ,
+Таиланд, Грузия. Менеджер в Telegram отвечает за 10 минут.
+(146/160)</td>
+</tr>
+<tr>
+<td><code>/destinations/beach</code></td>
+<td>Пляжный отдых — подбор тура с песчаным пляжем (53/60)</td>
+<td>Спокойный берег без волн, тёплое море, всё включено. Турция, Египет,
+ОАЭ, Таиланд, Мальдивы. Подбор за 60 секунд в Telegram. (157/160)</td>
+</tr>
+<tr>
+<td><code>/destinations/family</code></td>
+<td>Семейный отдых — туры с детьми, детское меню (51/60)</td>
+<td>Отели с детским меню, анимацией, аквапарком и пологим входом в море.
+Подбор под возраст ребёнка. Менеджер в Telegram. (157/160)</td>
+</tr>
+<tr>
+<td><code>/destinations/couple</code></td>
+<td>Для двоих — романтические туры, отели 18+ (50/60)</td>
+<td>Уединённые виллы, отели только для взрослых, завтрак на террасе.
+Мальдивы, Санторини, Сейшелы. Подбор в Telegram за минуту.
+(155/160)</td>
+</tr>
+<tr>
+<td><code>/destinations/sightseeing</code></td>
+<td>Экскурсионные туры — гид, маршрут, без спешки (56/60)</td>
+<td>Стамбул, Каппадокия, Петра, Тбилиси, Баку. Авторские маршруты с
+русскоязычным гидом. Подбор дат и длительности в Telegram.
+(157/160)</td>
+</tr>
+<tr>
+<td><code>/destinations/premium</code></td>
+<td>Премиум-туры — Burj Al Arab, Soneva, Aman (50/60)</td>
+<td>Отели, где имя говорит само за себя. Личный дворецкий, виллы с
+бассейном, подбор под ваши требования. Менеджер в Telegram.
+(153/160)</td>
+</tr>
+<tr>
+<td><code>/tours/turkey</code></td>
+<td>Турция — туры от 89 000 ₽ на двоих (45/60)</td>
+<td>Анталья, Белек, Кемер, Сиде. Всё включено, прямой рейс 3,5 часа, без
+визы. Подбор под бюджет и состав в Telegram. (149/160)</td>
+</tr>
+<tr>
+<td><code>/tours/uae</code></td>
+<td>ОАЭ — туры от 145 000 ₽ на двоих (49/60)</td>
+<td>Дубай, Абу-Даби, Рас-эль-Хайма. Тёплое море круглый год, без визы,
+Hilton-уровень сервиса. Подбор в Telegram. (149/160)</td>
+</tr>
+<tr>
+<td><code>/tours/thailand</code></td>
+<td>Таиланд — туры от 198 000 ₽ на двоих (50/60)</td>
+<td>Пхукет, Паттайя, Краби, Самуи. Прямой рейс 9 часов, без визы до 90
+дней. Лучшие пляжи острова. Подбор в Telegram. (150/160)</td>
+</tr>
+<tr>
+<td><code>/tours/georgia</code></td>
+<td>Грузия — туры от 58 000 ₽ на двоих (47/60)</td>
+<td>Тбилиси, Казбеги, Кахетия, Батуми. Прямой рейс 2,5 часа, без визы.
+Горы, вино, хинкали. Подбор маршрута в Telegram. (149/160)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="canonical">10.2. Canonical</h3>
+<p>Для всех страниц: <code>https://pod-solncem.ru/&lt;path&gt;</code>
+(без trailing slash).</p>
+<h3 id="open-graph">10.3. Open Graph</h3>
+<ul>
+<li><code>og:title</code> = <code>&lt;title&gt;</code>.</li>
+<li><code>og:description</code> = <code>&lt;description&gt;</code>.</li>
+<li><code>og:image</code> = <code>/og.png</code> (1200×630 px, требуется
+создать).</li>
+<li><code>og:type</code> = <code>website</code>.</li>
+<li><code>og:url</code> = <code>&lt;canonical&gt;</code>.</li>
+</ul>
+<h3 id="sitemap.xml">10.4. Sitemap.xml</h3>
+<p>Авто-генерация через <code>@astrojs/sitemap</code>. По умолчанию в
+файл <code>sitemap-index.xml</code> попадают все публичные страницы.</p>
+<p>Содержимое (пример):</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span> <span class="ot">version=</span><span class="st">&quot;1.0&quot;</span> <span class="ot">encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">urlset</span> <span class="ot">xmlns=</span><span class="st">&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">url</span>&gt;&lt;<span class="kw">loc</span>&gt;https://pod-solncem.ru/&lt;/<span class="kw">loc</span>&gt;&lt;/<span class="kw">url</span>&gt;</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">url</span>&gt;&lt;<span class="kw">loc</span>&gt;https://pod-solncem.ru/destinations/beach&lt;/<span class="kw">loc</span>&gt;&lt;/<span class="kw">url</span>&gt;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- ... остальные страницы ... --&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">urlset</span>&gt;</span></code></pre></div>
+<h3 id="robots.txt">10.5. Robots.txt</h3>
+<pre><code>User-agent: *
+Allow: /
+Sitemap: https://pod-solncem.ru/sitemap-index.xml</code></pre>
+<hr />
+<h2 id="адаптивность-и-доступность">11. Адаптивность и доступность</h2>
+<h3 id="mobile-first">11.1. Mobile-first</h3>
+<p>Сайт разрабатывается по принципу mobile-first: дизайн начинается с
+ширины 320 px и расширяется до 1440 px.</p>
+<p>Обязательные контрольные ширины для скриншотов и проверок: - 320 px
+(минимальный мобильный). - 390 px (стандартный мобильный). - 430 px
+(крупный мобильный). - 1440 px (десктоп).</p>
+<h3 id="адаптивные-правила">11.2. Адаптивные правила</h3>
+<ul>
+<li>На ширине ≤ 768 px: одна колонка, скрытое меню в бургере,
+увеличенные тач-зоны (≥ 44×44 px).</li>
+<li>На ширине 768–1024 px: 2 колонки для карточек направлений и
+туров.</li>
+<li>На ширине ≥ 1024 px: 4–5 колонок для карточек, полное горизонтальное
+меню.</li>
+</ul>
+<h3 id="доступность-wcag-aa-минимум">11.3. Доступность (WCAG AA,
+минимум)</h3>
+<ul>
+<li>Контрастность текста к фону: ≥ 4.5:1 для обычного текста, ≥ 3:1 для
+крупного.</li>
+<li>Все интерактивные элементы имеют <code>:focus</code> состояние.</li>
+<li>Кнопки и ссылки имеют достаточно крупные тач-зоны.</li>
+<li>Изображения имеют <code>alt</code> атрибуты.</li>
+<li>Формы имеют связанные <code>&lt;label&gt;</code>.</li>
+</ul>
+<hr />
+<h2 id="cookie-баннер">12. Cookie-баннер</h2>
+<p>Cookie-баннер реализуется в виде плавающей панели в нижней части
+экрана.</p>
+<p><strong>Поведение:</strong> 1. При первом посещении Сайта
+показывается баннер. 2. Баннер имеет 2 кнопки: «Принять» и «Только
+необходимые». 3. Выбор пользователя сохраняется в localStorage под
+ключом <code>cookie-consent</code> со значением <code>accepted</code>
+или <code>declined</code>. 4. Пока в localStorage нет значения, баннер
+показывается при каждой загрузке. 5. После выбора баннер скрывается до
+очистки cookie или 12 месяцев.</p>
+<p><strong>Содержание баннера:</strong> &gt; Мы используем технические
+cookie для работы сайта и аналитические cookie (Яндекс.Метрика) для
+улучшения качества. Подробнее — в <a
+href="/cookies">Cookie-уведомлении</a>. [Принять] [Только
+необходимые]</p>
+<hr />
+<h2 id="требования-к-производительности">13. Требования к
+производительности</h2>
+<ul>
+<li>Lighthouse Mobile ≥ 90 по всем категориям (Performance, Best
+Practices, Accessibility, SEO).</li>
+<li>Время до интерактивности (TTI) ≤ 3 секунд на мобильном (3G Fast,
+simulated).</li>
+<li>Размер JS-бандла ≤ 50 КБ (gzip).</li>
+<li>Все изображения оптимизированы: WebP/AVIF с fallback на
+PNG/JPEG.</li>
+<li>Шрифты подключены через <code>font-display: swap</code>.</li>
+</ul>
+<hr />
+<h2 id="требования-к-безопасности">14. Требования к безопасности</h2>
+<ul>
+<li>HTTPS обязателен (Let’s Encrypt через хостинг).</li>
+<li>HTTP-заголовки безопасности: <code>Content-Security-Policy</code>,
+<code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>.</li>
+<li>Cookies Яндекс.Метрики работают только после согласия
+пользователя.</li>
+<li>В коде и коммитах отсутствуют секреты, токены, ключи.</li>
+<li><code>.env</code> файлы в <code>.gitignore</code>, не публикуются в
+репозитории.</li>
+<li>ЛокальныеStorage не содержит персональных данных пользователя.</li>
+</ul>
+<hr />
+<h2 id="гипотезы-требующие-подтверждения-заказчика">15. Гипотезы,
+требующие подтверждения Заказчика</h2>
+<p>Следующие данные в ТЗ являются гипотезами и требуют подтверждения или
+корректировки со стороны Заказчика (Сергея).</p>
+<h3 id="контакты-и-адреса">15.1. Контакты и адреса</h3>
+<ul>
+<li>Телефон в шапке и футере: <code>+7 (495) 123-45-67</code>
+(заглушка).</li>
+<li>Email: <code>info@pod-solncem.ru</code> (гипотеза).</li>
+<li>Адрес в футере: «г. Москва, ул. [уточняется]» (заглушка).</li>
+<li>Часы работы: «Пн–Вс 9:00–21:00» (гипотеза).</li>
+<li>Год основания: не указан (гипотеза).</li>
+</ul>
+<h3 id="менеджер">15.2. Менеджер</h3>
+<ul>
+<li>Имя: «Алина» (гипотеза, плейсхолдер).</li>
+<li>Фото менеджера: placeholder U-GOD.</li>
+<li>Должность: «Специалист по Турции и ОАЭ» (гипотеза).</li>
+<li>«Опыт 20+ стран» (гипотеза).</li>
+</ul>
+<h3 id="туры">15.3. Туры</h3>
+<ul>
+<li>Цены: 89 000 / 145 000 / 198 000 / 58 000 ₽ на двоих
+(гипотезы).</li>
+<li>Рейтинги: 4.7 / 4.8 / 4.9 (обобщённые, не с конкретной
+платформы).</li>
+<li>Бейджи: «Хит продаж / Популярно / Выбор туристов / Низкая цена»
+(позиционирование, не статистика).</li>
+</ul>
+<h3 id="отзывы">15.4. Отзывы</h3>
+<ul>
+<li>Все 6 отзывов — шаблонные, помечены как «образец».</li>
+<li>Имена реальных клиентов НЕ использованы.</li>
+<li>Необходимо получить 6 реальных отзывов от Заказчика для замены
+шаблонных.</li>
+</ul>
+<h3 id="faq">15.5. FAQ</h3>
+<ul>
+<li>Конкретные цифры (предоплата 10–30%, страховка от 50 000 $,
+расширенная 1 500–4 000 ₽) — гипотезы по типичной практике
+турагентств.</li>
+<li>«За 5 лет работы возвратов не было» — гипотеза.</li>
+</ul>
+<h3 id="юридические-данные">15.6. Юридические данные</h3>
+<ul>
+<li>Оператор — «турагентство „Под Солнцем“», форма (ИП / самозанятый /
+ООО) уточняется.</li>
+<li>ИНН, ОГРН — не публикуются.</li>
+<li>Банковские реквизиты — не публикуются.</li>
+</ul>
+<h3 id="партнёры">15.7. Партнёры</h3>
+<ul>
+<li>В блоке «Проверенные туроператоры» имена конкретных операторов
+(Coral Travel, Anex, TUI) НЕ указываются.</li>
+<li>Логотипы партнёров на Сайте отсутствуют.</li>
+</ul>
+<h3 id="партнёрский-бренд-coral-travel">15.8. Партнёрский бренд Coral
+Travel</h3>
+<ul>
+<li>Фраза «официальное турагентство Coral Travel» не используется в
+публичных текстах (по словам Заказчика от 18.09.2026, бренд уходит от
+франшизы).</li>
+</ul>
+<hr />
+<h2 id="ограничения-и-запреты">16. Ограничения и запреты</h2>
+<h3 id="что-нельзя-включать-в-публичные-тексты">16.1. Что нельзя
+включать в публичные тексты</h3>
+<ul>
+<li>Имя ИИ-аватара (Анна / Анастасия — не подтверждены Заказчиком).</li>
+<li>Утверждение о юрлице «ООО Под Солнцем» как подтверждённом.</li>
+<li>Банковские реквизиты.</li>
+<li>Конкретные имена реальных клиентов без их согласия на
+публикацию.</li>
+<li>Имена реальных менеджеров без их согласия.</li>
+<li>Логотипы туроператоров без прав на использование.</li>
+</ul>
+<h3 id="технические-ограничения">16.2. Технические ограничения</h3>
+<ul>
+<li>Не допускается объединение репозиториев
+<code>site-pod-solncem</code>, <code>frontend-miniapp</code> (Mini App),
+<code>telegram-bot</code>.</li>
+<li>Не редактируется папка
+<code>04_RESEARCH_AND_DESIGN/00_RAW_CLAUDE_DESIGN</code> (архив дизайна
+Mini App).</li>
+<li>Не делается commit и push в основной репозиторий без явного
+разрешения Исполнителя (Павла).</li>
+</ul>
+<h3 id="язык-и-стилистика">16.3. Язык и стилистика</h3>
+<ul>
+<li>Публичные тексты: русский язык, продающая подача, без AI-измов
+(«погрузитесь в мир», «откройте для себя», «незабываемые впечатления»,
+«идеальный отдых»).</li>
+<li>Комментарии в коде: английский язык, стандартные, без лишних
+слов.</li>
+<li>Имена файлов и переменных: английский язык, kebab-case для файлов,
+camelCase для переменных.</li>
+</ul>
+<hr />
+<h2 id="приёмка">17. Приёмка</h2>
+<p>Сайт считается готовым к приёмке, если выполнены все следующие
+условия:</p>
+<ol type="1">
+<li>Все 16 страниц (главная + 5 направлений + 4 тура + 3 политики + 2
+служебные + 404) реализованы и открываются.</li>
+<li>Сайт проходит <code>npm run build</code> без ошибок.</li>
+<li>Сделаны скриншоты главной страницы на 320, 390, 430 и 1440 px.</li>
+<li>Сделаны скриншоты 4 страниц туров на 320 px.</li>
+<li>Lighthouse Mobile ≥ 90 по всем категориям.</li>
+<li>Все CTA-кнопки содержат правильный Telegram deep-link с меткой
+источника.</li>
+<li>Cookie-баннер показывается при первом заходе и скрывается после
+выбора пользователя.</li>
+<li>Sitemap.xml и robots.txt на месте.</li>
+<li>Никаких секретов в коде и коммитах.</li>
+<li>README.md в корне репозитория с инструкцией по запуску
+dev/build/preview.</li>
+<li>Доказательства записаны в
+<code>09_TESTING_AND_RELEASE/EVIDENCE_LOG.md</code>.</li>
+<li>Запись в <code>02_PROJECT_MANAGEMENT/HANDOFF.md</code>.</li>
+</ol>
+<hr />
+<h2 id="приложения">18. Приложения</h2>
+<h3 id="приложение-а.-структура-репозитория">Приложение А. Структура
+репозитория</h3>
+<pre><code>D:\ТУРИЗМ СЕРГЕЙ\07_CODE\site-pod-solncem\
+├── astro.config.mjs
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+├── .gitignore
+├── README.md
+├── public/
+│   ├── favicon.svg
+│   ├── og.png
+│   └── images/
+└── src/
+    ├── consts/
+    │   ├── tokens.ts         # дизайн-токены (цвета, шрифты, отступы)
+    │   └── telegram.ts       # функция tMeLink(source) с типизированным enum
+    ├── layouts/
+    │   └── BaseLayout.astro  # общий layout с Header + Footer
+    ├── components/
+    │   ├── Header.astro
+    │   ├── Footer.astro
+    │   ├── Hero.astro
+    │   ├── TrustBadges.astro
+    │   ├── DestinationCard.astro
+    │   ├── TourCard.astro
+    │   ├── ManagerBlock.astro
+    │   ├── ReviewCard.astro
+    │   ├── TrustBlock.astro
+    │   ├── FAQAccordion.astro
+    │   ├── CookieBanner.astro
+    │   └── Badge.astro
+    ├── content/
+    │   ├── hero.md
+    │   ├── destinations.md
+    │   ├── tours.md
+    │   ├── manager.md
+    │   ├── reviews.md
+    │   ├── faq.md
+    │   └── trust.md
+    ├── pages/
+    │   ├── index.astro
+    │   ├── destinations/
+    │   │   ├── beach.astro
+    │   │   ├── family.astro
+    │   │   ├── couple.astro
+    │   │   ├── sightseeing.astro
+    │   │   └── premium.astro
+    │   ├── tours/
+    │   │   ├── turkey.astro
+    │   │   ├── uae.astro
+    │   │   ├── thailand.astro
+    │   │   └── georgia.astro
+    │   ├── privacy.astro
+    │   ├── cookies.astro
+    │   ├── agreement.astro
+    │   └── 404.astro
+    └── styles/
+        └── global.css        # импорт токенов из DESIGN.md</code></pre>
+<h3 id="приложение-б.-список-задач-kanban">Приложение Б. Список задач
+(Kanban)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Этап</th>
+<th>Исполнитель</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t_229ffdd0</td>
+<td>Э0 SCOPE + вопросы</td>
+<td>RZA</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_644bd56d</td>
+<td>Э1 Стек</td>
+<td>GZA</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_ac116c50</td>
+<td>Э2 Тексты (после переназначения)</td>
+<td>Ghostface</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_64dae841</td>
+<td>Э3 Дизайн</td>
+<td>U-GOD</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_1b3f488b</td>
+<td>Э5 А Клуб</td>
+<td>GZA</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_90a0ddd4</td>
+<td>Э7 Юр.тексты</td>
+<td>Ghostface</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_3b5aba08</td>
+<td>Э6 Сборка сайта</td>
+<td>Masta Killa</td>
+<td>Закрыт</td>
+</tr>
+<tr>
+<td>t_e58b2ff9</td>
+<td>Э8 SEO-план</td>
+<td>Ghostface</td>
+<td>В работе</td>
+</tr>
+<tr>
+<td>t_4dc744d4</td>
+<td>Э9 Деплой</td>
+<td>Raekwon</td>
+<td>Заблокирован (USER_DIRECTED)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="приложение-в.-источники">Приложение В. Источники</h3>
+<ul>
+<li><strong>Референс-картинка</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\04_RESEARCH_AND_DESIGN\01_SITE_DESIGN\REFERENCE.png</code>.</li>
+<li><strong>Дизайн-система</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\04_RESEARCH_AND_DESIGN\01_SITE_DESIGN\DESIGN.md</code>.</li>
+<li><strong>SCOPE</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\03_PRODUCT_AND_ARCHITECTURE\SITE_SCOPE.md</code>.</li>
+<li><strong>Архитектура</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\03_PRODUCT_AND_ARCHITECT_ARCHITECTURE\SITE_ARCHITECTURE.md</code>.</li>
+<li><strong>Тексты</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\05_CONTENT\SITE\*.md</code>.</li>
+<li><strong>Юр.тексты</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\01_CLIENT_AND_SCOPE\SITE_LEGAL\*.md</code>.</li>
+<li><strong>Сводный Null-документ</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\09_TESTING_AND_RELEASE\SITE_CONTENT_NULL.md</code>.</li>
+<li><strong>Сырьё старого сайта kupit-tyr.ru</strong>:
+<code>D:\ТУРИЗМ СЕРГЕЙ\СЫРЬЁ ДЛЯ НОВОГО САЙТА\</code>.</li>
+</ul>
+<hr />
+<h2 id="контроль-версий">19. Контроль версий</h2>
+<table>
+<thead>
+<tr>
+<th>Версия</th>
+<th>Дата</th>
+<th>Автор</th>
+<th>Изменения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>18.09.2026</td>
+<td>RZA</td>
+<td>Первичный выпуск</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Конец технического задания.</strong></p>
+<p>Полный объём проекта: 16 страниц, 8 блоков главной, 6
+отзывов-образцов, 7 FAQ, 4 тура, 5 направлений, 3 страницы-политики,
+дизайн-система на 19 цветов, 10 шрифтовых шкал, 29 компонентов. Сайт
+собран локально, развёртывание (деплой) приостановлено по решению
+Заказчика.</p>
+</body>
+</html>

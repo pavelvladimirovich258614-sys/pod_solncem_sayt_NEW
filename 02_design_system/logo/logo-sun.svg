@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Под Солнцем — туристическое агентство">
+  <title>Под Солнцем</title>
+  <desc>Логотип: солнце с 8 лучами над двумя волнами, рядом надпись «ПОД СОЛНЦЕМ» и подзаголовок «туристическое агентство».</desc>
+
+  <defs>
+    <!-- Один луч: вертикальная капля от центра (0,0) вверх -->
+    <g id="ray">
+      <path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028"/>
+    </g>
+  </defs>
+
+  <!-- Иконка-солнце, центр в (40, 36) -->
+  <g transform="translate(40, 36)">
+    <!-- 8 лучей: каждые 45° -->
+    <use href="#ray" transform="rotate(0)"/>
+    <use href="#ray" transform="rotate(45)"/>
+    <use href="#ray" transform="rotate(90)"/>
+    <use href="#ray" transform="rotate(135)"/>
+    <use href="#ray" transform="rotate(180)"/>
+    <use href="#ray" transform="rotate(225)"/>
+    <use href="#ray" transform="rotate(270)"/>
+    <use href="#ray" transform="rotate(315)"/>
+
+    <!-- Солнце: полный круг (потом волны перекроют нижнюю часть) -->
+    <circle cx="0" cy="0" r="18" fill="#F2601B"/>
+
+    <!-- 2 волны поверх нижней части солнца -->
+    <path d="M -32 4 Q -20 -1, -8 4 T 16 4 T 40 4"
+          stroke="#062537" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M -28 13 Q -16 8, -4 13 T 20 13 T 44 13"
+          stroke="#062537" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Текст: ПОД СОЛНЦЕМ -->
+  <text x="92" y="38"
+        font-family="PT Serif, Georgia, serif"
+        font-size="22"
+        font-weight="700"
+        fill="#0F172A"
+        letter-spacing="1.2">ПОД СОЛНЦЕМ</text>
+
+  <!-- Подпись -->
+  <text x="92" y="60"
+        font-family="Onest, system-ui, sans-serif"
+        font-size="9"
+        font-weight="500"
+        fill="#5B6470"
+        letter-spacing="3"
+        text-transform="uppercase">ТУРИСТИЧЕСКОЕ АГЕНТСТВО</text>
+</svg>

@@ -1,0 +1,120 @@
+# DNS-записи: что и куда прописывать
+
+**Дата:** 19.09.2026 (UTC+08).
+**Цель:** шаблоны DNS-записей для каждого варианта деплоя из `deploy-options.md`. Заполняется реальными значениями после выбора хостинга и домена.
+
+**ВАЖНО:** это — шаблоны. Реальные IP/hostnames получить ТОЛЬКО после выбора хостинга и добавления домена в dashboard (Netlify/Cloudflare/Vercel выдают DNS-targets при добавлении домена, **до** фактического деплоя).
+
+---
+
+## Шаблон 1. Netlify (вариант A, основной рекомендованный)
+
+После добавления домена в Netlify Dashboard (`Site settings → Domain management → Add custom domain`), Netlify выдаёт DNS-targets вида `<sitename>.netlify.app` (apex) и `<sitename>.netlify.app` для www. **Они используют ALIAS / ANAME или 4 IP.**
+
+```text
+# Bare domain (apex @)
+$ORIGIN <chosen-domain>.           # заменить на выбранный домен
+
+; CNAME для @ НЕ работает в большинстве зон. Используем ALIAS/ANAME или A:
+@   IN  ALIAS   <sitename>.netlify.app.    ; если регистратор поддерживает ALIAS
+; или
+@   IN  A       75.2.60.5                   ; Netlify load balancer (один из 4 IP, остальные 75.2.60.6, 75.2.60.7, 75.2.60.8)
+@   IN  A       75.2.60.6
+@   IN  A       75.2.60.7
+@   IN  A       75.2.60.8
+
+; www поддомен
+www IN  CNAME   <sitename>.netlify.app.
+```
+
+**Либо один из вариантов «Netlify DNS»** (если переносим NS к ним):
+```text
+NS  ns1.dns1.p01.nsone.net.
+NS  ns2.dns1.p01.nsone.net.
+NS  ns3.dns1.p01.nsone.net.
+NS  ns4.dns1.p01.nsone.net.
+```
+Это даст Netlify полный контроль над зоной и автоматический wildcard-Let's-Encrypt. **Проще, но требует передачи NS-серверов регистратору.**
+
+---
+
+## Шаблон 2. Cloudflare Pages (вариант A, рекомендованный для RU-аудитории)
+
+После `wrangler pages deploy dist` или добавления домена в CF Pages dashboard, Cloudflare выдаёт CNAME-target `<project>.pages.dev`.
+
+```text
+$ORIGIN <chosen-domain>.
+
+@   IN  ALIAS   <project>.pages.dev.        ; если регистратор поддерживает ALIAS
+; или
+@   IN  A       188.114.96.0                ; Cloudflare anycast (один IP, остальные 188.114.96.1, 188.114.97.0, 188.114.97.1)
+@   IN  A       188.114.96.1
+@   IN  A       188.114.97.0
+@   IN  A       188.114.97.1
+
+www IN  CNAME   <project>.pages.dev.
+```
+
+**Рекомендация:** если домен уже на Cloudflare (NS у `anna.ns.cloudflare.com` и т.п.) — прописываем через dashboard, Cloudflare сам проксирует через свой CDN. Если домен у reg.ru/beget — лучше перенести NS к Cloudflare, тогда вся зона управляется через CF и пропагация мгновенная.
+
+---
+
+## Шаблон 3. Vercel (вариант A, запасной)
+
+```text
+$ORIGIN <chosen-domain>.
+
+@   IN  ALIAS   cname.vercel-dns.com.       ; Vercel DNS
+; или
+@   IN  A       76.76.21.21                 ; Vercel anycast
+
+www IN  CNAME   cname.vercel-dns.com.
+```
+
+---
+
+## Шаблон 4. Self-hosted на VPS (вариант B)
+
+```text
+$ORIGIN <chosen-domain>.
+
+@   IN  A       <VPS_PUBLIC_IP>             ; например, 82.39.213.82 (если VPS — это тот же хост, что для Mini App)
+www IN  CNAME   <chosen-domain>.            ; www → apex
+```
+
+Где `<VPS_PUBLIC_IP>` — IPv4 VPS, на котором `nginx` или `caddy` слушает 443 (Let's Encrypt через certbot).
+
+---
+
+## Редирект www ↔ bare (для любого варианта)
+
+Зафиксировать: основной домен — **bare (`<chosen-domain>`)**, `www` редиректит 301 на bare. Или наоборот — выбирает Павел.
+
+**Рекомендация Raekwon:** **bare → основной, www → 301 на bare.** Современные поисковики (Google) не штрафуют за редирект, Yandex — тоже. Bare проще произносить, короче в URL-строке.
+
+Реализация:
+- **На Netlify:** в dashboard Domain settings → «Set as primary domain» — bare.
+- **На Cloudflare Pages:** в dashboard Pages → Custom domains → bare — primary.
+- **На VPS (nginx):** server block для `www.<chosen-domain>` с `return 301 https://<chosen-domain>$request_uri;`.
+- **На VPS (caddy):** два site-блока, второй `www.<chosen-domain> { redir https://<chosen-domain>{uri} }`.
+
+---
+
+## Чек-лист после прописи DNS
+
+- [ ] `dig +short <chosen-domain>` → возвращает IP выбранного хостинга.
+- [ ] `dig +short www.<chosen-domain>` → возвращает CNAME или IP.
+- [ ] `dig +short sitemap-index.xml <chosen-domain>` (или `curl https://<chosen-domain>/sitemap-index.xml`) → 200 OK, XML-валидный.
+- [ ] `curl -I https://<chosen-domain>/` → 200 OK, `server:` указывает на выбранный хост.
+- [ ] `curl -I https://<chosen-domain>/robots.txt` → 200 OK, `Content-Type: text/plain`.
+- [ ] В браузере (после пропагации DNS, обычно 5–30 минут для managed, до 24 часов для reg.ru) — главная рисуется, cookie-баннер появляется, CTA уводят в Telegram.
+
+---
+
+## Что нужно от Павла (минимум одно)
+
+- [ ] Выбранный домен (см. `domains-shortlist.md`).
+- [ ] Выбранный вариант деплоя (см. `deploy-options.md`).
+- [ ] Доступ к DNS-зоне у регистратора домена (reg.ru/beget/Cloudflare/другое).
+
+Без этого шаблоны не заполняются реальными значениями и деплой не начинается.
