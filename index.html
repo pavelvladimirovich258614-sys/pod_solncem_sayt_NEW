@@ -8,12 +8,34 @@
 <meta property="og:title" content="Под Солнцем — турагентство">
 <meta property="og:description" content="Подбор тура под ваш бюджет и даты за 60 секунд. Менеджер в Telegram отвечает за 10 минут.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://i.postimg.cc/ZKLC2Y9d/Glavnoe-foto.png">
+<meta property="og:image" content="https://kupit-tyr.ru/assets/images/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg transform='translate(40,36)'%3E%3Ccircle cx='0' cy='0' r='22' fill='%23F2601B'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Onest:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/hero.webp" fetchpriority="high">
 <style>
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/onest-var-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/onest-var-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/onest-var-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/onest-var-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/onest-var-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/onest-var-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/onest-var-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/onest-var-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/onest-var-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/onest-var-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/onest-var-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Onest';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/onest-var-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/ptserif-700-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/ptserif-700-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'PT Serif';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/ptserif-700-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'PT Serif';font-style:italic;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-italic-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'PT Serif';font-style:italic;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-italic-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'PT Serif';font-style:italic;font-weight:400;font-display:swap;src:url('assets/fonts/ptserif-400-italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/caveat-400-normal-cyrillic.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/caveat-400-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/caveat-400-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 :root{
   --ink-900:#0F172A;--ink-700:#475569;--ink-600:#5B6470;
   --orange-600:#C8420F;--orange-700:#A8360A;--orange-500:#F2601B;--orange-100:#FFE9D9;
@@ -31,8 +53,8 @@
   --ease:cubic-bezier(.4,0,.2,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream-100);color:var(--ink-900);font-family:var(--font-sans);font-size:15px;line-height:1.55}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;background:var(--cream-100);color:var(--ink-900);font-family:var(--font-sans);font-size:15px;line-height:1.55;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:var(--orange-600);text-decoration:none}
 a:hover{color:var(--orange-700)}
@@ -89,7 +111,7 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 
 /* hero */
 .hero{position:relative;padding:56px 0 0;min-height:600px;display:flex;flex-direction:column;justify-content:space-between;
-  background:linear-gradient(100deg,rgba(248,244,240,.96) 0%,rgba(248,244,240,.88) 28%,rgba(248,244,240,.35) 48%,rgba(248,244,240,0) 66%), url('https://i.postimg.cc/ZKLC2Y9d/Glavnoe-foto.png') center center/cover no-repeat}
+  background:linear-gradient(100deg,rgba(248,244,240,.96) 0%,rgba(248,244,240,.88) 28%,rgba(248,244,240,.35) 48%,rgba(248,244,240,0) 66%), url('assets/images/hero.webp') center center/cover no-repeat}
 .hero-top{max-width:none;width:100%;margin:0;padding-left:clamp(64px,7vw,120px);padding-right:48px;box-sizing:border-box}
 .hero-copy{max-width:560px}
 .hero .eyebrow{color:var(--orange-700)}
@@ -107,7 +129,7 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 @media (max-width:1279px){.hero h1{font-size:44px}}
 @media (max-width:1023px){
   .hero-top{padding-left:32px;padding-right:24px}
-  .hero{min-height:auto;padding:40px 0 0;background:linear-gradient(180deg,rgba(248,244,240,.94) 0%,rgba(248,244,240,.82) 38%,rgba(248,244,240,.55) 62%,rgba(248,244,240,.9) 100%), url('https://i.postimg.cc/ZKLC2Y9d/Glavnoe-foto.png') center center/cover no-repeat}
+  .hero{min-height:auto;padding:40px 0 0;background:linear-gradient(180deg,rgba(248,244,240,.94) 0%,rgba(248,244,240,.82) 38%,rgba(248,244,240,.55) 62%,rgba(248,244,240,.9) 100%), url('assets/images/hero.webp') center center/cover no-repeat}
   .hero h1{font-size:34px}.hero p.lead{font-size:15px;max-width:none}
   .hero-bottom{flex-direction:column;align-items:stretch;padding:28px 0 24px}
   .hero-trust{grid-template-columns:1fr;max-width:none}
@@ -132,7 +154,8 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .dest-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);overflow:hidden;
   box-shadow:var(--shadow-card);transition:box-shadow .24s var(--ease),transform .24s var(--ease)}
 .dest-card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
-.dest-photo{position:relative;aspect-ratio:1/1;background-size:cover;background-position:center}
+.dest-photo{position:relative;aspect-ratio:1/1}
+.photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .dest-icon{position:absolute;left:14px;bottom:-18px;width:36px;height:36px;border-radius:50%;background:var(--white);
   display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-card)}
 .dest-body{padding:28px 14px 16px}
@@ -144,7 +167,7 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .tour-card{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;
   box-shadow:var(--shadow-card);transition:box-shadow .24s var(--ease),transform .24s var(--ease)}
 .tour-card:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
-.tour-photo{position:relative;aspect-ratio:16/11;background-size:cover;background-position:center}
+.tour-photo{position:relative;aspect-ratio:16/11}
 .tour-photo .badge{position:absolute;top:10px;left:10px}
 .tour-rating{position:absolute;left:10px;bottom:-14px;display:inline-flex;align-items:center;gap:6px;background:var(--white);
   border-radius:var(--radius-pill);padding:5px 11px;font-size:12px;font-weight:600;box-shadow:var(--shadow-card)}
@@ -159,7 +182,8 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 
 /* manager */
 .manager{display:grid;grid-template-columns:300px 1.15fr .85fr;gap:0;background:var(--orange-100);border-radius:var(--radius-lg);overflow:hidden;align-items:stretch}
-.manager-photo{position:relative;min-height:340px;background:url('https://i.postimg.cc/02C0nsPp/anna-menedzer-pod-solncem.png') center 20%/cover no-repeat}
+.manager-photo{position:relative;min-height:340px;overflow:hidden}
+.manager-photo .photo-img{object-position:center 20%}
 .manager-main{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
 .manager-eyebrow{color:var(--orange-700);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
 .manager-main h3{font-size:30px;margin:8px 0 4px}
@@ -170,7 +194,7 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .m-point .t{font-size:13.5px;font-weight:600;line-height:1.3}
 .m-point .s{font-size:12.5px;color:var(--ink-600);line-height:1.3}
 .manager-sig{font-family:var(--font-hand);font-size:24px;color:var(--ink-900);text-align:right;line-height:1.05;margin-top:6px}
-@media (max-width:1023px){.manager{grid-template-columns:1fr}.manager-photo{min-height:0;aspect-ratio:4/5;max-width:320px;width:100%;margin:24px auto 0;border-radius:var(--radius-lg);background-position:center 25%}.manager-main{padding-bottom:8px}.manager-side{padding-top:0}}
+@media (max-width:1023px){.manager{grid-template-columns:1fr}.manager-photo{min-height:0;aspect-ratio:4/5;max-width:320px;width:100%;margin:24px auto 0;border-radius:var(--radius-lg)}.manager-photo .photo-img{object-position:center 25%}.manager-main{padding-bottom:8px}.manager-side{padding-top:0}}
 
 /* reviews */
 .review-card{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px}
@@ -211,6 +235,11 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 .footer-nav a{color:var(--slate-100)}
 .footer-nav a:hover{color:var(--orange-500)}
 .footer-contact p{display:flex;gap:10px;align-items:center;font-size:13.5px;margin:0 0 12px;opacity:.92}
+.footer-phones{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:14px;opacity:.92;margin-top:28px}
+.footer-phones svg{flex:0 0 auto}
+.footer-phones a{color:inherit;text-decoration:none;white-space:nowrap;flex:0 0 auto}
+.footer-phones a:hover{color:var(--orange-500)}
+.footer-phones .sep{opacity:.5;margin-right:6px}
 .ftitle{font-size:13px;font-weight:600;margin-bottom:8px}
 .fsub{font-size:12px;opacity:.7;margin:0 0 12px;line-height:1.4}
 .newsletter{display:flex;gap:0;max-width:320px;background:#fff;border-radius:var(--radius-sm);overflow:hidden}
@@ -293,7 +322,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <div class="p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="2"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a></div>
       <div class="h">Пн–Вс 9:00–21:00</div>
     </div>
-    <a class="btn btn-primary btn-sm cta-header" href="https://t.me/coral_taganka_bot?start=header">Подобрать путешествие <span class="arr">→</span></a>
+    <a class="btn btn-primary btn-sm cta-header" href="https://t.me/coral_taganka_bot">Подобрать путешествие <span class="arr">→</span></a>
     <button class="burger" id="burger-open" aria-label="Открыть меню">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -312,7 +341,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   </nav>
   <div class="foot">
     <div style="font-size:14px"><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a></div>
-    <a class="btn btn-primary btn-block" href="https://t.me/coral_taganka_bot?start=header_mobile">Подобрать путешествие</a>
+    <a class="btn btn-primary btn-block" href="https://t.me/coral_taganka_bot">Подобрать путешествие</a>
   </div>
 </div>
 
@@ -324,7 +353,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <h1>Путешествие,<br>которое подходит<br>именно вам</h1>
       <p class="lead">Расскажите, каким вы хотите видеть свой отдых — мы подберём несколько действительно подходящих вариантов.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="https://t.me/coral_taganka_bot?start=hero">Подобрать отдых за 60 секунд <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-lg" href="https://t.me/coral_taganka_bot">Подобрать отдых за 60 секунд <span class="arr">→</span></a>
         <a class="btn btn-outline btn-lg" href="#tours">Посмотреть туры</a>
       </div>
     </div>
@@ -358,32 +387,37 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     <a class="more" href="#destinations">Все направления <span class="arr">→</span></a>
   </div>
   <div class="grid5">
-    <a class="dest-card" href="https://t.me/coral_taganka_bot?start=direction_beach" target="_blank" rel="noopener noreferrer">
-      <div class="dest-photo" style="background-image:url('https://i.postimg.cc/XJwV5xdp/Plaznyj.png')">
+    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+      <div class="dest-photo">
+        <img class="photo-img" src="assets/images/dest-beach.webp" srcset="assets/images/dest-beach-480.webp 480w, assets/images/dest-beach.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Пляжный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0M12 4v7M6 11h12"/></svg></span>
       </div>
       <div class="dest-body"><h3>Пляжный</h3><p>Спокойный берег без волн, тёплое море, всё включено.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot?start=direction_family" target="_blank" rel="noopener noreferrer">
-      <div class="dest-photo" style="background-image:url('https://i.postimg.cc/kXMnVQ49/Semejnyj.png')">
+    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+      <div class="dest-photo">
+        <img class="photo-img" src="assets/images/dest-family.webp" srcset="assets/images/dest-family-480.webp 480w, assets/images/dest-family.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Семейный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 19c0-3.3 2.7-6 6-6s6 2.7 6 6M15 19c0-2.5 1.4-4.4 3.5-4.4S22 16.5 22 19"/></svg></span>
       </div>
       <div class="dest-body"><h3>Семейный</h3><p>Детское меню, анимация, аквапарк и пологий вход в море.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot?start=direction_couple" target="_blank" rel="noopener noreferrer">
-      <div class="dest-photo" style="background-image:url('https://i.postimg.cc/5NrZxLFy/Dla-dvoih.png')">
+    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+      <div class="dest-photo">
+        <img class="photo-img" src="assets/images/dest-couple.webp" srcset="assets/images/dest-couple-480.webp 480w, assets/images/dest-couple.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Отдых для двоих" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg></span>
       </div>
       <div class="dest-body"><h3>Для двоих</h3><p>Тихий отель 18+, приватная вилла или номер с видом.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot?start=direction_excursion" target="_blank" rel="noopener noreferrer">
-      <div class="dest-photo" style="background-image:url('https://i.postimg.cc/DySMY0p6/Ekskursionnyj.png')">
+    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+      <div class="dest-photo">
+        <img class="photo-img" src="assets/images/dest-excursion.webp" srcset="assets/images/dest-excursion-480.webp 480w, assets/images/dest-excursion.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Экскурсионный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.2"/><path d="M9 7l1.5-2h3L15 7"/></svg></span>
       </div>
       <div class="dest-body"><h3>Экскурсионный</h3><p>Стамбул, Каппадокия, Петра, Тбилиси — маршруты с гидом.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot?start=direction_premium" target="_blank" rel="noopener noreferrer">
-      <div class="dest-photo" style="background-image:url('https://i.postimg.cc/Vkj43Cqq/Premium.png')">
+    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+      <div class="dest-photo">
+        <img class="photo-img" src="assets/images/dest-premium.webp" srcset="assets/images/dest-premium-480.webp 480w, assets/images/dest-premium.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Премиум отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M6 8l-3 4 9 8 9-8-3-4H6z"/><path d="M3 12h18M9 8l3 12M15 8l-3 12"/></svg></span>
       </div>
       <div class="dest-body"><h3>Премиум</h3><p>Отели, где имя говорит само за себя, а сервис не повторяется.</p></div>
@@ -398,12 +432,13 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <h2>Туры, которые стоит посмотреть</h2>
       <p>Четыре направления, на которые у нас самые частые заявки. Если не угадали — напишите, подберём другой.</p>
     </div>
-    <a class="more" href="https://t.me/coral_taganka_bot?start=tours_all">Все туры <span class="arr">→</span></a>
+    <a class="more" href="https://t.me/coral_taganka_bot">Все туры <span class="arr">→</span></a>
   </div>
   <!-- TODO: VERIFY RATING BEFORE PRODUCTION -->
   <div class="grid4">
     <div class="tour-card">
-      <div class="tour-photo" style="background-image:url('https://i.postimg.cc/nL3WPmxK/Turcia.png')">
+      <div class="tour-photo">
+        <img class="photo-img" src="assets/images/tour-turkey.webp" srcset="assets/images/tour-turkey-480.webp 480w, assets/images/tour-turkey.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 25vw" alt="Турция" loading="lazy" decoding="async" fetchpriority="low">
         <span class="badge badge-hit">Хит продаж</span>
         <span class="tour-rating"><span style="color:var(--gold-400)">★</span> 4.8 <span class="cnt">(126 отзывов)</span></span>
       </div>
@@ -416,11 +451,12 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 89 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot?start=tour_turkey">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
-      <div class="tour-photo" style="background-image:url('https://i.postimg.cc/zvK08HmY/OAE.png')">
+      <div class="tour-photo">
+        <img class="photo-img" src="assets/images/tour-uae.webp" srcset="assets/images/tour-uae-480.webp 480w, assets/images/tour-uae.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 25vw" alt="ОАЭ" loading="lazy" decoding="async" fetchpriority="low">
         <span class="badge badge-popular">Популярно</span>
         <span class="tour-rating"><span style="color:var(--gold-400)">★</span> 4.7 <span class="cnt">(98 отзывов)</span></span>
       </div>
@@ -433,11 +469,12 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 145 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot?start=tour_uae">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
-      <div class="tour-photo" style="background-image:url('https://i.postimg.cc/vZ3XYdK1/Tailand.png')">
+      <div class="tour-photo">
+        <img class="photo-img" src="assets/images/tour-thailand.webp" srcset="assets/images/tour-thailand-480.webp 480w, assets/images/tour-thailand.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 25vw" alt="Таиланд" loading="lazy" decoding="async" fetchpriority="low">
         <span class="badge badge-choice">Выбор туристов</span>
         <span class="tour-rating"><span style="color:var(--gold-400)">★</span> 4.9 <span class="cnt">(142 отзыва)</span></span>
       </div>
@@ -450,11 +487,12 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 198 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot?start=tour_thailand">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
-      <div class="tour-photo" style="background-image:url('https://i.postimg.cc/1XGcLx6V/Gruzia.png')">
+      <div class="tour-photo">
+        <img class="photo-img" src="assets/images/tour-georgia.webp" srcset="assets/images/tour-georgia-480.webp 480w, assets/images/tour-georgia.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 25vw" alt="Грузия" loading="lazy" decoding="async" fetchpriority="low">
         <span class="badge badge-low">Низкая цена</span>
         <span class="tour-rating"><span style="color:var(--gold-400)">★</span> 4.7 <span class="cnt">(87 отзывов)</span></span>
       </div>
@@ -467,7 +505,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 58 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot?start=tour_georgia">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -476,7 +514,9 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 <section class="container section" id="manager">
   <div class="manager">
     <!-- TODO: OWNER MUST HAVE CONSENT TO PUBLISH REAL PERSON IMAGE -->
-    <div class="manager-photo" role="img" aria-label="Фото менеджера Анны"></div>
+    <div class="manager-photo">
+      <img class="photo-img" src="assets/images/manager.webp" alt="Фото менеджера Анны" loading="lazy" decoding="async" fetchpriority="low">
+    </div>
     <div class="manager-main">
       <p class="manager-eyebrow">Ваш менеджер по путешествиям</p>
       <h3>Анна <span class="placeholder-note">(имя уточняется)</span></h3>
@@ -505,14 +545,14 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 <section class="container section" id="reviews">
   <div class="sec-head">
     <div><div class="rule"></div><h2>Отзывы наших путешественников</h2></div>
-    <a class="more" href="https://t.me/coral_taganka_bot?start=reviews">Все отзывы <span class="arr">→</span></a>
+    <a class="more" href="https://t.me/coral_taganka_bot">Все отзывы <span class="arr">→</span></a>
   </div>
   <!-- TODO: REPLACE WITH VERIFIED REVIEW -->
   <div class="grid4">
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="https://i.postimg.cc/X7w4Dszd/Anna-K.png" alt="Анна К."></div><div><div class="review-name">Анна К. <span class="placeholder-note">(образец)</span></div><div class="review-city">Москва</div></div></div><p class="review-text">«Отдыхали в Турции, всё прошло идеально. Отель, трансфер, поддержка на всех этапах. Спасибо за заботу и внимание!»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="https://i.postimg.cc/6Q1XGg8W/Igor'-S.png" alt="Игорь С."></div><div><div class="review-name">Игорь С. <span class="placeholder-note">(образец)</span></div><div class="review-city">Казань</div></div></div><p class="review-text">«Понравился индивидуальный подход и быстрая помощь. Подобрали отличный отель в ОАЭ, всё было на высшем уровне!»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="https://i.postimg.cc/wTddJhjs/Maria-P.png" alt="Мария П."></div><div><div class="review-name">Мария П. <span class="placeholder-note">(образец)</span></div><div class="review-city">Санкт-Петербург</div></div></div><p class="review-text">«Впервые путешествовали с агентством. Очень довольны! Менеджер всегда была на связи и помогла с выбором.»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="https://i.postimg.cc/CK23K82K/Dmitrij-L.png" alt="Дмитрий Л."></div><div><div class="review-name">Дмитрий Л. <span class="placeholder-note">(образец)</span></div><div class="review-city">Екатеринбург</div></div></div><p class="review-text">«Отличный сервис, всё чётко и по делу. Хочется путешествовать с вами снова!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-anna.webp" alt="Анна К." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Анна К. <span class="placeholder-note">(образец)</span></div><div class="review-city">Москва</div></div></div><p class="review-text">«Отдыхали в Турции, всё прошло идеально. Отель, трансфер, поддержка на всех этапах. Спасибо за заботу и внимание!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-igor.webp" alt="Игорь С." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Игорь С. <span class="placeholder-note">(образец)</span></div><div class="review-city">Казань</div></div></div><p class="review-text">«Понравился индивидуальный подход и быстрая помощь. Подобрали отличный отель в ОАЭ, всё было на высшем уровне!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-maria.webp" alt="Мария П." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Мария П. <span class="placeholder-note">(образец)</span></div><div class="review-city">Санкт-Петербург</div></div></div><p class="review-text">«Впервые путешествовали с агентством. Очень довольны! Менеджер всегда была на связи и помогла с выбором.»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-dmitrij.webp" alt="Дмитрий Л." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Дмитрий Л. <span class="placeholder-note">(образец)</span></div><div class="review-city">Екатеринбург</div></div></div><p class="review-text">«Отличный сервис, всё чётко и по делу. Хочется путешествовать с вами снова!»</p><div class="stars">★★★★★</div></div>
   </div>
 </section>
 
@@ -543,7 +583,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     <div id="faq">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px">
         <h2 style="font-size:28px">Часто задаваемые вопросы</h2>
-        <a class="more" style="font-size:14px" href="https://t.me/coral_taganka_bot?start=faq">Все вопросы <span class="arr">→</span></a>
+        <a class="more" style="font-size:14px" href="https://t.me/coral_taganka_bot">Все вопросы <span class="arr">→</span></a>
       </div>
       <div id="faq-list">
         <div class="faq-item open">
@@ -593,7 +633,6 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
       </div>
       <div class="footer-contact">
-        <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a> · <a href="tel:+74952121314" style="color:inherit;text-decoration:none">+7 (495) 212-13-14</a> · <a href="tel:+79671171188" style="color:inherit;text-decoration:none">+7 (967) 117-11-88</a></p>
         <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@pod-solncem.ru</p>
         <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>г. Москва, ул. Путешественников, д. 1 <span class="placeholder-note" style="color:inherit;opacity:.6">(уточняется)</span></p>
         <div class="socials">
@@ -603,12 +642,18 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <div class="footer-sub">
         <div class="ftitle">Подпишитесь на вдохновение</div>
         <p class="fsub">Получайте лучшие предложения и советы для путешествий</p>
-        <form class="newsletter" onsubmit="event.preventDefault();window.open('https://t.me/coral_taganka_bot?start=newsletter','_blank')">
+        <form class="newsletter" onsubmit="event.preventDefault();window.open('https://t.me/coral_taganka_bot','_blank')">
           <input type="email" placeholder="Ваш e-mail" required aria-label="Email для подписки">
           <button type="submit">Подписаться</button>
         </form>
         <p class="fsub" style="margin-top:10px">Раз в неделю, без спама</p>
       </div>
+    </div>
+    <div class="footer-phones">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg>
+      <a href="tel:+74952121421">+7 (495) 212-14-21</a>
+      <a href="tel:+74952121314"><span class="sep">·</span>+7 (495) 212-13-14</a>
+      <a href="tel:+79671171188"><span class="sep">·</span>+7 (967) 117-11-88</a>
     </div>
     <div class="footer-legal-line">
       <span>ООО «Под солнцем» · ИНН 7716593499 · ОгрН 1077763465867</span>
@@ -629,7 +674,6 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   </div>
 </footer>
 
-<!-- PRODUCTION TODO: download external website assets (postimg.cc images) and host them from the controlled production domain/server before launch. -->
 
 <div class="cookie-banner hidden" id="cookie-banner" role="region" aria-label="Уведомление о cookies">
   <div class="cookie-text">Мы используем технические файлы и технологии хранения, необходимые для работы сайта. Аналитические и иные необязательные технологии используются только после вашего согласия. Подробнее — в <button type="button" class="legal-link-btn" style="color:var(--orange-600)" data-open-legal="cookies">Политике использования cookies</button>.</div>
