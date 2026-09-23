@@ -150,6 +150,11 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 @media (max-width:1023px){.grid5,.grid4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:519px){.grid5,.grid4{grid-template-columns:1fr}}
 
+/* tourvisor search widget */
+.tour-search-widget{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
+  padding:24px;max-width:100%;overflow-x:hidden}
+@media (max-width:767px){.tour-search-widget{padding:16px}}
+
 /* destination card */
 .dest-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);overflow:hidden;
   box-shadow:var(--shadow-card);transition:box-shadow .24s var(--ease),transform .24s var(--ease)}
@@ -322,7 +327,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <div class="p"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="2"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a></div>
       <div class="h">Пн–Вс 9:00–21:00</div>
     </div>
-    <a class="btn btn-primary btn-sm cta-header" href="https://t.me/coral_taganka_bot">Подобрать путешествие <span class="arr">→</span></a>
+    <a class="btn btn-primary btn-sm cta-header" href="#tour-search">Подобрать путешествие <span class="arr">→</span></a>
     <button class="burger" id="burger-open" aria-label="Открыть меню">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -341,7 +346,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   </nav>
   <div class="foot">
     <div style="font-size:14px"><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a></div>
-    <a class="btn btn-primary btn-block" href="https://t.me/coral_taganka_bot">Подобрать путешествие</a>
+    <a class="btn btn-primary btn-block" href="#tour-search">Подобрать путешествие</a>
   </div>
 </div>
 
@@ -353,7 +358,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <h1>Путешествие,<br>которое подходит<br>именно вам</h1>
       <p class="lead">Расскажите, каким вы хотите видеть свой отдых — мы подберём несколько действительно подходящих вариантов.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="https://t.me/coral_taganka_bot">Подобрать отдых за 60 секунд <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-lg" href="#tour-search">Подобрать отдых за 60 секунд <span class="arr">→</span></a>
         <a class="btn btn-outline btn-lg" href="#tours">Посмотреть туры</a>
       </div>
     </div>
@@ -377,6 +382,20 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   </div>
 </section>
 
+<section class="container section" id="tour-search">
+  <div class="sec-head">
+    <div>
+      <div class="rule"></div>
+      <h2>Подберите свой тур</h2>
+      <p>Актуальные предложения и цены от туроператоров</p>
+    </div>
+  </div>
+  <div class="tour-search-widget">
+    <div class="tv-search-form tv-moduleid-9965026"></div>
+    <script type="text/javascript" src="//tourvisor.ru/module/init.js"></script>
+  </div>
+</section>
+
 <section class="container section" id="destinations">
   <div class="sec-head">
     <div>
@@ -387,35 +406,35 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     <a class="more" href="#destinations">Все направления <span class="arr">→</span></a>
   </div>
   <div class="grid5">
-    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+    <a class="dest-card" href="#tour-search">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-beach.webp" srcset="assets/images/dest-beach-480.webp 480w, assets/images/dest-beach.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Пляжный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0M12 4v7M6 11h12"/></svg></span>
       </div>
       <div class="dest-body"><h3>Пляжный</h3><p>Спокойный берег без волн, тёплое море, всё включено.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+    <a class="dest-card" href="#tour-search">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-family.webp" srcset="assets/images/dest-family-480.webp 480w, assets/images/dest-family.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Семейный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 19c0-3.3 2.7-6 6-6s6 2.7 6 6M15 19c0-2.5 1.4-4.4 3.5-4.4S22 16.5 22 19"/></svg></span>
       </div>
       <div class="dest-body"><h3>Семейный</h3><p>Детское меню, анимация, аквапарк и пологий вход в море.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+    <a class="dest-card" href="#tour-search">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-couple.webp" srcset="assets/images/dest-couple-480.webp 480w, assets/images/dest-couple.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Отдых для двоих" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M12 20s-7-4.4-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.6-7 9-7 9z"/></svg></span>
       </div>
       <div class="dest-body"><h3>Для двоих</h3><p>Тихий отель 18+, приватная вилла или номер с видом.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+    <a class="dest-card" href="#tour-search">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-excursion.webp" srcset="assets/images/dest-excursion-480.webp 480w, assets/images/dest-excursion.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Экскурсионный отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.2"/><path d="M9 7l1.5-2h3L15 7"/></svg></span>
       </div>
       <div class="dest-body"><h3>Экскурсионный</h3><p>Стамбул, Каппадокия, Петра, Тбилиси — маршруты с гидом.</p></div>
     </a>
-    <a class="dest-card" href="https://t.me/coral_taganka_bot" target="_blank" rel="noopener noreferrer">
+    <a class="dest-card" href="#tour-search">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-premium.webp" srcset="assets/images/dest-premium-480.webp 480w, assets/images/dest-premium.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 20vw" alt="Премиум отдых" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><path d="M6 8l-3 4 9 8 9-8-3-4H6z"/><path d="M3 12h18M9 8l3 12M15 8l-3 12"/></svg></span>
@@ -432,7 +451,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <h2>Туры, которые стоит посмотреть</h2>
       <p>Четыре направления, на которые у нас самые частые заявки. Если не угадали — напишите, подберём другой.</p>
     </div>
-    <a class="more" href="https://t.me/coral_taganka_bot">Все туры <span class="arr">→</span></a>
+    <a class="more" href="#tour-search">Все туры <span class="arr">→</span></a>
   </div>
   <!-- TODO: VERIFY RATING BEFORE PRODUCTION -->
   <div class="grid4">
@@ -451,7 +470,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 89 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="#tour-search">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
@@ -469,7 +488,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 145 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="#tour-search">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
@@ -487,7 +506,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 198 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="#tour-search">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
     <div class="tour-card">
@@ -505,7 +524,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <!-- TODO: REPLACE WITH VERIFIED TOUR PRICE -->
         <div class="tour-price">от 58 000 ₽ <span>на двоих (уточняется)</span></div>
-        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="https://t.me/coral_taganka_bot">Посмотреть тур <span class="arr">→</span></a>
+        <a class="btn btn-primary btn-sm btn-block" style="margin-top:auto" href="#tour-search">Посмотреть тур <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -588,7 +607,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <div id="faq-list">
         <div class="faq-item open">
           <button class="faq-q" aria-expanded="true">Как забронировать тур?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6470" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-          <div class="faq-a"><div class="faq-a-inner">Нажмите любую оранжевую кнопку — она откроет чат с менеджером в Telegram. Расскажете, какой отдых хотите. Менеджер подберёт 2–3 варианта за 60 секунд.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Нажмите любую оранжевую кнопку — откроется форма подбора тура прямо на сайте. Укажите даты и направление, а для связи с менеджером напишите Анне в Telegram.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Какие документы нужны для поездки?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6470" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
