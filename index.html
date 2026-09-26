@@ -239,12 +239,17 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 .footer-nav{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:13.5px}
 .footer-nav a{color:var(--slate-100)}
 .footer-nav a:hover{color:var(--orange-500)}
-.footer-contact p{display:flex;gap:10px;align-items:center;font-size:13.5px;margin:0 0 12px;opacity:.92}
+.footer-contact p{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin:0 0 10px;opacity:.92}
+.footer-contact p svg{flex:0 0 auto;margin-top:1px}
+.footer-contact a{color:inherit;text-decoration:none}
+.footer-contact a:hover{color:var(--orange-500)}
+.footer-office{margin-bottom:18px}
+.footer-office h4{font-family:var(--font-sans);font-size:13.5px;font-weight:700;color:#fff;margin:0 0 8px}
 .footer-phones{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:14px;opacity:.92;margin-top:28px}
 .footer-phones svg{flex:0 0 auto}
 .footer-phones a{color:inherit;text-decoration:none;white-space:nowrap;flex:0 0 auto}
 .footer-phones a:hover{color:var(--orange-500)}
-.footer-phones .sep{opacity:.5;margin-right:6px}
+.footer-phones .sep,.footer-contact .sep{opacity:.5;margin-right:6px}
 .socials{display:flex;gap:14px;margin-top:22px}
 .socials a{width:30px;height:30px;border-radius:50%;border:1px solid rgba(241,245,249,.25);display:flex;align-items:center;justify-content:center;color:var(--slate-100)}
 .socials a:hover{border-color:var(--orange-500);color:var(--orange-500)}
@@ -642,8 +647,18 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
       </div>
       <div class="footer-contact">
-        <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>coralclub5av@mail.ru</p>
-        <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>г. Москва, ул. Путешественников, д. 1 <span class="placeholder-note" style="color:inherit;opacity:.6">(уточняется)</span></p>
+        <div class="footer-office">
+          <h4>Пятая Авеню</h4>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Москва, ул. Маршала Бирюзова, 32, ТЦ «Пятая Авеню», м. Октябрьское Поле</p>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121421">+7 (495) 212-14-21</a></p>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:coralclub5av@mail.ru">coralclub5av@mail.ru</a></p>
+        </div>
+        <div class="footer-office">
+          <h4>Эдельвейс</h4>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Москва, ул. Давыдковская, 3, офис 103, ЖК «Эдельвейс», м. Славянский бульвар</p>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121314">+7 (495) 212-13-14</a><a href="tel:+74951503170"><span class="sep">·</span>+7 (495) 150-31-70</a></p>
+          <p><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2601B" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:coralclub330@mail.ru">coralclub330@mail.ru</a></p>
+        </div>
         <div class="socials">
           <a href="https://t.me/coral_taganskaya" aria-label="Telegram-канал" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 4L3 11l6 2 2 6 3-4 5 4 2-15z"/></svg></a>
         </div>
