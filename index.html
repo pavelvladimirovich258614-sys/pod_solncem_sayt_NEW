@@ -186,20 +186,21 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .placeholder-note{font-size:11px;color:var(--ink-600);font-weight:400}
 
 /* manager banner */
-.mgr-banner{display:flex;align-items:center;background:var(--orange-100);border-radius:var(--radius-xl);overflow:hidden}
-.mgr-banner-copy{flex:1 1 55%;padding:40px 44px}
+.mgr-banner{position:relative;display:flex;align-items:center;border-radius:var(--radius-xl);overflow:hidden;min-height:320px;
+  background:linear-gradient(100deg,var(--orange-100) 0%,var(--orange-100) 38%,rgba(255,233,217,.4) 58%,rgba(255,233,217,0) 80%),
+    url('assets/images/manager-banner.webp') right center/cover no-repeat}
+.mgr-banner-copy{position:relative;z-index:1;max-width:440px;padding:40px 0 40px 44px}
 .mgr-banner-eyebrow{color:var(--orange-700)}
-.mgr-banner-copy h2{font-size:32px;line-height:1.15;margin:12px 0 12px}
-.mgr-banner-copy p{font-size:15px;color:var(--ink-700);margin:0 0 24px;max-width:380px}
-.mgr-banner-photo{flex:1 1 45%;min-width:200px;align-self:stretch;display:flex;align-items:center}
-.mgr-banner-photo img{width:100%;height:auto;display:block}
-@media (max-width:1023px){.mgr-banner-copy{padding:32px 36px}.mgr-banner-copy h2{font-size:27px}}
+.mgr-banner-copy h2{font-size:34px;line-height:1.15;margin:12px 0 12px}
+.mgr-banner-copy p{font-size:15px;color:var(--ink-700);margin:0 0 24px;max-width:360px}
+.mgr-banner-mobile-photo{display:none}
+@media (max-width:1023px){.mgr-banner{min-height:280px}.mgr-banner-copy{padding:32px 0 32px 32px;max-width:380px}.mgr-banner-copy h2{font-size:28px}}
 @media (max-width:767px){
-  .mgr-banner{flex-direction:column;border-radius:var(--radius-lg)}
-  .mgr-banner-copy{padding:24px 20px}
-  .mgr-banner-copy h2{font-size:22px;margin:8px 0 8px}
-  .mgr-banner-copy p{font-size:13.5px;margin:0 0 16px;max-width:100%}
-  .mgr-banner-photo{min-width:0}
+  .mgr-banner{flex-direction:column;align-items:stretch;min-height:0;border-radius:var(--radius-lg);background:var(--orange-100)}
+  .mgr-banner-copy{max-width:100%;padding:24px 20px 20px}
+  .mgr-banner-copy h2{font-size:24px;margin:8px 0 8px}
+  .mgr-banner-copy p{font-size:14.5px;margin:0 0 16px;max-width:100%}
+  .mgr-banner-mobile-photo{display:block;width:100%;height:auto}
 }
 
 /* reviews */
@@ -546,9 +547,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <p>Напишите нам — команда подберёт варианты под ваш запрос.</p>
       <div><a class="btn btn-primary btn-lg" href="mailto:coralclub5av@mail.ru">Написать нам <span class="arr">→</span></a></div>
     </div>
-    <div class="mgr-banner-photo">
-      <img src="assets/images/manager-banner.webp" alt="" loading="lazy" decoding="async">
-    </div>
+    <img class="mgr-banner-mobile-photo" src="assets/images/manager-banner.webp" alt="" loading="lazy" decoding="async">
   </div>
 </section>
 
