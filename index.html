@@ -185,21 +185,22 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .tour-price span{font-family:var(--font-sans);font-size:12.5px;font-weight:400;color:var(--ink-600)}
 .placeholder-note{font-size:11px;color:var(--ink-600);font-weight:400}
 
-/* manager */
-.manager{display:grid;grid-template-columns:300px 1.15fr .85fr;gap:0;background:var(--orange-100);border-radius:var(--radius-lg);overflow:hidden;align-items:stretch}
-.manager-photo{position:relative;min-height:340px;overflow:hidden}
-.manager-photo .photo-img{object-position:center 20%}
-.manager-main{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
-.manager-eyebrow{color:var(--orange-700);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-.manager-main h3{font-size:30px;margin:8px 0 4px}
-.manager-main .role{color:var(--ink-700);font-size:14px;margin:0 0 16px}
-.manager-main .quote{font-family:var(--font-serif);font-style:italic;font-size:19px;line-height:1.4;margin:0 0 22px}
-.manager-side{padding:32px 28px;display:flex;flex-direction:column;justify-content:center;gap:18px;position:relative}
-.m-point{display:flex;gap:12px;align-items:flex-start}
-.m-point .t{font-size:13.5px;font-weight:600;line-height:1.3}
-.m-point .s{font-size:12.5px;color:var(--ink-600);line-height:1.3}
-.manager-sig{font-family:var(--font-hand);font-size:24px;color:var(--ink-900);text-align:right;line-height:1.05;margin-top:6px}
-@media (max-width:1023px){.manager{grid-template-columns:1fr}.manager-photo{min-height:0;aspect-ratio:4/5;max-width:320px;width:100%;margin:24px auto 0;border-radius:var(--radius-lg)}.manager-photo .photo-img{object-position:center 25%}.manager-main{padding-bottom:8px}.manager-side{padding-top:0}}
+/* manager banner */
+.mgr-banner{display:flex;align-items:center;background:var(--orange-100);border-radius:var(--radius-xl);overflow:hidden}
+.mgr-banner-copy{flex:1 1 55%;padding:40px 44px}
+.mgr-banner-eyebrow{color:var(--orange-700)}
+.mgr-banner-copy h2{font-size:32px;line-height:1.15;margin:12px 0 12px}
+.mgr-banner-copy p{font-size:15px;color:var(--ink-700);margin:0 0 24px;max-width:380px}
+.mgr-banner-photo{flex:1 1 45%;min-width:200px;align-self:stretch;display:flex;align-items:center}
+.mgr-banner-photo img{width:100%;height:auto;display:block}
+@media (max-width:1023px){.mgr-banner-copy{padding:32px 36px}.mgr-banner-copy h2{font-size:27px}}
+@media (max-width:767px){
+  .mgr-banner{flex-direction:column;border-radius:var(--radius-lg)}
+  .mgr-banner-copy{padding:24px 20px}
+  .mgr-banner-copy h2{font-size:22px;margin:8px 0 8px}
+  .mgr-banner-copy p{font-size:13.5px;margin:0 0 16px;max-width:100%}
+  .mgr-banner-photo{min-width:0}
+}
 
 /* reviews */
 .review-card{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px}
@@ -538,32 +539,15 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 </section>
 
 <section class="container section" id="manager">
-  <div class="manager">
-    <!-- TODO: OWNER MUST HAVE CONSENT TO PUBLISH REAL PERSON IMAGE -->
-    <div class="manager-photo">
-      <img class="photo-img" src="assets/images/manager.webp" alt="Фото менеджера Анны" loading="lazy" decoding="async" fetchpriority="low">
+  <div class="mgr-banner">
+    <div class="mgr-banner-copy">
+      <p class="eyebrow mgr-banner-eyebrow">ПОД СОЛНЦЕМ</p>
+      <h2>Поможем найти ваше путешествие</h2>
+      <p>Напишите нам — команда подберёт варианты под ваш запрос.</p>
+      <div><a class="btn btn-primary btn-lg" href="mailto:coralclub5av@mail.ru">Написать нам <span class="arr">→</span></a></div>
     </div>
-    <div class="manager-main">
-      <p class="manager-eyebrow">Ваш менеджер по путешествиям</p>
-      <h3>Анна</h3>
-      <p class="role">Специалист по Турции, ОАЭ, Мальдивам и индивидуальным турам</p>
-      <p class="quote">«Подберу отель под ваш бюджет и расскажу, где действительно хороший пляж»</p>
-      <div><a class="btn btn-primary" href="https://t.me/Anna_starV" target="_blank" rel="noopener noreferrer">Написать Анне <span class="arr">→</span></a></div>
-    </div>
-    <div class="manager-side">
-      <div class="m-point">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M17 11h4M19 9v4"/></svg>
-        <div><div class="t">Личный подход</div><div class="s">к каждому клиенту</div></div>
-      </div>
-      <div class="m-point">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>
-        <div><div class="t">Опыт путешествий</div><div class="s">в 20+ странах</div></div>
-      </div>
-      <div class="m-point">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.5"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>
-        <div><div class="t">Знает лучшие отели</div><div class="s">и скрытые локации</div></div>
-      </div>
-      <div class="manager-sig">Буду рада<br>помочь!</div>
+    <div class="mgr-banner-photo">
+      <img src="assets/images/manager-banner.webp" alt="" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
