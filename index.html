@@ -155,6 +155,13 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
   padding:24px;max-width:100%;overflow-x:hidden}
 @media (max-width:767px){.tour-search-widget{padding:16px}}
 
+/* Tourvisor floating "Избранное" button: compact edge tab on phones so it does not cover text (the button itself stays) */
+@media (max-width:767px){
+  .TVCartStickyButton.TVCartStickyButtonRight{width:28px;height:48px;bottom:16px}
+  .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-2px;--compact-count-top:-8px;box-sizing:border-box;width:100%;height:100%;padding:0;justify-content:center}
+  .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+}
+
 /* destination card */
 .dest-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);overflow:hidden;
   box-shadow:var(--shadow-card);transition:box-shadow .24s var(--ease),transform .24s var(--ease)}
