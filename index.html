@@ -171,6 +171,15 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
   .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-2px;--compact-count-top:-8px;box-sizing:border-box;width:100%;height:100%;padding:0;justify-content:center}
   .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 }
+/* On tablets and phones the Tourvisor "Избранное" button (moved here by the script at the end of the page) sits in flow above the search form instead of floating over the content */
+.tv-fav-slot{display:none}
+@media (max-width:1023px){
+  .tv-fav-slot{display:flex;justify-content:flex-end;margin:-8px 0 12px}
+  .tv-fav-slot:empty{display:none}
+  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight{position:static;inset:auto;width:auto;height:auto;z-index:auto;border-radius:999px}
+  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{flex-direction:row;gap:8px;width:auto;height:auto;padding:6px 14px 6px 10px;--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-6px;--compact-count-top:-6px}
+  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:nowrap}
+}
 
 /* destination card */
 .dest-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);overflow:hidden;
@@ -429,6 +438,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <p>Актуальные предложения и цены от туроператоров</p>
     </div>
   </div>
+  <div class="tv-fav-slot" id="tv-fav-slot"></div>
   <div class="tour-search-widget">
     <div class="tv-search-form tv-moduleid-9965026"></div>
     <script type="text/javascript" src="//tourvisor.ru/module/init.js"></script>
@@ -983,6 +993,21 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   });
   showBannerIfNeeded();
 })();
+  // Tourvisor "Избранное" button: in flow inside the tour-search block on tablets/phones, floating (as Tourvisor renders it) on desktop.
+  (function(){
+    var slot = document.getElementById("tv-fav-slot");
+    if(!slot || !window.MutationObserver || !window.matchMedia) return;
+    var mq = window.matchMedia("(max-width:1023px)");
+    function place(){
+      var btn = document.querySelector(".TVCartStickyButton");
+      if(!btn) return;
+      if(mq.matches){ if(btn.parentNode !== slot) slot.appendChild(btn); }
+      else if(btn.parentNode === slot){ document.body.appendChild(btn); }
+    }
+    new MutationObserver(place).observe(document.body, {childList:true});
+    if(mq.addEventListener) mq.addEventListener("change", place); else if(mq.addListener) mq.addListener(place);
+    place();
+  })();
 </script>
 </body>
 </html>
