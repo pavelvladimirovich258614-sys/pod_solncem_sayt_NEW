@@ -168,20 +168,20 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
   padding:24px;max-width:100%;overflow-x:hidden}
 @media (max-width:767px){.tour-search-widget{padding:16px}}
 
-/* Tourvisor floating "Избранное" button: compact edge tab on phones so it does not cover text (the button itself stays) */
+/* Tourvisor floating "Избранное" button (Tourvisor makes it TVCartStickyButtonLeft or TVCartStickyButtonRight depending on the account; the production client uses Left): compact edge tab on phones so it does not cover text (the button itself stays) */
 @media (max-width:767px){
-  .TVCartStickyButton.TVCartStickyButtonRight{width:28px;height:48px;bottom:16px}
-  .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-2px;--compact-count-top:-8px;box-sizing:border-box;width:100%;height:100%;padding:0;justify-content:center}
-  .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight){width:28px;height:48px;bottom:16px}
+  .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight) .TVCartStickyButtonPreview.TVCartPreviewControl{--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-2px;--compact-count-top:-8px;box-sizing:border-box;width:100%;height:100%;padding:0;justify-content:center}
+  .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight) .TVCartPreviewCompactTitle{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 }
 /* Below 1440px the Tourvisor "Избранное" button (moved here by the script at the end of the page) sits in flow above the search form instead of floating over the content; keep the threshold in sync with the script */
 .tv-fav-slot{display:none}
 @media (max-width:1439px){
   .tv-fav-slot{display:flex;justify-content:flex-end;margin:-8px 0 12px}
   .tv-fav-slot:empty{display:none}
-  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight{position:static;inset:auto;width:auto;height:auto;z-index:auto;border-radius:999px}
-  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{flex-direction:row;gap:8px;width:auto;height:auto;padding:6px 14px 6px 10px;--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-6px;--compact-count-top:-6px}
-  .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:nowrap}
+  .tv-fav-slot .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight){position:static;inset:auto;width:auto;height:auto;z-index:auto;border-radius:999px}
+  .tv-fav-slot .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight) .TVCartStickyButtonPreview.TVCartPreviewControl{flex-direction:row;gap:8px;width:auto;height:auto;padding:6px 14px 6px 10px;--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-6px;--compact-count-top:-6px}
+  .tv-fav-slot .TVCartStickyButton:is(.TVCartStickyButtonLeft,.TVCartStickyButtonRight) .TVCartPreviewCompactTitle{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:nowrap}
 }
 
 /* destination card */
