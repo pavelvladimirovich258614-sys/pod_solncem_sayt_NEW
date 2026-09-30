@@ -908,6 +908,13 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       else { item.classList.add('open'); q.setAttribute('aria-expanded','true'); a.style.maxHeight = a.scrollHeight + 'px'; }
     });
   });
+  // keep the open answer's height in sync when the text reflows (resize, rotation, font load)
+  if(window.ResizeObserver){
+    var faqRO = new ResizeObserver(function(entries){
+      entries.forEach(function(e){ var a = e.target.parentNode; if(a.parentNode.classList.contains('open')){ a.style.maxHeight = a.scrollHeight + 'px'; } });
+    });
+    document.querySelectorAll('.faq-a-inner').forEach(function(inner){ faqRO.observe(inner); });
+  }
 
   // Legal modals + cookie consent
   var CONSENT_KEY = 'pod_solncem_cookie_consent';
