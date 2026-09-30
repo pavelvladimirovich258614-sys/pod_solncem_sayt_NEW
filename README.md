@@ -115,7 +115,7 @@ python -m http.server 8080
 - Запись в `~/.ssh/config` для этого сервера не добавлялась: ключ указывается явно через `-i`. Существующая запись в конфиге относится к прежнему серверу `82.39.213.82`, его в работе не используем.
 - Парольный вход на сервере не отключался (по `sshd -T`: `passwordauthentication yes`, `permitrootlogin yes`); ужесточение возможно только по отдельному решению владельца.
 - Скрипты лежат вне репозитория: `D:\POD_SOLNCEM\archive\deploy-helper-scripts-2026-09-30\` (`deploy_index_key.py` — деплой по ключу; `install_ssh_key.py` — разовая установка ключа, уже выполнена; `faq_deploy.py`, `menu_cookie_deploy.py` — разовые скрипты с вводом пароля). Пароли и ключи в репозитории и в этих файлах не хранятся.
-- Пример: `python D:\POD_SOLNCEM\archive\deploy-helper-scripts-2026-09-30\deploy_index_key.py --base <коммит с текущим боевым index.html> --check-faq --marker=<уникальный текст правки>` (`--dry-run` — только локальные проверки).
+- Пример: `python D:\POD_SOLNCEM\archive\deploy-helper-scripts-2026-09-30\deploy_index_key.py --base <коммит с текущим боевым index.html> --check-faq --marker=<уникальный текст правки>` (`--dry-run` — только локальные проверки). Бэкап скрипт кладёт в `/root/backups/deploy-pre-<UTC-время>Z/`; после загрузки читает файл обратно и сверяет с `origin/main`.
 
 ---
 
