@@ -171,9 +171,9 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
   .TVCartStickyButton.TVCartStickyButtonRight .TVCartStickyButtonPreview.TVCartPreviewControl{--icon-width:24px;--icon-height:24px;--icon-padding:0;--compact-count-right:-2px;--compact-count-top:-8px;box-sizing:border-box;width:100%;height:100%;padding:0;justify-content:center}
   .TVCartStickyButton.TVCartStickyButtonRight .TVCartPreviewCompactTitle{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 }
-/* On tablets and phones the Tourvisor "Избранное" button (moved here by the script at the end of the page) sits in flow above the search form instead of floating over the content */
+/* Below 1440px the Tourvisor "Избранное" button (moved here by the script at the end of the page) sits in flow above the search form instead of floating over the content; keep the threshold in sync with the script */
 .tv-fav-slot{display:none}
-@media (max-width:1023px){
+@media (max-width:1439px){
   .tv-fav-slot{display:flex;justify-content:flex-end;margin:-8px 0 12px}
   .tv-fav-slot:empty{display:none}
   .tv-fav-slot .TVCartStickyButton.TVCartStickyButtonRight{position:static;inset:auto;width:auto;height:auto;z-index:auto;border-radius:999px}
@@ -993,11 +993,11 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   });
   showBannerIfNeeded();
 })();
-  // Tourvisor "Избранное" button: in flow inside the tour-search block on tablets/phones, floating (as Tourvisor renders it) on desktop.
+  // Tourvisor "Избранное" button: in flow inside the tour-search block below 1440px, floating (as Tourvisor renders it) from 1440px.
   (function(){
     var slot = document.getElementById("tv-fav-slot");
     if(!slot || !window.MutationObserver || !window.matchMedia) return;
-    var mq = window.matchMedia("(max-width:1023px)");
+    var mq = window.matchMedia("(max-width:1439px)");
     function place(){
       var btn = document.querySelector(".TVCartStickyButton");
       if(!btn) return;
