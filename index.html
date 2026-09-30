@@ -96,14 +96,14 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .phone-block .p{font-size:14px;color:var(--ink-900);font-weight:500;display:flex;align-items:center;gap:6px}
 .phone-block .hdr-soc{width:24px;height:24px;flex:0 0 auto;margin-right:2px}
 @media (max-width:819px),(min-width:1024px) and (max-width:1159px){.phone-block .hdr-soc{display:none}}
-/* "Безопасная покупка" badge: white text, so it sits on a small dark plate. Inline in the header from 1270px, otherwise a slim bar above the header */
+/* "Безопасная покупка" badge: white text, so it sits on a small dark plate. Inline in the header from 1310px (pushed towards the menu, 56-72px before "Туры"), otherwise a slim bar above the header */
 .secure-bar{display:none;justify-content:center;background:#2b2f36;padding:4px 16px}
 .secure-bar img,.hdr-secure img{display:block;height:36px;width:auto}
-.hdr-secure{display:none;flex:0 0 auto;align-items:center;padding:3px 8px;border-radius:8px;background:#2b2f36}
+.hdr-secure{display:none;flex:0 0 auto;align-items:center;margin-left:auto;margin-right:clamp(32px,2.5vw,48px);padding:3px 8px;border-radius:8px;background:#2b2f36}
 .hdr-secure img{height:40px}
-@media (min-width:1270px){.hdr-secure{display:flex}}
-@media (min-width:1270px) and (max-width:1339px){header{gap:16px}nav.desktop-nav{gap:18px}}
-@media (max-width:1269px){.secure-bar{display:flex}}
+@media (min-width:1310px){.hdr-secure{display:flex}nav.desktop-nav{margin-left:0}}
+@media (min-width:1310px) and (max-width:1379px){header{gap:16px}nav.desktop-nav{gap:18px}.hdr-secure{margin-right:40px}}
+@media (max-width:1309px){.secure-bar{display:flex}}
 .phone-block .h{font-size:11px;color:var(--ink-600)}
 .cta-header{display:none}
 .burger{background:none;border:none;cursor:pointer;padding:4px}
