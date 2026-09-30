@@ -183,7 +183,6 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .tour-fact{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-600)}
 .tour-price{font-family:var(--font-serif);font-size:19px;font-weight:700;color:var(--orange-600)}
 .tour-price span{font-family:var(--font-sans);font-size:12.5px;font-weight:400;color:var(--ink-600)}
-.placeholder-note{font-size:11px;color:var(--ink-600);font-weight:400}
 
 /* manager banner */
 .mgr-banner{position:relative;display:flex;align-items:center;border-radius:var(--radius-xl);overflow:hidden;min-height:320px;
@@ -206,10 +205,10 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 /* reviews */
 .review-card{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px}
 .review-top{display:flex;align-items:center;gap:10px}
-.avatar{width:38px;height:38px;border-radius:50%;background:var(--orange-100);color:var(--orange-700);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;overflow:hidden}
+.avatar{width:38px;height:38px;font-size:15px;border-radius:50%;background:var(--orange-100);color:var(--orange-700);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .review-name{font-weight:600;font-size:14px}
-.review-city{font-size:12px;color:var(--ink-600)}
+.review-date{font-size:12px;color:var(--ink-600)}
 .review-text{margin:0;font-size:13px;color:var(--ink-700);line-height:1.5}
 .stars{color:var(--gold-400);font-size:14px;letter-spacing:2px}
 
@@ -561,14 +560,12 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 <section class="container section" id="reviews">
   <div class="sec-head">
     <div><div class="rule"></div><h2>Отзывы наших путешественников</h2></div>
-    <a class="more" href="#reviews">Все отзывы <span class="arr">→</span></a>
   </div>
-  <!-- TODO: REPLACE WITH VERIFIED REVIEW -->
   <div class="grid4">
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-anna.webp" alt="Анна К." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Анна К. <span class="placeholder-note">(образец)</span></div><div class="review-city">Москва</div></div></div><p class="review-text">«Отдыхали в Турции, всё прошло идеально. Отель, трансфер, поддержка на всех этапах. Спасибо за заботу и внимание!»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-igor.webp" alt="Игорь С." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Игорь С. <span class="placeholder-note">(образец)</span></div><div class="review-city">Казань</div></div></div><p class="review-text">«Понравился индивидуальный подход и быстрая помощь. Подобрали отличный отель в ОАЭ, всё было на высшем уровне!»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-maria.webp" alt="Мария П." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Мария П. <span class="placeholder-note">(образец)</span></div><div class="review-city">Санкт-Петербург</div></div></div><p class="review-text">«Впервые путешествовали с агентством. Очень довольны! Менеджер всегда была на связи и помогла с выбором.»</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><div class="review-top"><div class="avatar"><img src="assets/images/review-dmitrij.webp" alt="Дмитрий Л." width="76" height="76" loading="lazy" decoding="async"></div><div><div class="review-name">Дмитрий Л. <span class="placeholder-note">(образец)</span></div><div class="review-city">Екатеринбург</div></div></div><p class="review-text">«Отличный сервис, всё чётко и по делу. Хочется путешествовать с вами снова!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">Н</div><div><div class="review-name">Наталья М.</div><div class="review-date">25 сентября 2026</div></div></div><p class="review-text">«Хочу выразить огромную благодарность турагентству Coral Elite Travel в ТЦ Пятая авеню, и лично менеджеру Наталья, обращаюсь к Наталье не первый раз, очень благодарна ей за отличный сервис, внимательность, и за прекрасно организованный отдых! […] Тур полностью соответствовал описанию, никаких неприятных сюрпризов не возникло. […] Отдых прошёл идеально — спасибо за спокойствие и уверенность, которые вы даёте!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">L</div><div><div class="review-name">Lubov S.</div><div class="review-date">22 сентября 2026</div></div></div><p class="review-text">«Подобрали хороший отель, ездим 2ой год, спасибо тур оператору Наталье»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">В</div><div><div class="review-name">Владимир М.</div><div class="review-date">20 декабря 2025</div></div></div><p class="review-text">«С Натальей приятно работать. профессионал - знает тонкости и нюансы тех мест куда предлагает поехать. все предусмотрит. Наталья большое спасибо!!!»</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">А</div><div><div class="review-name">Алла С.</div><div class="review-date">15 декабря 2025</div></div></div><p class="review-text">«Летали с дочкой по туру в Хургаду, который нам подобрала менеджер Жанна. Спасибо за организацию нашего отпуска. Очень всё понравилось. Все детали и пожелания по отдыху были учтены. Летали уже не первый раз через это турагентство. С таким чутким подходом и заботой хочется обращаться только к ним. Цены подбирают очень приятные, особенно в текущих реалиях.»</p><div class="stars">★★★★★</div></div>
   </div>
 </section>
 
@@ -584,7 +581,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
         </div>
         <div class="why-item">
           <span class="why-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.5"><path d="M7 8h10M7 12h10M7 16h6" stroke-linecap="round"/></svg></span>
-          <div><h4>Реальные отзывы</h4><p>Публикуем только с согласия автора.</p></div>
+          <div><h4>Реальные отзывы</h4><p>Показываем отзывы наших клиентов.</p></div>
         </div>
         <div class="why-item">
           <span class="why-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.5"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>
