@@ -297,7 +297,14 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 .about-team-name{font-size:13px;font-weight:600;color:var(--ink-900);line-height:1.3}
 .about-team-role{font-size:11.5px;color:var(--ink-600);margin-top:2px}
 .about-offices{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 20px}
-@media (max-width:767px){.about-team{grid-template-columns:repeat(2,1fr)}.about-offices{grid-template-columns:1fr}}
+.about-awards{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:14px 0 22px}
+.award-card{flex:0 0 calc((100% - 32px)/3);display:flex;flex-direction:column;gap:8px;text-align:center;color:inherit;text-decoration:none}
+.award-card img{width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-md);transition:box-shadow .15s}
+.award-card:hover img,.award-card:focus-visible img{box-shadow:var(--shadow-card-hover)}
+.award-org{font-size:13px;font-weight:600;color:var(--ink-900);line-height:1.3}
+.award-name{font-size:11.5px;color:var(--ink-600);line-height:1.35;margin-top:-6px}
+.award-open{font-size:11.5px;color:var(--orange-600);margin-top:auto}
+@media (max-width:767px){.about-team{grid-template-columns:repeat(2,1fr)}.about-offices{grid-template-columns:1fr}.award-card{flex-basis:calc((100% - 16px)/2)}}
 
 .cookie-cat{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--sand-300)}
 .cookie-cat:last-child{border-bottom:none}
@@ -798,6 +805,16 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="legal-body">
     <h3>О компании</h3>
     <p>Юридическое лицо — <strong>ООО «Под Солнцем»</strong>. Офисы компании работают под обозначением сети <strong>Coral Travel Elite Service</strong>.</p>
+
+    <h3>Награды</h3>
+    <p>Фотографии наград и дипломов. Нажмите на карточку — крупная версия откроется в новой вкладке.</p>
+    <div class="about-awards">
+      <a class="award-card" href="assets/images/award-starway-best-2025.webp" target="_blank" rel="noopener"><img src="assets/images/award-starway-best-2025-thumb.webp" alt="Награда Coral Travel — Starway Best 2025 (фотография)" width="450" height="800" loading="lazy" decoding="async"><span class="award-org">Coral Travel</span><span class="award-name">Starway Best 2025</span><span class="award-open">Открыть крупнее ↗</span></a>
+      <a class="award-card" href="assets/images/award-tui-golden-awards-2019.webp" target="_blank" rel="noopener"><img src="assets/images/award-tui-golden-awards-2019-thumb.webp" alt="Награда TUI — Golden Awards 2019, лидер по продажам круизов (фотография)" width="450" height="800" loading="lazy" decoding="async"><span class="award-org">TUI</span><span class="award-name">Golden Awards 2019 — лидер по продажам круизов</span><span class="award-open">Открыть крупнее ↗</span></a>
+      <a class="award-card" href="assets/images/award-starway-perfect-2021.webp" target="_blank" rel="noopener"><img src="assets/images/award-starway-perfect-2021-thumb.webp" alt="Награда Coral Travel — Starway Perfect 2021 (фотография)" width="450" height="800" loading="lazy" decoding="async"><span class="award-org">Coral Travel</span><span class="award-name">Starway Perfect 2021</span><span class="award-open">Открыть крупнее ↗</span></a>
+      <a class="award-card" href="assets/images/award-starway-perfect-2018.webp" target="_blank" rel="noopener"><img src="assets/images/award-starway-perfect-2018-thumb.webp" alt="Награда Coral Travel — Starway Perfect 2018 (фотография)" width="450" height="800" loading="lazy" decoding="async"><span class="award-org">Coral Travel</span><span class="award-name">Starway Perfect 2018</span><span class="award-open">Открыть крупнее ↗</span></a>
+      <a class="award-card" href="assets/images/award-pac-group-2016.webp" target="_blank" rel="noopener"><img src="assets/images/award-pac-group-2016-thumb.webp" alt="Диплом PAC Group, 2016 (фотография)" width="450" height="800" loading="lazy" decoding="async"><span class="award-org">PAC Group</span><span class="award-name">Диплом 2016</span><span class="award-open">Открыть крупнее ↗</span></a>
+    </div>
 
     <h3>Наша команда</h3>
     <div class="about-team">
