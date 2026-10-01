@@ -166,12 +166,19 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 
 /* tourvisor search widget */
 .tour-search-widget{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
-  padding:24px;max-width:100%;overflow-x:hidden}
+  padding:24px;max-width:100%;overflow-x:hidden;position:relative}
 @media (max-width:767px){.tour-search-widget{padding:16px}}
-/* Reserve the height the Tourvisor search form takes once it has loaded (measured: 384px below 768px, 463px from 768px) so the sections below do not jump when the widget appears. min-height only: a taller form or results still grow freely. Released by the script at the end of the page if the widget never loads */
+/* Reserve the height the Tourvisor search form takes once it has loaded (measured: 384px below 768px, 463px from 768px) so the sections below do not jump when the widget appears. min-height only: a taller form or results still grow freely. The reservation is never released: a late form simply fills it */
 .tv-search-form{min-height:463px}
 @media (max-width:767px){.tv-search-form{min-height:384px}}
-.tv-search-form.tv-unloaded{min-height:0}
+/* Status over the reserved space: "loading" until the form has rendered (.tv-ready on the widget), or a message if the Tourvisor script failed to load (.tv-failed, set by the onerror attribute of its tag) */
+.tv-status{position:absolute;inset:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 8px;text-align:center;font-size:15px;line-height:1.5;color:var(--ink-600);pointer-events:none}
+@media (max-width:767px){.tv-status{inset:16px}}
+.tv-status p{margin:0}
+.tv-status-fail{display:none;flex-direction:column;align-items:center;gap:14px;pointer-events:auto}
+.tv-failed .tv-status-load{display:none}
+.tv-failed .tv-status-fail{display:flex}
+.tv-ready .tv-status{display:none}
 
 /* Tourvisor floating "Избранное" button (Tourvisor makes it TVCartStickyButtonLeft or TVCartStickyButtonRight depending on the account; the production client uses Left): compact edge tab on phones so it does not cover text (the button itself stays) */
 @media (max-width:767px){
@@ -446,7 +453,14 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="tv-fav-slot" id="tv-fav-slot"></div>
   <div class="tour-search-widget">
     <div class="tv-search-form tv-moduleid-9965026"></div>
-    <script type="text/javascript" src="//tourvisor.ru/module/init.js"></script>
+    <script type="text/javascript" src="//tourvisor.ru/module/init.js" onerror="this.parentNode.classList.add('tv-failed')"></script>
+    <div class="tv-status" role="status" aria-live="polite">
+      <p class="tv-status-load">Загружаем форму подбора туров…</p>
+      <div class="tv-status-fail">
+        <p>Не удалось загрузить форму подбора туров. Обновите страницу или свяжитесь с нашим офисом: <a href="tel:+74952121421">+7 (495) 212-14-21</a>.</p>
+        <button type="button" class="btn btn-outline btn-sm" onclick="location.reload()">Обновить страницу</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1055,8 +1069,13 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     if(mq.addEventListener) mq.addEventListener("change", place); else if(mq.addListener) mq.addListener(place);
     place();
   })();
-  // If the Tourvisor form has not rendered anything after 12s (blocked, offline, API error, very slow), give back the space reserved for it in CSS instead of leaving an empty box
-  setTimeout(function(){ var f = document.querySelector(".tv-search-form"); if(f && !f.firstElementChild) f.classList.add("tv-unloaded"); }, 12000);
+  // Hide the "loading" status as soon as the Tourvisor form has rendered. There is no timeout: a slow form keeps its reserved space and status and fills it whenever it arrives
+  (function(){
+    var w = document.querySelector(".tour-search-widget"), f = w && w.querySelector(".tv-search-form"), obs;
+    if(!f) return;
+    function ready(){ if(f.firstElementChild){ w.classList.add("tv-ready"); if(obs) obs.disconnect(); return true; } return false; }
+    if(!ready() && window.MutationObserver){ obs = new MutationObserver(ready); obs.observe(f, {childList:true}); }
+  })();
 </script>
 </body>
 </html>
