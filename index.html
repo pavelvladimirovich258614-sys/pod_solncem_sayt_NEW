@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+// Tourvisor renders its mobile form on any touch device unless it is a big tablet (shorter screen side above 480px and window wider than 1000px), and its wide form everywhere else. Mirror that test so CSS can reserve the right height for the form before it loads
+(function(){var n=navigator,t=n.maxTouchPoints?n.maxTouchPoints>0:n.msMaxTouchPoints?n.msMaxTouchPoints>0:/\bAndroid|iPhone|iPad|iPod|IEMobile|Windows Phone|webOS|BlackBerry\b/i.test(n.userAgent),w=screen.width||innerWidth,h=screen.height||innerHeight,vw=innerWidth||screen.width;if(t&&!(Math.min(w,h)>480&&vw>1000))document.documentElement.classList.add("tv-mobile-form")})();
+</script>
 <title>Под Солнцем — турагентство. Подбор тура онлайн</title>
 <meta name="description" content="Подбор тура под ваш бюджет и даты. Турция, ОАЭ, Таиланд, Грузия. Свяжитесь с нами по телефону или e-mail.">
 <meta property="og:title" content="Под Солнцем — турагентство">
@@ -168,9 +172,9 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .tour-search-widget{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
   padding:24px;max-width:100%;overflow-x:hidden;position:relative}
 @media (max-width:767px){.tour-search-widget{padding:16px}}
-/* Reserve the height the Tourvisor search form takes once it has loaded (measured: 384px below 768px, 463px from 768px) so the sections below do not jump when the widget appears. min-height only: a taller form or results still grow freely. The reservation is never released: a late form simply fills it */
-.tv-search-form{min-height:463px}
-@media (max-width:767px){.tv-search-form{min-height:384px}}
+/* Reserve the height the Tourvisor search form takes once it has loaded, so the sections below do not jump when the widget appears. Measured on the production client 5762: wide form 204.8px (non-touch devices, big tablets, narrow desktop windows; all three modes), mobile form 383.9px (touch devices, class .tv-mobile-form from the head script). min-height only: a taller form or results still grow freely, a late form simply fills the reservation, which is never released */
+.tv-search-form{min-height:205px}
+.tv-mobile-form .tv-search-form{min-height:384px}
 /* Status over the reserved space: "loading" until the form has rendered (.tv-ready on the widget), or a message if the Tourvisor script failed to load (.tv-failed, set by the onerror attribute of its tag) */
 .tv-status{position:absolute;inset:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 8px;text-align:center;font-size:15px;line-height:1.5;color:var(--ink-600);pointer-events:none}
 @media (max-width:767px){.tv-status{inset:16px}}
