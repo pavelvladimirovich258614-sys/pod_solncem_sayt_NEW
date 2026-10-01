@@ -168,6 +168,10 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 .tour-search-widget{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
   padding:24px;max-width:100%;overflow-x:hidden}
 @media (max-width:767px){.tour-search-widget{padding:16px}}
+/* Reserve the height the Tourvisor search form takes once it has loaded (measured: 384px below 768px, 463px from 768px) so the sections below do not jump when the widget appears. min-height only: a taller form or results still grow freely. Released by the script at the end of the page if the widget never loads */
+.tv-search-form{min-height:463px}
+@media (max-width:767px){.tv-search-form{min-height:384px}}
+.tv-search-form.tv-unloaded{min-height:0}
 
 /* Tourvisor floating "Избранное" button (Tourvisor makes it TVCartStickyButtonLeft or TVCartStickyButtonRight depending on the account; the production client uses Left): compact edge tab on phones so it does not cover text (the button itself stays) */
 @media (max-width:767px){
@@ -1051,6 +1055,8 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     if(mq.addEventListener) mq.addEventListener("change", place); else if(mq.addListener) mq.addListener(place);
     place();
   })();
+  // If the Tourvisor form has not rendered anything after 12s (blocked, offline, API error, very slow), give back the space reserved for it in CSS instead of leaving an empty box
+  setTimeout(function(){ var f = document.querySelector(".tv-search-form"); if(f && !f.firstElementChild) f.classList.add("tv-unloaded"); }, 12000);
 </script>
 </body>
 </html>
