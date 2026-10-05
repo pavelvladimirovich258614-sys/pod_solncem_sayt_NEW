@@ -254,5 +254,97 @@ class Endpoint(Base):
         self.assertIn("result=sent smtp=250 2.0.0 Ok: queued as TESTQ123", logging_text)
 
 
+def parsed(i=-1):
+    return email.message_from_string(MAILS[i]["body"], policy=email.policy.default)
+
+
+class Topics(Base):
+    def test_write_us_is_mailed_with_message(self):
+        code, body = post(good(topic="write", message="Хочу в Грузию в ноябре,\r\nна двоих.  Какие варианты?"))
+        self.assertEqual((code, body), (200, {"ok": True}))
+        m = parsed()
+        self.assertEqual(m["Subject"], "Напишите нам: сообщение с сайта kupit-tyr.ru")
+        self.assertEqual(m["To"], "coralclub5av@mail.ru")
+        text = m.get_content()
+        self.assertIn("форма «Напишите нам»", text)
+        self.assertIn("Телефон: +7 (900) 123-45-67", text)
+        self.assertIn("Сообщение:\nХочу в Грузию в ноябре,\nна двоих. Какие варианты?", text)
+        self.assertNotIn("КРУИЗ", text)
+
+    def test_cruise_mail_states_the_interest_explicitly(self):
+        self.assertEqual(post(good(topic="cruise", message="Средиземное море, июнь"))[0], 200)
+        m = parsed()
+        self.assertTrue(m["Subject"].startswith("Круизы:"))
+        text = m.get_content()
+        self.assertIn("ИНТЕРЕС: КРУИЗЫ", text)
+        self.assertIn("Средиземное море, июнь", text)
+
+    def test_cruise_message_is_optional_write_message_is_required(self):
+        self.assertEqual(post(good(topic="cruise", message=""))[0], 200)
+        self.assertIn("(без текста)", parsed().get_content())
+        for msg in ["", "  ", "ab"]:
+            code, body = post(good(topic="write", message=msg, phone="+7 900 555-66-7%d" % len(msg)))
+            self.assertEqual((code, body["field"]), (422, "message"), msg)
+
+    def test_callback_ignores_a_message_and_keeps_its_old_shape(self):
+        self.assertEqual(post(good(message="должно быть проигнорировано"))[0], 200)
+        text = parsed().get_content()
+        self.assertEqual(parsed()["Subject"], "Заказ звонка с сайта kupit-tyr.ru")
+        self.assertNotIn("проигнорировано", text)
+        self.assertNotIn("Сообщение:", text)
+        self.assertNotIn("КРУИЗ", text)
+
+    def test_message_validation(self):
+        for payload, field in [
+            (good(topic="write", message="x" * 1501), "message"),
+            (good(topic="write", message=["список"]), "message"),
+            (good(topic="write", message=None), "message"),
+            (good(topic="write", message="http://a.ru http://b.ru www.c.ru купите"), "message"),
+            (good(topic="write", message="Здравствуйте", consent=False), "consent"),
+            (good(topic="write", message="Здравствуйте", name=""), "name"),
+            (good(topic="write", message="Здравствуйте", phone="1"), "phone"),
+        ]:
+            code, body = post(payload)
+            self.assertEqual((code, body.get("field")), (422, field), payload)
+        self.assertEqual(MAILS, [])
+
+    def test_unknown_topic_is_rejected(self):
+        for t in ["spam", "", None, 1, ["write"]]:
+            code, body = post(good(topic=t, message="Здравствуйте"))
+            self.assertEqual((code, body["field"]), (422, "form"), t)
+        self.assertEqual(MAILS, [])
+
+    def test_one_link_in_a_message_is_fine(self):
+        self.assertEqual(post(good(topic="write", message="Нашёл тур: https://example.com/tour"))[0], 200)
+
+    def test_control_characters_are_removed(self):
+        self.assertEqual(post(good(topic="write", message="Привет\x00\x07 мир\n\n\n\nконец"))[0], 200)
+        self.assertIn("Привет мир\n\nконец", parsed().get_content())
+
+    def test_same_phone_different_topics_are_all_delivered(self):
+        self.assertEqual(post(good())[0], 200)
+        self.assertEqual(post(good(topic="write", message="Вопрос по визе"))[0], 200)
+        self.assertEqual(post(good(topic="cruise", message="Круиз по Волге"))[0], 200)
+        self.assertEqual(len(MAILS), 3)
+        # an exact repeat is still a duplicate, a different message from the same person is not
+        self.assertEqual(post(good(topic="write", message="Вопрос по визе"))[0], 200)
+        self.assertEqual(len(MAILS), 3)
+
+    def test_long_message_with_four_byte_characters_fits(self):
+        # the browser sends raw UTF-8 (JSON.stringify), not \u escapes
+        raw = json.dumps(good(topic="write", message="😀" * 1500), ensure_ascii=False).encode("utf-8")
+        self.assertGreater(len(raw), 6000)
+        code, _ = post(None, raw=raw)
+        self.assertEqual(code, 200)
+
+    def test_log_names_the_topic_without_personal_data(self):
+        post(good(topic="cruise", message="Секретный маршрут", name="Скрытое Имя"))
+        with open(LOGFILE, encoding="utf-8") as f:
+            text = f.read()
+        self.assertIn("topic=cruise result=sent", text)
+        for needle in ["Секретный", "Скрытое"]:
+            self.assertNotIn(needle, text)
+
+
 if __name__ == "__main__":
     unittest.main()

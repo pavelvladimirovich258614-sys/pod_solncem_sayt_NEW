@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""kupit-tyr callback request backend.
+"""kupit-tyr request backend: "Заказать звонок", "Напишите нам" and "Круизы".
 
-Validates a "Заказать звонок" submission (name + phone) and relays it by e-mail directly to the
+Validates a submission (name + phone, plus a message for the two write-us forms) and relays it by e-mail directly to the
 recipient's MX (no external service, no stored secrets, nothing is written to disk except a
 log line without personal data). Listens on 127.0.0.1 only; nginx proxies /api/callback to it.
 
@@ -45,10 +45,19 @@ INVALID_PER_IP = 20          # rejected requests per IP per window (keeps valida
 SEND_GLOBAL_PER_HOUR = 30    # hard cap on mails to the manager per hour
 DUPLICATE_WINDOW = 10 * 60   # the same phone inside this window is answered "ok" but not mailed again
 MIN_FILL_SECONDS = 2         # a human needs more than this between opening the form and sending it
-MAX_BODY = 4096
+MAX_BODY = 7000          # 1500 four-byte characters in a message still fit; nginx stops anything over 8k
 MAX_DRAIN = 16384
 
 NAME_MIN, NAME_MAX = 2, 60
+MESSAGE_MAX = 1500
+MESSAGE_REQUIRED_MIN = 3
+MAX_LINKS = 2
+# topic -> (mail subject, heading line of the mail body, is the message required)
+TOPICS = {
+    "callback": ("Заказ звонка с сайта kupit-tyr.ru", "Заказ обратного звонка с сайта kupit-tyr.ru", False),
+    "write": ("Напишите нам: сообщение с сайта kupit-tyr.ru", "Сообщение с сайта kupit-tyr.ru: форма «Напишите нам»", True),
+    "cruise": ("Круизы: заявка с сайта kupit-tyr.ru", "ИНТЕРЕС: КРУИЗЫ. Обращение из карточки «Круизы» на сайте kupit-tyr.ru", False),
+}
 PHONE_CHARS_RE = re.compile(r"^[\d\s()+\-]{5,25}$")
 MSK = timezone(timedelta(hours=3))
 
@@ -129,6 +138,18 @@ def clean_name(raw):
     return s
 
 
+def clean_message(raw):
+    s = str(raw).replace("\r\n", "\n").replace("\r", "\n")
+    s = "".join(ch for ch in s if ch == "\n" or unicodedata.category(ch) != "Cc")
+    s = re.sub(r"[ \t]+", " ", s)
+    s = re.sub(r"\n{3,}", "\n\n", s)
+    return s.strip()
+
+
+def dedupe_key(fields):
+    return "|".join((fields["topic"], fields["phone"], hashlib.sha256(fields["message"].encode()).hexdigest()[:12]))
+
+
 def validate_name(name):
     if not (NAME_MIN <= len(name) <= NAME_MAX):
         return "Укажите имя (от 2 до 60 символов)."
@@ -168,6 +189,9 @@ def validate(payload):
     """Returns (fields, None) or (None, (field, message))."""
     if not isinstance(payload, dict):
         return None, ("form", "Некорректные данные формы.")
+    topic = payload.get("topic", "callback")
+    if not isinstance(topic, str) or topic not in TOPICS:
+        return None, ("form", "Некорректные данные формы.")
     name = clean_name(payload.get("name", ""))
     err = validate_name(name)
     if err:
@@ -175,9 +199,21 @@ def validate(payload):
     phone, err = normalize_phone(payload.get("phone", ""))
     if err:
         return None, ("phone", err)
+    message = ""
+    if topic != "callback":
+        raw = payload.get("message", "")
+        if not isinstance(raw, str):
+            return None, ("message", "Некорректный текст сообщения.")
+        message = clean_message(raw)
+        if len(message) > MESSAGE_MAX:
+            return None, ("message", "Сообщение слишком длинное (не больше %d символов)." % MESSAGE_MAX)
+        if TOPICS[topic][2] and len(message) < MESSAGE_REQUIRED_MIN:
+            return None, ("message", "Напишите сообщение.")
+        if len(re.findall(r"https?://|www\.", message, re.I)) > MAX_LINKS:
+            return None, ("message", "В сообщении слишком много ссылок.")
     if payload.get("consent") is not True:
         return None, ("consent", "Нужно согласие на обработку персональных данных.")
-    return {"name": name, "phone": phone}, None
+    return {"topic": topic, "name": name, "phone": phone, "message": message}, None
 
 
 def honeypot_filled(payload):
@@ -202,20 +238,20 @@ def format_phone(p):
 
 def build_message(fields):
     now = datetime.now(MSK)
+    subject, heading, _ = TOPICS[fields["topic"]]
     msg = EmailMessage()
-    msg["Subject"] = "Заказ звонка с сайта kupit-tyr.ru"
+    msg["Subject"] = subject
     msg["From"] = MAIL_FROM
     msg["To"] = MAIL_TO
     msg["Date"] = format_datetime(now)
     msg["Message-ID"] = make_msgid(domain="kupit-tyr.ru")
-    msg.set_content(
-        "Заказ обратного звонка с сайта kupit-tyr.ru\n\n"
-        "Имя: %s\n"
-        "Телефон: %s\n"
-        "Время заявки: %s (МСК)\n\n"
-        "Клиент дал согласие на обработку персональных данных на сайте. "
-        "Перезвоните ему в рабочее время.\n" % (fields["name"], format_phone(fields["phone"]), now.strftime("%d.%m.%Y %H:%M"))
-    )
+    body = "%s\n\nИмя: %s\nТелефон: %s\n" % (heading, fields["name"], format_phone(fields["phone"]))
+    if fields["topic"] != "callback":
+        body += "Сообщение:\n%s\n\n" % (fields["message"] or "(без текста)")
+    body += "Время заявки: %s (МСК)\n\n" % now.strftime("%d.%m.%Y %H:%M")
+    body += ("Клиент дал согласие на обработку персональных данных на сайте. "
+             "Свяжитесь с ним по указанному телефону в рабочее время.\n")
+    msg.set_content(body)
     return msg
 
 
@@ -293,6 +329,16 @@ class Handler(BaseHTTPRequestHandler):
     do_PUT = do_DELETE = do_PATCH = do_GET
 
     def do_POST(self):
+        try:
+            self._handle_post()
+        except Exception as exc:  # never leave the client without an answer
+            log.error("callback result=internal_error error=%s", type(exc).__name__)
+            try:
+                self._json(500, {"ok": False, "error": "Внутренняя ошибка. Позвоните нам."})
+            except Exception:
+                pass
+
+    def _handle_post(self):
         # read the declared body first: answering and closing with unread data resets the connection for the client
         try:
             length = int(self.headers.get("Content-Length", "0"))
@@ -352,7 +398,8 @@ class Handler(BaseHTTPRequestHandler):
             self._json(422, {"ok": False, "field": "form", "error": "Проверьте данные и нажмите «Отправить заявку» ещё раз."})
             return
 
-        slot = reserve_send(ip, fields["phone"])
+        key = dedupe_key(fields)
+        slot = reserve_send(ip, key)
         if slot == "pending":
             log.info("callback ip=%s result=pending", tag)
             self._json(409, {"ok": False, "error": "Заявка уже отправляется. Подождите несколько секунд."})
@@ -369,13 +416,13 @@ class Handler(BaseHTTPRequestHandler):
         try:
             reply = send_callback(fields)
         except Exception as exc:
-            release_send(ip, fields["phone"])
+            release_send(ip, key)
             log.warning("callback ip=%s result=send_failed error=%s", tag, type(exc).__name__)
             self._json(502, {"ok": False, "error": "Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам."})
             return
 
-        finish_send(fields["phone"])
-        log.info("callback ip=%s result=sent smtp=%s", tag, reply)
+        finish_send(key)
+        log.info("callback ip=%s topic=%s result=sent smtp=%s", tag, fields["topic"], reply)
         self._json(200, {"ok": True})
 
 

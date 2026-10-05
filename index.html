@@ -336,10 +336,13 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 .cb-lead{margin:0 0 18px}
 .cb-field{margin-bottom:14px}
 .cb-field label{display:block;margin-bottom:6px;font-size:14px;font-weight:600;color:var(--ink-900)}
-.cb-field input{display:block;width:100%;box-sizing:border-box;min-height:48px;padding:11px 14px;border:1px solid var(--sand-400);border-radius:var(--radius-md);background:var(--white);font:inherit;font-size:16px;color:var(--ink-900)}
-.cb-field input::placeholder{color:#8A93A0}
-.cb-field input:focus-visible{outline:3px solid rgba(242,96,27,.45);outline-offset:1px;border-color:var(--orange-600)}
-.cb-field.bad input{border-color:#B3261E}
+.cb-field input,.cb-field textarea{display:block;width:100%;box-sizing:border-box;min-height:48px;padding:11px 14px;border:1px solid var(--sand-400);border-radius:var(--radius-md);background:var(--white);font:inherit;font-size:16px;color:var(--ink-900)}
+.cb-field textarea{min-height:104px;resize:vertical;line-height:1.45}
+.cb-field input::placeholder,.cb-field textarea::placeholder{color:#8A93A0}
+.cb-field[hidden]{display:none}
+.cb-opt{margin-left:6px;font-weight:400;color:var(--ink-600)}
+.cb-field input:focus-visible,.cb-field textarea:focus-visible{outline:3px solid rgba(242,96,27,.45);outline-offset:1px;border-color:var(--orange-600)}
+.cb-field.bad input,.cb-field.bad textarea{border-color:#B3261E}
 .cb-err{margin-top:5px;font-size:13px;line-height:1.35;color:#B3261E}
 .cb-err:empty{display:none}
 .cb-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
@@ -544,7 +547,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       </div>
       <div class="dest-body"><h3>Премиум</h3><p>Отели, где имя говорит само за себя, а сервис не повторяется.</p></div>
     </a>
-    <a class="dest-card" href="mailto:coralclub5av@mail.ru">
+    <a class="dest-card" href="#cruises-contact" data-open-legal="callback" data-topic="cruise" aria-haspopup="dialog">
       <div class="dest-photo">
         <img class="photo-img" src="assets/images/dest-cruise.webp" srcset="assets/images/dest-cruise-480.webp 480w, assets/images/dest-cruise.webp 720w" sizes="(max-width:519px) 100vw, (max-width:1023px) 50vw, 33vw" alt="Круизы" loading="lazy" decoding="async" fetchpriority="low">
         <span class="dest-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="1.6"><circle cx="12" cy="5" r="2.2"/><path d="M12 7v14M8 10h8M4 14a8 8 0 0016 0"/></svg></span>
@@ -633,7 +636,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <p class="eyebrow mgr-banner-eyebrow">ПОД СОЛНЦЕМ</p>
       <h2>Поможем найти ваше путешествие</h2>
       <p>Напишите нам — команда подберёт варианты под ваш запрос.</p>
-      <div><a class="btn btn-primary btn-lg" href="mailto:coralclub5av@mail.ru">Написать нам <span class="arr">→</span></a></div>
+      <div><button type="button" class="btn btn-primary btn-lg" data-open-legal="callback" data-topic="write" aria-haspopup="dialog">Написать нам <span class="arr">→</span></button></div>
     </div>
     <img class="mgr-banner-mobile-photo" src="assets/images/manager-banner.webp" alt="" loading="lazy" decoding="async">
   </div>
@@ -799,9 +802,10 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="legal-modal cb-modal"><div class="legal-head"><h2 id="t-callback">Заказать звонок</h2><button class="legal-close" data-close-legal aria-label="Закрыть">✕</button></div>
   <div class="cb-body">
     <form id="callback-form" novalidate>
-      <p class="cb-lead">Оставьте имя и телефон — менеджер перезвонит вам в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <p class="cb-lead" id="cb-lead">Оставьте имя и телефон — менеджер перезвонит вам в рабочее время (Пн–Вс 10:00–22:00).</p>
       <div class="cb-field" id="cb-f-name"><label for="cb-name">Имя</label><input id="cb-name" name="name" type="text" autocomplete="name" maxlength="60" required aria-describedby="cb-e-name"><div class="cb-err" id="cb-e-name" role="alert"></div></div>
       <div class="cb-field" id="cb-f-phone"><label for="cb-phone">Телефон</label><input id="cb-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="+7 900 000-00-00" required aria-describedby="cb-e-phone"><div class="cb-err" id="cb-e-phone" role="alert"></div></div>
+      <div class="cb-field" id="cb-f-message" hidden><label for="cb-message">Сообщение<span class="cb-opt" id="cb-msg-opt"></span></label><textarea id="cb-message" name="message" rows="4" maxlength="1500" aria-describedby="cb-e-message"></textarea><div class="cb-err" id="cb-e-message" role="alert"></div></div>
       <div class="cb-hp" aria-hidden="true"><label>Не заполняйте это поле<input id="cb-hp" name="hp_field" type="text" tabindex="-1" autocomplete="off"></label></div>
       <label class="cb-consent" id="cb-f-consent"><input id="cb-consent" name="consent" type="checkbox" aria-describedby="cb-e-consent"><span>Я даю <a href="/#consent" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> в соответствии с <a href="/#privacy" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных</a>.</span></label>
       <div class="cb-err" id="cb-e-consent" role="alert"></div>
@@ -811,7 +815,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     <div class="cb-done" id="cb-done" role="status" tabindex="-1" hidden>
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="#C8420F" stroke-width="3"/><path d="M14 25l7 7 13-15" stroke="#C8420F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h3>Заявка принята</h3>
-      <p>Менеджер перезвонит вам по указанному номеру в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <p id="cb-done-text">Менеджер перезвонит вам по указанному номеру в рабочее время (Пн–Вс 10:00–22:00).</p>
       <button type="button" class="btn btn-outline btn-block" data-close-legal>Закрыть</button>
     </div>
   </div></div>
@@ -892,7 +896,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="legal-body">
     <h3>1. Общие положения</h3><p>Настоящее Пользовательское соглашение регулирует использование информационного сайта ООО «Под Солнцем» (далее — Сайт). Используя Сайт, вы принимаете условия настоящего Соглашения.</p>
     <h3>2. Характер сайта</h3><p>Сайт носит информационный характер и предназначен для ознакомления с направлениями и услугами Оператора. Размещённая на Сайте информация сама по себе не является публичной офертой, если прямо не указано иное.</p>
-    <h3>3. Порядок обращения</h3><p>Обратиться к Оператору можно по телефонам офисов, указанным на Сайте, либо через кнопку «Написать нам», которая открывает почтовую программу посетителя для письма на e-mail Оператора; саму отправку письма посетитель выполняет самостоятельно в открывшемся почтовом клиенте. Подбор тура доступен через встроенный на Сайте сервис поиска туров. Направление заявки не влечёт автоматического заключения договора и не порождает финансовых обязательств.</p>
+    <h3>3. Порядок обращения</h3><p>Обратиться к Оператору можно по телефонам офисов, указанным на Сайте, либо через формы «Заказать звонок», «Написать нам» и «Круизы» на Сайте: указанные в форме имя, телефон и текст сообщения направляются на e-mail Оператора, почтовая программа посетителя при этом не используется. Подбор тура доступен через встроенный на Сайте сервис поиска туров. Направление заявки не влечёт автоматического заключения договора и не порождает финансовых обязательств.</p>
     <h3>4. Актуальность условий</h3><p>Окончательные условия туристского продукта, состав услуг и стоимость подтверждаются индивидуально перед заключением соответствующего договора. Пользователь обязан самостоятельно проверять актуальность условий у менеджера Оператора.</p>
     <h3>5. Интеллектуальная собственность</h3><p>Права на дизайн, тексты, фотографии и иные материалы Сайта принадлежат Оператору или используются на законных основаниях. Копирование материалов без согласия Оператора не допускается.</p>
     <h3>6. Ограничение ответственности</h3><p>Оператор не исключает ответственность в случаях, когда такое исключение не допускается законодательством Российской Федерации.</p>
@@ -1134,23 +1138,46 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     function ready(){ if(f.firstElementChild){ w.classList.add("tv-ready"); if(obs) obs.disconnect(); return true; } return false; }
     if(!ready() && window.MutationObserver){ obs = new MutationObserver(ready); obs.observe(f, {childList:true}); }
   })();
-  // "Заказать звонок": validates, posts to /api/callback (served by the loopback mail relay), shows sending / success / error
+  // "Заказать звонок", "Написать нам" and "Круизы" share one window: validates, posts to /api/callback (loopback mail relay), shows sending / success / error
   (function(){
     var ov = document.getElementById("modal-callback"), form = document.getElementById("callback-form");
     if(!ov || !form || !window.fetch) return;
-    var nameEl = document.getElementById("cb-name"), phoneEl = document.getElementById("cb-phone"), hpEl = document.getElementById("cb-hp"), consentEl = document.getElementById("cb-consent");
+    var nameEl = document.getElementById("cb-name"), phoneEl = document.getElementById("cb-phone"), msgEl = document.getElementById("cb-message"), hpEl = document.getElementById("cb-hp"), consentEl = document.getElementById("cb-consent");
     var submitBtn = document.getElementById("cb-submit"), done = document.getElementById("cb-done"), status = document.getElementById("cb-status"), statusText = document.getElementById("cb-status-text"), statusTel = document.getElementById("cb-status-tel");
-    var rows = {name: document.getElementById("cb-f-name"), phone: document.getElementById("cb-f-phone"), consent: document.getElementById("cb-f-consent")};
-    var errs = {name: document.getElementById("cb-e-name"), phone: document.getElementById("cb-e-phone"), consent: document.getElementById("cb-e-consent")};
-    var inputs = {name: nameEl, phone: phoneEl, consent: consentEl};
-    var openedAt = Date.now(), sending = false, MIN_MS = 2300;
+    var titleEl = document.getElementById("t-callback"), leadEl = document.getElementById("cb-lead"), doneText = document.getElementById("cb-done-text"), msgRow = document.getElementById("cb-f-message"), msgOpt = document.getElementById("cb-msg-opt");
+    var rows = {name: document.getElementById("cb-f-name"), phone: document.getElementById("cb-f-phone"), message: msgRow, consent: document.getElementById("cb-f-consent")};
+    var errs = {name: document.getElementById("cb-e-name"), phone: document.getElementById("cb-e-phone"), message: document.getElementById("cb-e-message"), consent: document.getElementById("cb-e-consent")};
+    var inputs = {name: nameEl, phone: phoneEl, message: msgEl, consent: consentEl};
+    var HOURS = " в рабочее время (Пн–Вс 10:00–22:00).";
+    var MODES = {
+      callback: {title: "Заказать звонок", lead: "Оставьте имя и телефон — менеджер перезвонит вам" + HOURS, done: "Менеджер перезвонит вам по указанному номеру" + HOURS, message: false},
+      write: {title: "Напишите нам", lead: "Расскажите, что вас интересует, — менеджер свяжется с вами по указанному телефону" + HOURS, done: "Менеджер свяжется с вами по указанному номеру" + HOURS, message: true, required: true, hint: "Например: хочу в Грузию в ноябре, нас двое"},
+      cruise: {title: "Круизы", lead: "Расскажите, куда и когда хотите отправиться, — менеджер свяжется с вами по указанному телефону и обсудит маршрут" + HOURS, done: "Менеджер свяжется с вами по указанному номеру" + HOURS, message: true, required: false, hint: "Например: Средиземное море, июнь, двое взрослых"}
+    };
+    var mode = "callback", pendingMode = null, openedAt = Date.now(), sending = false, gen = 0, MIN_MS = 2300;
 
+    // the opener is known only at click time; the capture phase runs before openLegal builds the window
+    document.addEventListener("click", function(e){
+      var t = e.target && e.target.closest ? e.target.closest('[data-open-legal="callback"]') : null;
+      if(t) pendingMode = MODES[t.getAttribute("data-topic")] ? t.getAttribute("data-topic") : "callback";
+    }, true);
+
+    function setMode(m){
+      var c = MODES[m];
+      if(m !== mode){ msgEl.value = ""; }
+      mode = m;
+      titleEl.textContent = c.title; leadEl.textContent = c.lead; doneText.textContent = c.done;
+      msgRow.hidden = !c.message;
+      msgEl.placeholder = c.hint || "";
+      msgOpt.textContent = c.message && !c.required ? "(необязательно)" : "";
+    }
     function setError(field, msg){
       if(!errs[field]) { showStatus(msg); return; }
       errs[field].textContent = msg; rows[field].classList.add("bad"); inputs[field].setAttribute("aria-invalid", "true");
     }
+    function clearField(f){ errs[f].textContent = ""; rows[f].classList.remove("bad"); inputs[f].removeAttribute("aria-invalid"); }
     function clearErrors(){
-      Object.keys(errs).forEach(function(k){ errs[k].textContent = ""; rows[k].classList.remove("bad"); inputs[k].removeAttribute("aria-invalid"); });
+      Object.keys(errs).forEach(clearField);
       status.hidden = true; statusText.textContent = "";
     }
     function showStatus(msg, withPhone){ statusText.textContent = msg; statusTel.hidden = withPhone === false; status.hidden = false; }
@@ -1160,19 +1187,20 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     }
     function phoneDigits(v){ return v.replace(/[^0-9]/g, ""); }
     function check(){
-      var bad = null, name = nameEl.value.replace(/\s+/g, " ").trim(), phone = phoneEl.value.trim();
+      var bad = null, name = nameEl.value.replace(/\s+/g, " ").trim(), phone = phoneEl.value.trim(), c = MODES[mode];
       function fail(f, m){ setError(f, m); if(!bad) bad = f; }
       if(name.length < 2) fail("name", "Укажите имя.");
       else if(/[0-9@<>\/\\:;=_]/.test(name)) fail("name", "В имени допустимы только буквы, пробел и дефис.");
       var d = phoneDigits(phone);
       if(!phone) fail("phone", "Укажите телефон.");
       else if(/[^0-9\s()+\-]/.test(phone) || d.length < 10 || d.length > 15) fail("phone", "Укажите телефон в правильном формате, например +7 900 000-00-00.");
+      if(c.message && c.required && msgEl.value.trim().length < 3) fail("message", "Напишите сообщение.");
       if(!consentEl.checked) fail("consent", "Нужно согласие на обработку персональных данных.");
       return bad;
     }
     function reset(afterDone){
       clearErrors(); busy(false);
-      if(afterDone){ nameEl.value = ""; phoneEl.value = ""; consentEl.checked = false; hpEl.value = ""; }
+      if(afterDone){ nameEl.value = ""; phoneEl.value = ""; msgEl.value = ""; consentEl.checked = false; hpEl.value = ""; }
       done.hidden = true; form.hidden = false; openedAt = Date.now();
     }
     function success(){
@@ -1188,11 +1216,13 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 
     // the window just opened: after a sent request start with a clean form, otherwise keep what was typed
     ov.addEventListener("legal-open", function(){
+      gen++;
       reset(!done.hidden);
+      setMode(pendingMode || "callback"); pendingMode = null;
       if(window.matchMedia && matchMedia("(pointer:fine)").matches) nameEl.focus();
     });
-    [nameEl, phoneEl].forEach(function(el){ el.addEventListener("input", function(){ var f = el === nameEl ? "name" : "phone"; errs[f].textContent = ""; rows[f].classList.remove("bad"); el.removeAttribute("aria-invalid"); }); });
-    consentEl.addEventListener("change", function(){ errs.consent.textContent = ""; rows.consent.classList.remove("bad"); consentEl.removeAttribute("aria-invalid"); });
+    ["name", "phone", "message"].forEach(function(f){ inputs[f].addEventListener("input", function(){ clearField(f); }); });
+    consentEl.addEventListener("change", function(){ clearField("consent"); });
 
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -1201,19 +1231,23 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       var bad = check();
       if(bad){ inputs[bad].focus(); return; }
       busy(true);
+      var g = gen, topic = mode;
       // a person needs a couple of seconds to fill the form; the server treats faster requests as a bot, so autofill is simply held back
       var wait = Math.max(0, MIN_MS - (Date.now() - openedAt));
       setTimeout(function(){
         var ctl = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 40000);
+        var payload = {topic: topic, name: nameEl.value.replace(/\s+/g, " ").trim(), phone: phoneEl.value.trim(), consent: consentEl.checked === true, hp_field: hpEl.value, elapsed: Date.now() - openedAt};
+        if(topic !== "callback") payload.message = msgEl.value;
         fetch("/api/callback", {
           method: "POST", headers: {"Content-Type": "application/json"}, credentials: "same-origin", signal: ctl ? ctl.signal : undefined,
-          body: JSON.stringify({name: nameEl.value.replace(/\s+/g, " ").trim(), phone: phoneEl.value.trim(), consent: consentEl.checked === true, hp_field: hpEl.value, elapsed: Date.now() - openedAt})
+          body: JSON.stringify(payload)
         }).then(function(r){
           return r.json().then(function(j){ return {status: r.status, body: j}; }, function(){ return {status: r.status, body: {}}; });
         }).then(function(res){
+          if(g !== gen) return; // the window was closed and reopened meanwhile: do not touch the new state
           if(res.status === 200 && res.body && res.body.ok === true) success(); else failed(res);
-        }, function(){ failed(null); }).then(function(){ clearTimeout(timer); busy(false); });
+        }, function(){ if(g === gen) failed(null); }).then(function(){ clearTimeout(timer); if(g === gen) busy(false); });
       }, wait);
     });
   })();
