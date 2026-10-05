@@ -331,6 +331,35 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 .legal-body h3:first-child{margin-top:0}
 .legal-body p,.legal-body li{margin:0 0 8px}
 .legal-body ul{padding-left:18px;margin:0 0 8px}
+.cb-modal{max-width:460px}
+.cb-body{padding:18px 26px 26px;overflow-y:auto;font-size:15px;color:var(--ink-700);line-height:1.5}
+.cb-lead{margin:0 0 18px}
+.cb-field{margin-bottom:14px}
+.cb-field label{display:block;margin-bottom:6px;font-size:14px;font-weight:600;color:var(--ink-900)}
+.cb-field input{display:block;width:100%;box-sizing:border-box;min-height:48px;padding:11px 14px;border:1px solid var(--sand-400);border-radius:var(--radius-md);background:var(--white);font:inherit;font-size:16px;color:var(--ink-900)}
+.cb-field input::placeholder{color:#8A93A0}
+.cb-field input:focus-visible{outline:3px solid rgba(242,96,27,.45);outline-offset:1px;border-color:var(--orange-600)}
+.cb-field.bad input{border-color:#B3261E}
+.cb-err{margin-top:5px;font-size:13px;line-height:1.35;color:#B3261E}
+.cb-err:empty{display:none}
+.cb-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+.cb-consent{display:flex;gap:10px;align-items:flex-start;margin:2px 0 6px;font-size:13px;line-height:1.45;cursor:pointer}
+.cb-consent input{flex:0 0 auto;width:22px;height:22px;margin:0;accent-color:var(--orange-600);cursor:pointer}
+.cb-consent input:focus-visible{outline:3px solid rgba(242,96,27,.45);outline-offset:2px}
+.cb-consent.bad{color:#B3261E}
+.cb-consent a{text-decoration:underline}
+.cb-status{margin:12px 0 0;padding:10px 12px;border-radius:var(--radius-md);background:#FDECEA;color:#8C1D18;font-size:14px;line-height:1.4}
+.cb-status[hidden]{display:none}
+.cb-status a{color:inherit;font-weight:600;white-space:nowrap}
+.cb-submit{margin-top:14px;justify-content:center}
+.cb-submit[disabled]{opacity:.7;cursor:progress;transform:none;box-shadow:none}
+.cb-done{text-align:center;padding:8px 0 2px}
+.cb-done[hidden]{display:none}
+.cb-done h3{font-size:20px;margin:12px 0 8px}
+.cb-done p{margin:0 0 18px}
+.cb-done:focus{outline:none}
+@supports (height:1dvh){.cb-modal{max-height:85dvh}}
+@media (max-width:480px){.cb-body{padding:16px 18px 20px}.legal-overlay.cb-wrap{padding:12px}}
 .legal-meta{background:var(--white);border:1px solid var(--sand-300);border-radius:var(--radius-md);padding:14px 16px;font-size:13px;margin-bottom:16px;overflow-wrap:break-word}
 .legal-meta p{margin:2px 0}
 .legal-foot{display:flex;gap:10px;flex-wrap:wrap;padding:14px 26px;border-top:1px solid var(--sand-300)}
@@ -390,7 +419,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <div class="p"><a class="hdr-soc" href="https://wa.me/79671171188" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp"><img src="assets/images/social-whatsapp.webp" alt="" width="24" height="24" decoding="async"></a><a class="hdr-soc" href="https://t.me/+79671171188" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><img src="assets/images/social-telegram.webp" alt="" width="24" height="24" decoding="async"></a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8420F" stroke-width="2"><path d="M4 5c0 8 7 15 15 15l2-3-4-2-2 2c-3-1-6-4-7-7l2-2-2-4-4 1z"/></svg><a href="tel:+74952121421" style="color:inherit;text-decoration:none">+7 (495) 212-14-21</a></div>
       <div class="h">Пн–Вс 10:00–22:00</div>
     </div>
-    <a class="btn btn-primary btn-sm cta-header" href="#tour-search">Подобрать путешествие <span class="arr">→</span></a>
+    <button type="button" class="btn btn-primary btn-sm cta-header" data-open-legal="callback">Заказать звонок</button>
     <button class="burger" id="burger-open" aria-label="Открыть меню">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -413,7 +442,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
       <a class="mm-soc" href="https://wa.me/79671171188" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp"><img src="assets/images/social-whatsapp.webp" alt="" width="24" height="24" decoding="async"><span>WhatsApp</span></a>
       <a class="mm-soc" href="https://t.me/+79671171188" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><img src="assets/images/social-telegram.webp" alt="" width="24" height="24" decoding="async"><span>Telegram</span></a>
     </div>
-    <a class="btn btn-primary btn-block" href="#tour-search">Подобрать путешествие</a>
+    <button type="button" class="btn btn-primary btn-block mm-link" data-open-legal="callback">Заказать звонок</button>
   </div>
 </div>
 
@@ -766,6 +795,27 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   </div>
 </div>
 
+<div class="legal-overlay cb-wrap" id="modal-callback" role="dialog" aria-modal="true" aria-labelledby="t-callback">
+  <div class="legal-modal cb-modal"><div class="legal-head"><h2 id="t-callback">Заказать звонок</h2><button class="legal-close" data-close-legal aria-label="Закрыть">✕</button></div>
+  <div class="cb-body">
+    <form id="callback-form" novalidate>
+      <p class="cb-lead">Оставьте имя и телефон — менеджер перезвонит вам в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <div class="cb-field" id="cb-f-name"><label for="cb-name">Имя</label><input id="cb-name" name="name" type="text" autocomplete="name" maxlength="60" required aria-describedby="cb-e-name"><div class="cb-err" id="cb-e-name" role="alert"></div></div>
+      <div class="cb-field" id="cb-f-phone"><label for="cb-phone">Телефон</label><input id="cb-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="+7 900 000-00-00" required aria-describedby="cb-e-phone"><div class="cb-err" id="cb-e-phone" role="alert"></div></div>
+      <div class="cb-hp" aria-hidden="true"><label>Не заполняйте это поле<input id="cb-hp" name="hp_field" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <label class="cb-consent" id="cb-f-consent"><input id="cb-consent" name="consent" type="checkbox" aria-describedby="cb-e-consent"><span>Я даю <a href="/#consent" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> в соответствии с <a href="/#privacy" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных</a>.</span></label>
+      <div class="cb-err" id="cb-e-consent" role="alert"></div>
+      <div class="cb-status" id="cb-status" role="alert" hidden><span id="cb-status-text"></span> <a id="cb-status-tel" href="tel:+74952121421">+7 (495) 212-14-21</a></div>
+      <button type="submit" class="btn btn-primary btn-block cb-submit" id="cb-submit">Отправить заявку</button>
+    </form>
+    <div class="cb-done" id="cb-done" role="status" tabindex="-1" hidden>
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="#C8420F" stroke-width="3"/><path d="M14 25l7 7 13-15" stroke="#C8420F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Заявка принята</h3>
+      <p>Менеджер перезвонит вам по указанному номеру в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <button type="button" class="btn btn-outline btn-block" data-close-legal>Закрыть</button>
+    </div>
+  </div></div>
+</div>
 <div class="legal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="t-privacy">
   <div class="legal-modal"><div class="legal-head"><h2 id="t-privacy">Политика обработки персональных данных</h2><button class="legal-close" data-close-legal aria-label="Закрыть">✕</button></div>
   <div class="legal-body">
@@ -979,6 +1029,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     syncScrollLock();
     var closeBtn = ov.querySelector('[data-close-legal]');
     if(closeBtn) closeBtn.focus();
+    ov.dispatchEvent(new Event("legal-open"));
     if(legalIds.indexOf(id) !== -1 && !fromHash){ history.pushState(null, '', '#'+id); }
   }
   function closeLegal(){
@@ -1082,6 +1133,89 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     if(!f) return;
     function ready(){ if(f.firstElementChild){ w.classList.add("tv-ready"); if(obs) obs.disconnect(); return true; } return false; }
     if(!ready() && window.MutationObserver){ obs = new MutationObserver(ready); obs.observe(f, {childList:true}); }
+  })();
+  // "Заказать звонок": validates, posts to /api/callback (served by the loopback mail relay), shows sending / success / error
+  (function(){
+    var ov = document.getElementById("modal-callback"), form = document.getElementById("callback-form");
+    if(!ov || !form || !window.fetch) return;
+    var nameEl = document.getElementById("cb-name"), phoneEl = document.getElementById("cb-phone"), hpEl = document.getElementById("cb-hp"), consentEl = document.getElementById("cb-consent");
+    var submitBtn = document.getElementById("cb-submit"), done = document.getElementById("cb-done"), status = document.getElementById("cb-status"), statusText = document.getElementById("cb-status-text"), statusTel = document.getElementById("cb-status-tel");
+    var rows = {name: document.getElementById("cb-f-name"), phone: document.getElementById("cb-f-phone"), consent: document.getElementById("cb-f-consent")};
+    var errs = {name: document.getElementById("cb-e-name"), phone: document.getElementById("cb-e-phone"), consent: document.getElementById("cb-e-consent")};
+    var inputs = {name: nameEl, phone: phoneEl, consent: consentEl};
+    var openedAt = Date.now(), sending = false, MIN_MS = 2300;
+
+    function setError(field, msg){
+      if(!errs[field]) { showStatus(msg); return; }
+      errs[field].textContent = msg; rows[field].classList.add("bad"); inputs[field].setAttribute("aria-invalid", "true");
+    }
+    function clearErrors(){
+      Object.keys(errs).forEach(function(k){ errs[k].textContent = ""; rows[k].classList.remove("bad"); inputs[k].removeAttribute("aria-invalid"); });
+      status.hidden = true; statusText.textContent = "";
+    }
+    function showStatus(msg, withPhone){ statusText.textContent = msg; statusTel.hidden = withPhone === false; status.hidden = false; }
+    function busy(on){
+      sending = on; submitBtn.disabled = on; form.setAttribute("aria-busy", on ? "true" : "false");
+      submitBtn.textContent = on ? "Отправляем…" : "Отправить заявку";
+    }
+    function phoneDigits(v){ return v.replace(/[^0-9]/g, ""); }
+    function check(){
+      var bad = null, name = nameEl.value.replace(/\s+/g, " ").trim(), phone = phoneEl.value.trim();
+      function fail(f, m){ setError(f, m); if(!bad) bad = f; }
+      if(name.length < 2) fail("name", "Укажите имя.");
+      else if(/[0-9@<>\/\\:;=_]/.test(name)) fail("name", "В имени допустимы только буквы, пробел и дефис.");
+      var d = phoneDigits(phone);
+      if(!phone) fail("phone", "Укажите телефон.");
+      else if(/[^0-9\s()+\-]/.test(phone) || d.length < 10 || d.length > 15) fail("phone", "Укажите телефон в правильном формате, например +7 900 000-00-00.");
+      if(!consentEl.checked) fail("consent", "Нужно согласие на обработку персональных данных.");
+      return bad;
+    }
+    function reset(afterDone){
+      clearErrors(); busy(false);
+      if(afterDone){ nameEl.value = ""; phoneEl.value = ""; consentEl.checked = false; hpEl.value = ""; }
+      done.hidden = true; form.hidden = false; openedAt = Date.now();
+    }
+    function success(){
+      form.hidden = true; done.hidden = false; done.focus({preventScroll:true});
+    }
+    function failed(res){
+      var b = (res && res.body) || {};
+      if(res && res.status === 422 && b.field && errs[b.field]){ setError(b.field, b.error); inputs[b.field].focus(); return; }
+      if(res && (res.status === 422 || res.status === 409) && b.error){ showStatus(b.error, false); return; }
+      if(res && res.status === 429) { showStatus("Слишком много попыток. Попробуйте позже или позвоните нам:"); return; }
+      showStatus("Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз или позвоните нам:");
+    }
+
+    // the window just opened: after a sent request start with a clean form, otherwise keep what was typed
+    ov.addEventListener("legal-open", function(){
+      reset(!done.hidden);
+      if(window.matchMedia && matchMedia("(pointer:fine)").matches) nameEl.focus();
+    });
+    [nameEl, phoneEl].forEach(function(el){ el.addEventListener("input", function(){ var f = el === nameEl ? "name" : "phone"; errs[f].textContent = ""; rows[f].classList.remove("bad"); el.removeAttribute("aria-invalid"); }); });
+    consentEl.addEventListener("change", function(){ errs.consent.textContent = ""; rows.consent.classList.remove("bad"); consentEl.removeAttribute("aria-invalid"); });
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if(sending) return;
+      clearErrors();
+      var bad = check();
+      if(bad){ inputs[bad].focus(); return; }
+      busy(true);
+      // a person needs a couple of seconds to fill the form; the server treats faster requests as a bot, so autofill is simply held back
+      var wait = Math.max(0, MIN_MS - (Date.now() - openedAt));
+      setTimeout(function(){
+        var ctl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 40000);
+        fetch("/api/callback", {
+          method: "POST", headers: {"Content-Type": "application/json"}, credentials: "same-origin", signal: ctl ? ctl.signal : undefined,
+          body: JSON.stringify({name: nameEl.value.replace(/\s+/g, " ").trim(), phone: phoneEl.value.trim(), consent: consentEl.checked === true, hp_field: hpEl.value, elapsed: Date.now() - openedAt})
+        }).then(function(r){
+          return r.json().then(function(j){ return {status: r.status, body: j}; }, function(){ return {status: r.status, body: {}}; });
+        }).then(function(res){
+          if(res.status === 200 && res.body && res.body.ok === true) success(); else failed(res);
+        }, function(){ failed(null); }).then(function(){ clearTimeout(timer); busy(false); });
+      }, wait);
+    });
   })();
 </script>
 </body>
