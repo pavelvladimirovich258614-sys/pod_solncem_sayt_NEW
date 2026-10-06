@@ -811,7 +811,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="legal-modal cb-modal"><div class="legal-head"><h2 id="t-callback">Заказать звонок</h2><button class="legal-close" data-close-legal aria-label="Закрыть">✕</button></div>
   <div class="cb-body">
     <form id="callback-form" novalidate>
-      <p class="cb-lead" id="cb-lead">Оставьте имя и телефон — менеджер перезвонит вам в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <p class="cb-lead" id="cb-lead">Оставьте имя и телефон — менеджер свяжется с вами.</p>
       <div class="cb-field" id="cb-f-name"><label for="cb-name">Имя</label><input id="cb-name" name="name" type="text" autocomplete="name" maxlength="60" required aria-describedby="cb-e-name"><div class="cb-err" id="cb-e-name" role="alert"></div></div>
       <div class="cb-field" id="cb-f-phone"><label for="cb-phone">Телефон</label><input id="cb-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="+7 900 000-00-00" required aria-describedby="cb-e-phone"><div class="cb-err" id="cb-e-phone" role="alert"></div></div>
       <div class="cb-field" id="cb-f-message" hidden><label for="cb-message">Сообщение<span class="cb-opt" id="cb-msg-opt"></span></label><textarea id="cb-message" name="message" rows="4" maxlength="1500" aria-describedby="cb-e-message"></textarea><div class="cb-err" id="cb-e-message" role="alert"></div></div>
@@ -824,7 +824,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     <div class="cb-done" id="cb-done" role="status" tabindex="-1" hidden>
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="#C8420F" stroke-width="3"/><path d="M14 25l7 7 13-15" stroke="#C8420F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h3>Заявка принята</h3>
-      <p id="cb-done-text">Менеджер перезвонит вам по указанному номеру в рабочее время (Пн–Вс 10:00–22:00).</p>
+      <p id="cb-done-text">Менеджер перезвонит вам по указанному номеру.</p>
       <button type="button" class="btn btn-outline btn-block" data-close-legal>Закрыть</button>
     </div>
   </div></div>
@@ -1159,7 +1159,7 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
     var inputs = {name: nameEl, phone: phoneEl, message: msgEl, consent: consentEl};
     var HOURS = " в рабочее время (Пн–Вс 10:00–22:00).";
     var MODES = {
-      callback: {title: "Заказать звонок", lead: "Оставьте имя и телефон — менеджер перезвонит вам" + HOURS, done: "Менеджер перезвонит вам по указанному номеру" + HOURS, message: false},
+      callback: {title: "Заказать звонок", lead: "Оставьте имя и телефон — менеджер свяжется с вами.", done: "Менеджер перезвонит вам по указанному номеру.", message: false},
       write: {title: "Напишите нам", lead: "Расскажите, что вас интересует, — менеджер свяжется с вами по указанному телефону" + HOURS, done: "Менеджер свяжется с вами по указанному номеру" + HOURS, message: true, required: true, hint: "Например: хочу в Грузию в ноябре, нас двое"},
       cruise: {title: "Круизы", lead: "Расскажите, куда и когда хотите отправиться, — менеджер свяжется с вами по указанному телефону и обсудит маршрут" + HOURS, done: "Менеджер свяжется с вами по указанному номеру" + HOURS, message: true, required: false, hint: "Например: Средиземное море, июнь, двое взрослых"}
     };
