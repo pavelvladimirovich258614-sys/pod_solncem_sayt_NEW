@@ -88,6 +88,12 @@ header.scrolled{box-shadow:var(--shadow-header)}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-word{font-family:var(--font-serif);font-weight:700;font-size:17px;line-height:1.1;letter-spacing:.04em}
 .logo-sub{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-600)}
+/* header logo: blue-gold image with a transparent background (the footer keeps the inline .logo) */
+.logo-link{display:block;flex:0 0 auto;line-height:0;border-radius:6px}
+.logo-link img{display:block;height:50px;width:auto}
+.logo-link:focus-visible{outline:2px solid var(--orange-600);outline-offset:4px}
+@media (max-width:1023px){.logo-link img{height:48px}}
+@media (max-width:767px){.logo-link img{height:46px}}
 nav.desktop-nav{display:none;gap:28px;margin-left:auto}
 nav.desktop-nav a{color:var(--ink-900);font-size:14px}
 nav.desktop-nav a:hover{color:var(--orange-600)}
@@ -417,18 +423,9 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
 <div class="secure-bar"><img src="assets/images/secure-purchase-badge.webp" alt="Безопасная покупка" width="191" height="60" decoding="async"></div>
 
 <header id="site-header">
-  <div class="logo">
-    <svg width="38" height="38" viewBox="0 0 80 80" aria-hidden="true"><g transform="translate(40,36)">
-      <path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028"/><path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(45)"/>
-      <path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(90)"/><path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(135)"/>
-      <path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(180)"/><path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(225)"/>
-      <path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(270)"/><path d="M 0 -36 L -3 -22 L 3 -22 Z" fill="#F89028" transform="rotate(315)"/>
-      <circle cx="0" cy="0" r="18" fill="#F2601B"/>
-      <path d="M -32 4 Q -20 -1, -8 4 T 16 4 T 40 4" stroke="#062537" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M -28 13 Q -16 8, -4 13 T 20 13 T 44 13" stroke="#062537" stroke-width="3" fill="none" stroke-linecap="round"/>
-    </g></svg>
-    <div><div class="logo-word">ПОД СОЛНЦЕМ</div><div class="logo-sub">туристическое агентство</div></div>
-  </div>
+  <a class="logo-link" href="/">
+    <img src="assets/images/logo-header-438.webp" srcset="assets/images/logo-header-438.webp 438w, assets/images/logo-header-657.webp 657w" sizes="(max-width:767px) 194px, (max-width:1023px) 202px, 211px" width="657" height="156" alt="Под Солнцем — туристическое агентство" decoding="async">
+  </a>
   <div class="hdr-secure"><img src="assets/images/secure-purchase-badge.webp" alt="Безопасная покупка" width="191" height="60" decoding="async"></div>
   <nav class="desktop-nav" aria-label="Основная навигация">
     <a href="#tours">Туры</a><a href="#destinations">Направления</a><a href="#about" data-open-legal="about">О нас</a><a href="#footer">Контакты</a>
