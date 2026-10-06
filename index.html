@@ -245,6 +245,14 @@ nav.desktop-nav a:hover{color:var(--orange-600)}
 
 /* reviews */
 .reviews-grid{column-count:3;column-gap:16px}
+.reviews-link{display:inline-flex;align-items:center;gap:14px;min-height:48px;max-width:100%;padding:8px 18px 8px 16px;margin:0 0 20px;background:var(--white);border:1px solid rgba(242,96,27,.3);border-radius:var(--radius-md);box-shadow:var(--shadow-card);color:var(--orange-600);text-decoration:none;transition:box-shadow .2s,border-color .2s,transform .2s}
+.reviews-link:hover{border-color:rgba(242,96,27,.55);box-shadow:var(--shadow-card-hover);transform:translateY(-1px)}
+.reviews-link:focus-visible{outline:2px solid var(--orange-600);outline-offset:3px}
+.reviews-link-logo{display:block;height:26px;width:auto;flex-shrink:0}
+.reviews-link-text{padding-left:14px;border-left:1px solid rgba(15,23,42,.12);font-weight:600;font-size:14.5px;line-height:26px;white-space:nowrap}
+.reviews-link .arr{display:inline-block;transition:transform .2s}
+.reviews-link:hover .arr{transform:translateX(3px)}
+@media (max-width:479px){.reviews-link{gap:12px;padding:8px 14px 8px 12px}.reviews-link-logo{height:22px}.reviews-link-text{padding-left:12px;font-size:14px}}
 .review-card{background:var(--white);border:1px solid rgba(242,96,27,.3);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px;break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 16px;transition:box-shadow .2s,border-color .2s,transform .2s}
 .review-card:hover,.review-card:focus-within{border-color:rgba(242,96,27,.55);box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
 .review-top{display:flex;align-items:center;gap:10px}
@@ -654,6 +662,10 @@ footer{background:var(--navy-900);color:var(--slate-100);padding:40px 0 18px;mar
   <div class="sec-head">
     <div><div class="rule"></div><h2>Отзывы наших путешественников</h2></div>
   </div>
+  <a class="reviews-link" href="https://yandex.ru/maps/org/pod_solntsem/34406123667/reviews/" target="_blank" rel="noopener noreferrer" aria-label="Все отзывы на Яндекс Картах (откроется в новой вкладке)">
+    <img class="reviews-link-logo" src="assets/images/yandex-maps-logo.webp" width="450" height="86" alt="Яндекс Карты" loading="lazy" decoding="async">
+    <span class="reviews-link-text">Все отзывы <span class="arr" aria-hidden="true">→</span></span>
+  </a>
   <div class="reviews-grid">
     <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">Н</div><div><div class="review-name">Наталья М.</div><div class="review-date">25 сентября 2026</div></div></div><p class="review-text">«Тур полностью соответствовал описанию, никаких неприятных сюрпризов не возникло. Отдых получился именно таким, каким мы его хотели. Обязательно буду рекомендовать ваше агентство друзьям и обращусь снова не один раз. Отдых прошёл идеально — спасибо за спокойствие и уверенность, которые вы даёте!»</p><div class="stars">★★★★★</div></div>
     <div class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">L</div><div><div class="review-name">Lubov S.</div><div class="review-date">22 сентября 2026</div></div></div><p class="review-text">«Подобрали хороший отель, ездим 2ой год, спасибо тур оператору Наталье»</p><div class="stars">★★★★★</div></div>
